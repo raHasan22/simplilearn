@@ -1,0 +1,167 @@
+{% schema %}
+{
+  "name": "NXT Hero Area",
+  "tag": "section",
+  "class": "nxt-hero__area",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Area"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 0,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Height",
+      "default": 680,
+      "info": "This is the height of the hero area"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Be a Leader in Your Field"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Main Heading",
+          "default": "Change, Adapt and Build with AI"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "All our top programs include Generative AI components"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Explore Programs"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link",
+          "default": "\/collections\/all"
+        },
+        {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "Hero Background Image"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Hero Slider",
+      "category": "Hero",
+      "blocks": [
+        {
+          "type": "slider",
+          "settings": {
+            "subheading": "Be a Leader in Your Field",
+            "heading": "Change, Adapt and Build with AI",
+            "description": "All our top programs include Generative AI components",
+            "button_text": "Explore Programs",
+            "button_link": "/collections/all"
+          }
+        },
+        {
+          "type": "slider",
+          "settings": {
+            "subheading": "Be a Leader in Your Field",
+            "heading": "Change, Adapt and Build with AI",
+            "description": "All our top programs include Generative AI components",
+            "button_text": "Explore Programs",
+            "button_link": "/collections/all"
+          }
+        },
+        {
+          "type": "slider",
+          "settings": {
+            "subheading": "Be a Leader in Your Field",
+            "heading": "Change, Adapt and Build with AI",
+            "description": "All our top programs include Generative AI components",
+            "button_text": "Explore Programs",
+            "button_link": "/collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+{{ 'hero-slider.css' | asset_url | stylesheet_tag }}
+{% style %}
+  .nxt-hero__slider .swiper-slide {
+    min-height: {{ section.settings.height }}px;
+  }
+{% endstyle %}
+<div class="swiper nxt-hero__slider">
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div
+        class="swiper-slide"
+        {% if block.settings.hero_image != blank %}
+          style="background-image: url({{ block.settings.hero_image | image_url: width: 1920 }});"
+        {% endif %}
+      >
+        <div class="nxt-hero__slider-container">
+          <div class="nxt-hero__slider-content">
+            {% if block.settings.subheading != blank %}
+              <h5 class="nxt-hero__slider-subheading">{{ block.settings.subheading }}</h5>
+            {% endif %}
+            {% if block.settings.heading != blank %}
+              <h2 class="nxt-hero__slider-heading">{{ block.settings.heading }}</h2>
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <p class="nxt-hero__slider-description">{{ block.settings.description }}</p>
+            {% endif %}
+            {% if block.settings.button_text != blank %}
+              <a href="{{ block.settings.button_link }}" class="nxt-hero__slider-button btn btn-primary">
+                {{- block.settings.button_text -}}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="nxt-next-arrow nxt-slider-btn">
+    <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.90732 16.0001L9.17749 7.99512L1.90732 -0.00987816L-0.00012207 1.70995L5.70657 7.99512L-0.00012207 14.2803L1.90732 16.0001Z" fill="#0000A0"/>
+    </svg>
+  </div>
+  <div class="nxt-prev-arrow nxt-slider-btn">
+    <svg width="11" height="17" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.17642 16.5L0.90625 8.495L8.17642 0.49L10.0839 2.20982L4.37717 8.495L10.0839 14.7802L8.17642 16.5Z" fill="#0000A0"/>
+    </svg>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.nxt-hero__slider', {
+      loop: true,
+      autoplay: false,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      navigation: {
+        nextEl: '.nxt-next-arrow',
+        prevEl: '.nxt-prev-arrow',
+      },
+    });
+  });
+</script>

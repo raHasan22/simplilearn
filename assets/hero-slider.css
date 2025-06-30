@@ -1,0 +1,103 @@
+.nxt-hero__slider {
+  position: relative;
+}
+.nxt-hero__slider .swiper-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    rgba(0, 0, 0, 0.5) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 2;
+}
+.nxt-hero__slider .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+.nxt-hero__slider .swiper-slide .nxt-hero__slider-container {
+  width: 100%;
+  max-width: 1330px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  padding: 0 15px;
+}
+.nxt-hero__slider .swiper-slide .nxt-hero__slider-content {
+  width: 100%;
+  max-width: 611px;
+}
+.nxt-hero__slider-subheading {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #fff;
+  margin: 0;
+}
+.nxt-hero__slider-heading {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  color: #fff;
+  letter-spacing: -1px;
+  margin: 15px 0 0;
+}
+.nxt-hero__slider-description {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: #fff;
+  margin: 20px 0 0;
+}
+.nxt-hero__slider-button {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 56px;
+  text-decoration: none;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 0px 60px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin: 35px 0 0;
+}
+.nxt-hero__slider-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+.nxt-hero__slider .nxt-slider-btn {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0px 0px 15px 0px #3c3c3c33;
+  background: #ffffffcc;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  right: 70px;
+  bottom: 70px;
+}
+.nxt-hero__slider .nxt-slider-btn:hover {
+  background: #ffffff;
+}
+.nxt-hero__slider .nxt-prev-arrow {
+  right: 135px;
+}
+.nxt-hero__slider .nxt-slider-btn::after,
+.nxt-hero__slider .nxt-slider-btn::before {
+  display: none;
+}

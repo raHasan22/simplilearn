@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_slider_BnbDQN": {
+      "type": "hero-slider",
+      "blocks": {
+        "slider_aHUBMU": {
+          "type": "slider",
+          "settings": {
+            "subheading": "Be a Leader in Your Field",
+            "heading": "Change, Adapt and Build with AI",
+            "description": "All our top programs include Generative AI components",
+            "button_text": "Explore Programs",
+            "button_link": "/collections/all",
+            "hero_image": "shopify://shop_images/group-happy-international-students-posing-outdoors-near-university-building.webp"
+          }
+        },
+        "slider_HCJGUj": {
+          "type": "slider",
+          "settings": {
+            "subheading": "Be a Leader in Your Field",
+            "heading": "Change, Adapt and Build with AI",
+            "description": "All our top programs include Generative AI components",
+            "button_text": "Explore Programs",
+            "button_link": "/collections/all"
+          }
+        },
+        "slider_p3cyd9": {
+          "type": "slider",
+          "settings": {
+            "subheading": "Be a Leader in Your Field",
+            "heading": "Change, Adapt and Build with AI",
+            "description": "All our top programs include Generative AI components",
+            "button_text": "Explore Programs",
+            "button_link": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "slider_aHUBMU",
+        "slider_HCJGUj",
+        "slider_p3cyd9"
+      ],
+      "name": "Hero Slider",
+      "settings": {
+        "height": 680
+      }
+    }
+  },
+  "order": [
+    "hero_slider_BnbDQN"
+  ]
+}
