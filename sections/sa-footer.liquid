@@ -1,0 +1,979 @@
+<!doctype html>
+
+<style>
+    footer {
+        background: #0000A0;
+        padding: 60px 20px;
+      letter-spacing: normal;
+    }
+
+    footer    .srs-container {
+        max-width: 1124px;
+        margin: 0 auto;
+    }
+
+    footer    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: space-between;
+    }
+
+    footer   .footer-section {
+        display: flex;
+        flex-direction: column;
+        /* min-width: 200px; */
+        flex: 1;
+    }
+
+    footer   .footer-section h3 {
+        color: white;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 26px;
+        margin-bottom: 13px;
+    }
+
+    footer    .footer-section ul {
+        list-style: none;
+    }
+
+    footer    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+    footer    .footer-section ul li a {
+        color: white;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer    .footer-section ul li a:hover {
+        color: #CCCCCC;
+    }
+
+    footer    .social-section {
+        max-width: 152.68px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer    .social-section h3 {
+        color: white;
+        font-size: 14.75px;
+        font-weight: 400;
+        line-height: 26px;
+        margin-bottom: 13px;
+    }
+
+    footer    .refer-earn-btn {
+        width: 120px;
+        height: 37.54px;
+        border: 1px solid white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        text-decoration: none;
+    }
+
+    footer    .refer-earn-btn span {
+        color: #CCCCCC;
+        font-size: 13.34px;
+        font-weight: 500;
+        line-height: 36px;
+    }
+
+    footer    .social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    footer   .social-icon {
+        width: 33px;
+        height: 33px;
+        background: white;
+        border-radius: 16.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    footer    .social-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: #0000A0;
+    }
+
+    footer    .app-download-section h3 {
+        color: white;
+        font-size: 15.12px;
+        font-weight: 400;
+        line-height: 26px;
+        margin-bottom: 11px;
+        padding-left: 23px;
+    }
+
+    footer   .app-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer    .app-btn {
+        width: 202px;
+        height: 47px;
+        border: 1px solid #777777;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 15px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    footer   .app-btn:first-child {
+        /* border-bottom: none; */
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    footer    .app-btn:last-child {
+        border-top: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    footer    .app-btn span {
+        color: #CCCCCC;
+        font-size: 13.12px;
+        font-weight: 400;
+        line-height: 32px;
+    }
+
+    footer    .app-icon {
+        /* width: 24px;
+        height: 24px; */
+        background: #0000A0;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* footer   .app-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: white;
+    } */
+
+    /* Course Listings Styles */
+    footer .course-listings {
+        border-top: 0.77px #D6D6D6 solid;
+        padding-top: 40px;
+        margin-top: 40px;
+    }
+
+    footer .course-section {
+        margin-bottom: 40px;
+    }
+
+    footer .course-section h3 {
+        color: white;
+        font-size: 14.75px;
+        font-weight: 400;
+        line-height: 26px;
+        margin-bottom: 20px;
+        letter-spacing: 0.32px;
+    }
+
+    footer .course-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px;
+    }
+
+    footer .course-links a {
+        color: #D6D6D6;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        text-decoration: none;
+        letter-spacing: 0.32px;
+        transition: color 0.3s ease;
+    }
+
+    footer .course-links a:hover {
+        color: white;
+    }
+
+    footer .course-links .separator {
+        color: #D6D6D6;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        letter-spacing: 0.32px;
+    }
+
+    /* Footer Bottom Styles */
+    footer .footer-bottom {
+        margin-top: 40px;
+        padding-top: 20px;
+    }
+
+    footer .footer-bottom-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    footer .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    footer .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #FDFDFD;
+        font-size: 12.91px;
+        font-family: Inter;
+        font-weight: 400;
+        line-height: 20px;
+        transition: color 0.3s ease;
+    }
+
+    footer .footer-link:hover {
+        color: #CCCCCC;
+    }
+
+    footer .link-dot {
+        width: 5px;
+        height: 5px;
+        background: #B3B3B3;
+        border-radius: 5px;
+    }
+
+    footer .footer-copyright {
+        text-align: center;
+    }
+
+    footer .footer-copyright p {
+        color: white;
+        font-size: 11.06px;
+        font-family: Inter;
+        font-weight: 400;
+        line-height: 26px;
+        margin: 0;
+    }
+
+    footer .country-selector {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    footer .country-dot {
+        width: 5px;
+        height: 5px;
+        background: #B3B3B3;
+        border-radius: 5px;
+    }
+
+    footer .country-selector span {
+        color: #FDFDFD;
+        font-size: 13.02px;
+        font-family: Inter;
+        font-weight: 400;
+        line-height: 26px;
+    }
+
+    footer .country-dropdown {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border: 1px solid #494440;
+        border-radius: 3px;
+        background: transparent;
+        cursor: pointer;
+    }
+  footer .footer-section ul{
+  padding: 0;
+  }
+    footer .country-dropdown img {
+        width: 28.62px;
+        height: 17px;
+    }
+
+    footer .dropdown-arrow {
+        width: 0;
+        height: 0;
+        border-left: 4.62px solid white;
+        border-top: 4.62px solid white;
+        border-right: 4.62px solid white;
+        border-bottom: none;
+    }
+
+    /* Tablet Styles */
+    @media (max-width: 1024px) {
+        footer .footer-content {
+            gap: 30px;
+        }
+
+        footer .footer-section {
+            min-width: 180px;
+        }
+
+        footer .social-section {
+            max-width: 140px;
+        }
+
+        footer .app-btn {
+            width: 160px;
+        }
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+        footer {
+            padding: 40px 15px;
+        }
+
+        footer .footer-content {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        footer .footer-section {
+            min-width: 100%;
+            width: 100%;
+        }
+
+        footer .social-section {
+            max-width: 100%;
+            align-items: center;
+        }
+
+        footer .social-icons {
+            justify-content: center;
+        }
+
+        footer .app-download-section {
+            align-items: center;
+        }
+
+        footer .app-download-section h3 {
+            padding-left: 0;
+            text-align: center;
+        }
+
+        footer .app-buttons {
+            align-items: center;
+        }
+
+        footer .app-btn {
+            width: 200px;
+        }
+
+        footer .course-links {
+            gap: 3px;
+            justify-content: start;
+        }
+
+        footer .course-links a {
+            font-size: 12px;
+        }
+
+        footer .course-links .separator {
+            font-size: 14px;
+        }
+
+        footer .footer-links {
+            gap: 15px;
+            flex-direction: column;
+        }
+
+        footer .footer-link {
+            font-size: 12px;
+        }
+
+        footer .footer-copyright p {
+            font-size: 10px;
+            line-height: 20px;
+        }
+
+        footer .country-selector {
+            gap: 10px;
+        }
+
+        footer .country-selector span {
+            font-size: 12px;
+        }
+    }
+
+    /* Small Mobile Styles */
+    @media (max-width: 480px) {
+        footer {
+            padding: 30px 10px;
+        }
+
+        footer .footer-content {
+            gap: 25px;
+        }
+
+        footer .footer-section h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        footer .footer-section ul li a {
+            font-size: 12px;
+        }
+
+        footer .social-section h3 {
+            font-size: 14px;
+        }
+
+        footer .refer-earn-btn {
+            width: 110px;
+            height: 35px;
+        }
+
+        footer .refer-earn-btn span {
+            font-size: 12px;
+        }
+
+        footer .social-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        footer .social-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        footer .app-download-section h3 {
+            font-size: 14px;
+        }
+
+        footer .app-btn {
+            width: 180px;
+            height: 45px;
+        }
+
+        footer .app-btn span {
+            font-size: 12px;
+        }
+
+        footer .course-section h3 {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        footer .course-links a {
+            font-size: 11px;
+        }
+
+        footer .course-links .separator {
+            font-size: 12px;
+        }
+
+        footer .footer-links {
+            gap: 12px;
+        }
+
+        footer .footer-link {
+            font-size: 11px;
+        }
+
+        footer .footer-copyright p {
+            font-size: 9px;
+            line-height: 18px;
+        }
+
+        footer .country-selector span {
+            font-size: 11px;
+        }
+    }
+</style>
+
+<footer>
+  <div class="srs-container">
+    <div class="footer-content">
+      <!-- Social Section -->
+      <div class="footer-section social-section">
+        <h3>{{ section.settings.social_title | default: 'Follow us!' }}</h3>
+
+        {% if section.settings.show_refer_earn %}
+          <a href="{{ section.settings.refer_earn_link | default: '#' }}" class="refer-earn-btn">
+            <span>{{ section.settings.refer_earn_text | default: 'Refer and Earn' }}</span>
+          </a>
+        {% endif %}
+
+        <div class="social-icons">
+          {% for block in section.blocks %}
+            {% if block.type == 'social_media' %}
+              <a
+                href="{{ block.settings.social_link | default: '#' }}"
+                class="social-icon"
+                target="_blank"
+                rel="noopener"
+              >
+                {{ block.settings.custom_svg }}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Company Section -->
+      <div class="footer-section">
+        <h3>{{ section.settings.company_title | default: 'Company' }}</h3>
+        <ul>
+          {% for link in linklists[section.settings.company_menu].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Work with us Section -->
+      <div class="footer-section">
+        <h3>{{ section.settings.work_title | default: 'Work with us' }}</h3>
+        <ul>
+          {% for link in linklists[section.settings.work_menu].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Discover Section -->
+      <div class="footer-section">
+        <h3>{{ section.settings.discover_title | default: 'Discover' }}</h3>
+        <ul>
+          {% for link in linklists[section.settings.discover_menu].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- For Businesses Section -->
+      <div class="footer-section">
+        <h3>{{ section.settings.business_title | default: 'For Businesses' }}</h3>
+        <ul>
+          {% for link in linklists[section.settings.business_menu].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- App Download Section -->
+      <div class="footer-section app-download-section">
+        <h3>{{ section.settings.app_title | default: 'Learn On the Go!' }}</h3>
+        <div class="app-buttons">
+          {% if section.settings.android_app_link %}
+            <a href="{{ section.settings.android_app_link }}" class="app-btn">
+              <div class="app-icon">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_19_1525)">
+                  <path d="M3.63161 8.25348C2.89617 8.25348 2.30005 8.76722 2.30005 9.40249V14.3173C2.30005 14.9519 2.89624 15.467 3.63161 15.467C4.36632 15.467 4.96317 14.952 4.96317 14.3173V9.40249C4.96324 8.76787 4.36639 8.25348 3.63161 8.25348ZM13.7034 3.44708L14.8671 2.30261C15.011 2.16138 15.011 1.93342 14.8671 1.79147C14.7233 1.65024 14.4915 1.65024 14.3475 1.79147L12.9154 3.20143C12.4032 3.07788 11.863 3.00961 11.3008 3.00961C10.7453 3.00961 10.2097 3.0773 9.70339 3.19753L8.27385 1.79154C8.13 1.65031 7.89746 1.65031 7.75427 1.79154C7.61041 1.93277 7.61041 2.16138 7.75427 2.30268L8.91198 3.44123C6.98027 4.17176 5.63802 5.7557 5.63802 7.59649C5.63802 7.61886 16.9621 7.59779 16.9621 7.59649C16.9628 5.76032 15.6279 4.18027 13.7034 3.44708ZM9.63476 6.2859C9.26641 6.2859 8.96861 5.99291 8.96861 5.63021C8.96861 5.26823 9.26634 4.97452 9.63476 4.97452C10.0032 4.97452 10.3009 5.26816 10.3009 5.63021C10.3016 5.99219 10.0018 6.2859 9.63476 6.2859ZM12.9661 6.2859C12.5977 6.2859 12.2999 5.99291 12.2999 5.63021C12.2999 5.26823 12.5977 4.97452 12.9661 4.97452C13.3344 4.97452 13.6322 5.26816 13.6322 5.63021C13.6322 5.99226 13.3338 6.2859 12.9661 6.2859ZM18.9545 8.25348C18.2191 8.25348 17.6223 8.76722 17.6223 9.40249V14.3173C17.6223 14.9519 18.2191 15.467 18.9545 15.467C19.6899 15.467 20.2854 14.9513 20.2854 14.3173V9.40249C20.2854 8.76787 19.6886 8.25348 18.9545 8.25348ZM5.63802 16.1168C5.63802 17.2008 6.52932 18.0785 7.62973 18.0824V21.5263C7.62973 22.1615 8.22593 22.676 8.96129 22.676C9.696 22.676 10.2922 22.1616 10.2922 21.5263V18.0824H12.2933V21.5263C12.2933 22.1615 12.8895 22.676 13.6248 22.676C14.3595 22.676 14.9557 22.1616 14.9557 21.5263V18.0824H14.9644C16.0681 18.0824 16.9627 17.2021 16.9627 16.1168V8.25153H5.63868L5.63802 16.1168Z" fill="white"/>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_19_1525">
+                  <rect width="23.99" height="23.99" fill="white" transform="translate(0.300049 0.685547)"/>
+                  </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <span>{{ section.settings.android_app_text | default: 'Get the Android App' }}</span>
+            </a>
+          {% endif %}
+
+          {% if section.settings.ios_app_link %}
+            <a href="{{ section.settings.ios_app_link }}" class="app-btn">
+              <div class="app-icon">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_19_1551)">
+                  <path d="M17.6603 12.0628C17.6355 9.52998 19.6892 8.31525 19.781 8.2549C18.627 6.53576 16.8294 6.30025 16.1888 6.27303C14.659 6.11533 13.2038 7.18998 12.4274 7.18998C11.6529 7.18998 10.4548 6.29635 9.18608 6.31982C7.51863 6.34506 5.98113 7.30689 5.12254 8.82725C3.39009 11.8878 4.67888 16.4218 6.36744 18.9039C7.19253 20.1189 8.17639 21.4835 9.46817 21.4348C10.7121 21.3842 11.1826 20.6153 12.6865 20.6153C14.1904 20.6153 14.6132 21.4348 15.9296 21.4096C17.2683 21.3843 18.1163 20.1714 18.9358 18.9527C19.8833 17.5431 20.2734 16.1785 20.2964 16.1085C20.2667 16.0946 17.6861 15.0882 17.6603 12.0628ZM15.1867 4.62982C15.8723 3.78299 16.3351 2.60811 16.2088 1.43604C15.2212 1.47697 14.0241 2.10576 13.3156 2.95068C12.6798 3.70021 12.1233 4.8965 12.2724 6.04514C13.3749 6.13272 14.5003 5.47475 15.1867 4.62982Z" fill="white"/>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_19_1551">
+                  <rect width="23.99" height="23.99" fill="white" transform="translate(0.300049 0.436035)"/>
+                  </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <span>{{ section.settings.ios_app_text | default: 'Get the iOS App' }}</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% if section.settings.show_course_listings %}
+      <div class="course-listings">
+        {% for block in section.blocks %}
+          {% if block.type == 'course_section' %}
+            <div class="course-section">
+              <h3>{{ block.settings.course_title }}</h3>
+              <div class="course-links">
+                {% for i in (1..10) %}
+                  {% assign link_key = 'course_link_' | append: i %}
+                  {% assign link_text_key = 'course_text_' | append: i %}
+                  {% if block.settings[link_key] and block.settings[link_text_key] %}
+                    <a href="{{ block.settings[link_key] }}">{{ block.settings[link_text_key] }}</a>
+                    {% unless forloop.last %}
+                      <span class="separator">|</span>
+                    {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <div class="footer-links">
+          {% for link in linklists[section.settings.footer_menu].links %}
+            <a href="{{ link.url }}" class="footer-link">
+              <span>{{ link.title }}</span>
+              {% unless forloop.last %}
+                <div class="link-dot"></div>
+              {% endunless %}
+            </a>
+          {% endfor %}
+        </div>
+        <div class="footer-copyright">
+          <p>
+            {{
+              section.settings.copyright_text
+              | default: '© 2009-2025 - Simplilearn Solutions. All Rights Reserved. The certification names are the trademarks of their respective owners.'
+            }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "SA Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Social Media Section"
+    },
+    {
+      "type": "text",
+      "id": "social_title",
+      "label": "Social Section Title",
+      "default": "Follow us!"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_refer_earn",
+      "label": "Show Refer & Earn Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "refer_earn_text",
+      "label": "Refer & Earn Button Text",
+      "default": "Refer and Earn"
+    },
+    {
+      "type": "url",
+      "id": "refer_earn_link",
+      "label": "Refer & Earn Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Menu Sections"
+    },
+    {
+      "type": "text",
+      "id": "company_title",
+      "label": "Company Section Title",
+      "default": "Company"
+    },
+    {
+      "type": "link_list",
+      "id": "company_menu",
+      "label": "Company Menu"
+    },
+    {
+      "type": "text",
+      "id": "work_title",
+      "label": "Work with us Section Title",
+      "default": "Work with us"
+    },
+    {
+      "type": "link_list",
+      "id": "work_menu",
+      "label": "Work with us Menu"
+    },
+    {
+      "type": "text",
+      "id": "discover_title",
+      "label": "Discover Section Title",
+      "default": "Discover"
+    },
+    {
+      "type": "link_list",
+      "id": "discover_menu",
+      "label": "Discover Menu"
+    },
+    {
+      "type": "text",
+      "id": "business_title",
+      "label": "For Businesses Section Title",
+      "default": "For Businesses"
+    },
+    {
+      "type": "link_list",
+      "id": "business_menu",
+      "label": "For Businesses Menu"
+    },
+    {
+      "type": "header",
+      "content": "App Download Section"
+    },
+    {
+      "type": "text",
+      "id": "app_title",
+      "label": "App Section Title",
+      "default": "Learn On the Go!"
+    },
+    {
+      "type": "url",
+      "id": "android_app_link",
+      "label": "Android App Link"
+    },
+    {
+      "type": "text",
+      "id": "android_app_text",
+      "label": "Android App Button Text",
+      "default": "Get the Android App"
+    },
+    {
+      "type": "url",
+      "id": "ios_app_link",
+      "label": "iOS App Link"
+    },
+    {
+      "type": "text",
+      "id": "ios_app_text",
+      "label": "iOS App Button Text",
+      "default": "Get the iOS App"
+    },
+    {
+      "type": "header",
+      "content": "Course Listings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_course_listings",
+      "label": "Show Course Listings",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer Bottom Menu"
+    },
+    {
+      "type": "textarea",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2009-2025 - Simplilearn Solutions. All Rights Reserved. The certification names are the trademarks of their respective owners."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social_media",
+      "name": "Social Media Icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "social_name",
+          "label": "Social Media Name",
+          "info": "For reference only"
+        },
+        {
+          "type": "url",
+          "id": "social_link",
+          "label": "Social Media Link"
+        },
+        {
+          "type": "html",
+          "id": "custom_svg",
+          "label": "Custom SVG Code",
+          "info": "Paste your SVG code here. Make sure it has viewBox=\"0 0 24 24\" for proper sizing."
+        }
+      ]
+    },
+    {
+      "type": "course_section",
+      "name": "Course Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "course_title",
+          "label": "Course Section Title",
+          "default": "Trending Courses"
+        },
+        {
+          "type": "text",
+          "id": "course_text_1",
+          "label": "Course 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_1",
+          "label": "Course 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_2",
+          "label": "Course 2 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_2",
+          "label": "Course 2 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_3",
+          "label": "Course 3 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_3",
+          "label": "Course 3 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_4",
+          "label": "Course 4 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_4",
+          "label": "Course 4 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_5",
+          "label": "Course 5 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_5",
+          "label": "Course 5 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_6",
+          "label": "Course 6 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_6",
+          "label": "Course 6 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_7",
+          "label": "Course 7 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_7",
+          "label": "Course 7 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_8",
+          "label": "Course 8 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_8",
+          "label": "Course 8 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_9",
+          "label": "Course 9 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_9",
+          "label": "Course 9 Link"
+        },
+        {
+          "type": "text",
+          "id": "course_text_10",
+          "label": "Course 10 Text"
+        },
+        {
+          "type": "url",
+          "id": "course_link_10",
+          "label": "Course 10 Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SA Footer",
+      "blocks": [
+        {
+          "type": "social_media"
+        },
+        {
+          "type": "social_media"
+        },
+        {
+          "type": "social_media"
+        },
+        {
+          "type": "course_section"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

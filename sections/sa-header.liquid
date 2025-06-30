@@ -1,0 +1,1094 @@
+<style>
+      header {
+          padding: 20px;
+          background: white;
+          position: relative;
+        font-family: Inter, sans-serif;
+      }
+
+      header .srs-container {
+          max-width: 1300px;
+          margin: 0 auto;
+          /* padding: 0 20px; */
+      }
+
+      header  .header-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 20px;
+      }
+
+      header  .logo {
+          color: #0000A0;
+          font-size: 24px;
+          font-weight: 700;
+          text-transform: uppercase;
+          white-space: nowrap;
+      }
+
+      header    .nav-section {
+          display: flex;
+          align-items: center;
+          gap: 97px;
+      }
+
+      header    .nav-menu {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+      }
+
+      header    .nav-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #3C3C3C;
+          font-size: 14px;
+          font-weight: 500;
+          text-decoration: none;
+          padding: 10px 6px;
+          border-radius: 4px;
+          transition: background-color 0.2s;
+      }
+
+      header  .nav-item:hover {
+          background-color: #f5f5f5;
+      }
+
+      header  .dropdown-icon {
+          width: 20px;
+          height: 20px;
+          position: relative;
+      }
+
+      header  .dropdown-icon::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 0;
+          height: 0;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 6px solid #3C3C3C;
+      }
+
+      header  .search-section {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+      }
+      header  .mobile-search-content{
+          display: none;
+      }
+      header  .search-container {
+          display: flex;
+          align-items: center;
+          background: #F1F5F9;
+          border: 1px solid #EBEBEB;
+          /* border-radius: 4px; */
+          overflow: hidden;
+        width: 280px;
+      }
+
+      header  .search-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 12px;
+      }
+
+      header  .search-input {
+          flex: 1;
+          padding: 12px 10px;
+          border: none;
+          background: transparent;
+          color: #3C3C3C;
+          font-size: 14px;
+          font-weight: 500;
+          outline: none;
+      }
+
+      header  .search-input::placeholder {
+          color: #3C3C3C;
+      }
+
+      header  .all-courses-btn {
+          background: #0000A0;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          white-space: nowrap;
+      }
+
+      header  .login-btn {
+          background-color: transparent;
+          color: #0000A0;
+          border: 1px solid #0000A0;
+          padding: 12px 32px;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          white-space: nowrap;
+          /* height: 46px; */
+      }
+
+      /* Mobile Menu Toggle */
+      header  .mobile-menu-toggle {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+          padding: 8px;
+          background: none;
+          border: none;
+      }
+
+      header          .mobile-menu-toggle span {
+          width: 25px;
+          height: 3px;
+          background-color: #3C3C3C;
+          margin: 3px 0;
+          transition: 0.3s;
+      }
+
+      header  .mobile-menu-toggle.active span:nth-child(1) {
+          transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      header  .mobile-menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+      }
+
+      header  .mobile-menu-toggle.active span:nth-child(3) {
+          transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      /* Mobile Search Toggle */
+      header  .mobile-search-toggle {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+      }
+
+      /* Mobile Login Icon */
+      header  .mobile-login-icon {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+      }
+
+      /* Mobile Controls Container */
+      header  .mobile-controls {
+          display: none;
+          align-items: center;
+          gap: 15px;
+      }
+
+      /* Mobile Menu Overlay */
+      header  .mobile-menu-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+      }
+
+      header  .mobile-menu-content {
+          position: fixed;
+          top: 0;
+          right: -300px;
+          width: 300px;
+          height: 100%;
+          background: white;
+          padding: 20px;
+          transition: right 0.3s ease;
+          z-index: 1000;
+          overflow-y: auto;
+      }
+
+      header  .mobile-menu-content.active {
+          right: 0;
+      }
+
+      header  .mobile-menu-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #EBEBEB;
+      }
+
+      header                  .mobile-menu-close {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 24px;
+          color: #3C3C3C;
+      }
+
+      header  .mobile-nav-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+
+      header  .mobile-nav-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #3C3C3C;
+          font-size: 16px;
+          font-weight: 500;
+          text-decoration: none;
+          padding: 15px 0;
+          border-bottom: 1px solid #f5f5f5;
+      }
+
+      header  .mobile-nav-item-dropdown {
+          border-bottom: 1px solid #f5f5f5;
+      }
+
+      header  .mobile-nav-item-dropdown .mobile-nav-item {
+          cursor: pointer;
+          border-bottom: none;
+      }
+
+      header  .mobile-dropdown-icon {
+          transition: transform 0.3s ease;
+      }
+
+      header  .mobile-dropdown-icon.rotated {
+          transform: rotate(90deg);
+      }
+
+      header  .mobile-dropdown-menu {
+          display: none;
+          background: #f8f8f8;
+          padding-left: 20px;
+      }
+
+      header  .mobile-dropdown-menu.show {
+          display: block;
+      }
+
+      header  .mobile-dropdown-item {
+          display: block;
+          color: #3C3C3C;
+          font-size: 14px;
+          font-weight: 500;
+          text-decoration: none;
+          padding: 12px 0;
+          border-bottom: 1px solid #e0e0e0;
+      }
+
+      header  .mobile-dropdown-item:last-child {
+          border-bottom: none;
+      }
+
+      /* Mobile Search Popup */
+      header  .mobile-search-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+      }
+
+      header  .mobile-search-content {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 20px;
+          z-index: 1000;
+      }
+      header.mobile-header{
+          padding: 0;
+      }
+      header  .mobile-search-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+      }
+
+      header  .mobile-search-close {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 24px;
+          color: #3C3C3C;
+      }
+
+      header  .mobile-search-container {
+          display: flex;
+          align-items: center;
+          background: #F1F5F9;
+          border: 1px solid #EBEBEB;
+          border-radius: 4px;
+          overflow: hidden;
+        max-width: 280px;
+          width: 100%;
+      }
+
+      header  .mobile-search-input {
+          flex: 1;
+          padding: 15px 16px;
+          border: none;
+          background: transparent;
+          color: #3C3C3C;
+          font-size: 16px;
+          font-weight: 500;
+          outline: none;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+          header  .nav-section {
+              gap: 40px;
+          }
+      }
+    @media (max-width: 1136px){
+      header .nav-menu{
+          gap: 16px;
+      }
+      header .nav-section{
+          gap: 20px;
+      }
+      header .search-section{
+          gap: 10px;
+      }
+      header .all-courses-btn{
+  padding: 12px 16px;
+      }
+  }
+    @media (max-width:1024px){
+            header .mobile-controls {
+              display: flex;
+          }
+            header  .nav-section {
+              display: none;
+          }
+      header  .mobile-menu-toggle {
+              display: flex;
+          }
+
+          header  .mobile-search-toggle {
+              display: block;
+          }
+
+          header  .login-btn {
+              display: none;
+          }
+
+          header  .mobile-login-icon {
+              display: block;
+          }
+
+          header  .header-content {
+              justify-content: space-between;
+          }
+      header .mobile-search-container{
+        max-width: unset;
+      }
+    }
+      @media (max-width: 768px) {
+          header  .mobile-menu-toggle {
+              display: flex;
+          }
+
+          header  .mobile-search-toggle {
+              display: block;
+          }
+
+          header  .login-btn {
+              display: none;
+          }
+
+          header  .mobile-login-icon {
+              display: block;
+          }
+
+          header  .header-content {
+              justify-content: space-between;
+          }
+      }
+
+      @media (max-width: 480px) {
+          header  .srs-container {
+              padding: 0 15px;
+          }
+
+          .mobile-menu-content {
+              width: 100%;
+              right: -100%;
+          }
+
+          .mobile-search-content {
+              padding: 15px;
+          }
+      }
+
+      header  .nav-item-container {
+          position: relative;
+      }
+
+      header  .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: white;
+          border: 1px solid #EBEBEB;
+          border-radius: 4px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          min-width: 200px;
+          z-index: 1000;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s ease;
+      }
+
+      header  .dropdown-menu.show {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+      }
+
+      header  .dropdown-item {
+          display: block;
+          padding: 12px 16px;
+          color: #3C3C3C;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          border-bottom: 1px solid #f5f5f5;
+          transition: background-color 0.2s;
+      }
+
+      header  .dropdown-item:last-child {
+          border-bottom: none;
+      }
+
+      header  .dropdown-item:hover {
+          background-color: #f5f5f5;
+      }
+</style>
+
+<header>
+  <div class="srs-container">
+    <div class="header-content">
+      <div class="logo">
+        <a href="{{ section.settings.logo_link }}">
+          {% if section.settings.logo_image != blank %}
+            <img
+              src="{{ section.settings.logo_image | image_url: width: 180, height: 35 }}"
+              alt="logo"
+              width="auto"
+              height="auto"
+            >
+          {% else %}
+            <span>{{ shop.name }}</span>
+          {% endif %}
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="nav-section">
+        <div class="nav-menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'nav_link' %}
+              <div class="nav-item-container">
+                <a
+                  href="{{ block.settings.url }}"
+                  class="nav-item"
+                  {% if block.settings.has_dropdown %}
+                    onmouseenter="showDropdown('dropdown-{{ forloop.index }}')"
+                    onmouseleave="hideDropdown('dropdown-{{ forloop.index }}')"
+                  {% endif %}
+                >
+                  {{ block.settings.label }}
+                  {% if block.settings.has_dropdown %}
+                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_19_647)">
+                      <g clip-path="url(#clip1_19_647)">
+                      <mask id="mask0_19_647" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-90" y="-50" width="201" height="81">
+                      <path d="M110.69 -49.21H-89.3099V30.79H110.69V-49.21Z" fill="white"/>
+                      </mask>
+                      <g mask="url(#mask0_19_647)">
+                      <path d="M5.69006 8.29L10.6901 13.29L15.6901 8.29" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      </g>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_19_647">
+                      <rect width="20" height="20" fill="white" transform="translate(0.690063 0.790001)"/>
+                      </clipPath>
+                      <clipPath id="clip1_19_647">
+                      <rect width="200" height="80" fill="white" transform="translate(-89.3099 -49.21)"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                  {% endif %}
+                </a>
+                {% if block.settings.has_dropdown %}
+                  <div
+                    class="dropdown-menu"
+                    id="dropdown-{{ forloop.index }}"
+                    onmouseenter="showDropdown('dropdown-{{ forloop.index }}')"
+                    onmouseleave="hideDropdown('dropdown-{{ forloop.index }}')"
+                  >
+                    {% for dropdown_block in section.blocks %}
+                      {% if dropdown_block.type == 'dropdown_item'
+                        and dropdown_block.settings.parent_nav == block.settings.label
+                      %}
+                        <a href="{{ dropdown_block.settings.url }}" class="dropdown-item">
+                          {{- dropdown_block.settings.label -}}
+                        </a>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="search-section">
+          <button class="all-courses-btn" onclick="window.location.href='{{ section.settings.all_courses_url }}'">
+            <span>
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_19_690)">
+                <g clip-path="url(#clip1_19_690)">
+                <mask id="mask0_19_690" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-7" y="-8" width="201" height="80">
+                <path d="M193.3 -8H-6.70001V72H193.3V-8Z" fill="white"/>
+                </mask>
+                <g mask="url(#mask0_19_690)">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29999 5C7.29999 5.5523 6.85229 6 6.29999 6C5.74769 6 5.29999 5.5523 5.29999 5C5.29999 4.4477 5.74769 4 6.29999 4C6.85229 4 7.29999 4.4477 7.29999 5ZM13.3 6C13.8523 6 14.3 5.5523 14.3 5C14.3 4.4477 13.8523 4 13.3 4C12.7477 4 12.3 4.4477 12.3 5C12.3 5.5523 12.7477 6 13.3 6ZM13.3 13C13.8523 13 14.3 12.5523 14.3 12C14.3 11.4477 13.8523 11 13.3 11C12.7477 11 12.3 11.4477 12.3 12C12.3 12.5523 12.7477 13 13.3 13ZM14.3 19C14.3 19.5523 13.8523 20 13.3 20C12.7477 20 12.3 19.5523 12.3 19C12.3 18.4477 12.7477 18 13.3 18C13.8523 18 14.3 18.4477 14.3 19ZM20.3 6C20.8523 6 21.3 5.5523 21.3 5C21.3 4.4477 20.8523 4 20.3 4C19.7477 4 19.3 4.4477 19.3 5C19.3 5.5523 19.7477 6 20.3 6ZM21.3 12C21.3 12.5523 20.8523 13 20.3 13C19.7477 13 19.3 12.5523 19.3 12C19.3 11.4477 19.7477 11 20.3 11C20.8523 11 21.3 11.4477 21.3 12ZM20.3 20C20.8523 20 21.3 19.5523 21.3 19C21.3 18.4477 20.8523 18 20.3 18C19.7477 18 19.3 18.4477 19.3 19C19.3 19.5523 19.7477 20 20.3 20ZM6.29999 13C6.85229 13 7.29999 12.5523 7.29999 12C7.29999 11.4477 6.85229 11 6.29999 11C5.74769 11 5.29999 11.4477 5.29999 12C5.29999 12.5523 5.74769 13 6.29999 13ZM7.29999 19C7.29999 19.5523 6.85229 20 6.29999 20C5.74769 20 5.29999 19.5523 5.29999 19C5.29999 18.4477 5.74769 18 6.29999 18C6.85229 18 7.29999 18.4477 7.29999 19Z" fill="white"/>
+                <path d="M6.29999 6.75C7.26649 6.75 8.04999 5.9665 8.04999 5H6.54999C6.54999 5.1381 6.43809 5.25 6.29999 5.25V6.75ZM4.54999 5C4.54999 5.9665 5.33349 6.75 6.29999 6.75V5.25C6.16189 5.25 6.04999 5.1381 6.04999 5H4.54999ZM6.29999 3.25C5.33349 3.25 4.54999 4.0335 4.54999 5H6.04999C6.04999 4.8619 6.16189 4.75 6.29999 4.75V3.25ZM8.04999 5C8.04999 4.0335 7.26649 3.25 6.29999 3.25V4.75C6.43809 4.75 6.54999 4.8619 6.54999 5H8.04999ZM13.55 5C13.55 5.1381 13.4381 5.25 13.3 5.25V6.75C14.2665 6.75 15.05 5.9665 15.05 5H13.55ZM13.3 4.75C13.4381 4.75 13.55 4.8619 13.55 5H15.05C15.05 4.0335 14.2665 3.25 13.3 3.25V4.75ZM13.05 5C13.05 4.8619 13.1619 4.75 13.3 4.75V3.25C12.3335 3.25 11.55 4.0335 11.55 5H13.05ZM13.3 5.25C13.1619 5.25 13.05 5.1381 13.05 5H11.55C11.55 5.9665 12.3335 6.75 13.3 6.75V5.25ZM13.55 12C13.55 12.1381 13.4381 12.25 13.3 12.25V13.75C14.2665 13.75 15.05 12.9665 15.05 12H13.55ZM13.3 11.75C13.4381 11.75 13.55 11.8619 13.55 12H15.05C15.05 11.0335 14.2665 10.25 13.3 10.25V11.75ZM13.05 12C13.05 11.8619 13.1619 11.75 13.3 11.75V10.25C12.3335 10.25 11.55 11.0335 11.55 12H13.05ZM13.3 12.25C13.1619 12.25 13.05 12.1381 13.05 12H11.55C11.55 12.9665 12.3335 13.75 13.3 13.75V12.25ZM13.3 20.75C14.2665 20.75 15.05 19.9665 15.05 19H13.55C13.55 19.1381 13.4381 19.25 13.3 19.25V20.75ZM11.55 19C11.55 19.9665 12.3335 20.75 13.3 20.75V19.25C13.1619 19.25 13.05 19.1381 13.05 19H11.55ZM13.3 17.25C12.3335 17.25 11.55 18.0335 11.55 19H13.05C13.05 18.8619 13.1619 18.75 13.3 18.75V17.25ZM15.05 19C15.05 18.0335 14.2665 17.25 13.3 17.25V18.75C13.4381 18.75 13.55 18.8619 13.55 19H15.05ZM20.55 5C20.55 5.1381 20.4381 5.25 20.3 5.25V6.75C21.2665 6.75 22.05 5.9665 22.05 5H20.55ZM20.3 4.75C20.4381 4.75 20.55 4.8619 20.55 5H22.05C22.05 4.0335 21.2665 3.25 20.3 3.25V4.75ZM20.05 5C20.05 4.8619 20.1619 4.75 20.3 4.75V3.25C19.3335 3.25 18.55 4.0335 18.55 5H20.05ZM20.3 5.25C20.1619 5.25 20.05 5.1381 20.05 5H18.55C18.55 5.9665 19.3335 6.75 20.3 6.75V5.25ZM20.3 13.75C21.2665 13.75 22.05 12.9665 22.05 12H20.55C20.55 12.1381 20.4381 12.25 20.3 12.25V13.75ZM18.55 12C18.55 12.9665 19.3335 13.75 20.3 13.75V12.25C20.1619 12.25 20.05 12.1381 20.05 12H18.55ZM20.3 10.25C19.3335 10.25 18.55 11.0335 18.55 12H20.05C20.05 11.8619 20.1619 11.75 20.3 11.75V10.25ZM22.05 12C22.05 11.0335 21.2665 10.25 20.3 10.25V11.75C20.4381 11.75 20.55 11.8619 20.55 12H22.05ZM20.55 19C20.55 19.1381 20.4381 19.25 20.3 19.25V20.75C21.2665 20.75 22.05 19.9665 22.05 19H20.55ZM20.3 18.75C20.4381 18.75 20.55 18.8619 20.55 19H22.05C22.05 18.0335 21.2665 17.25 20.3 17.25V18.75ZM20.05 19C20.05 18.8619 20.1619 18.75 20.3 18.75V17.25C19.3335 17.25 18.55 18.0335 18.55 19H20.05ZM20.3 19.25C20.1619 19.25 20.05 19.1381 20.05 19H18.55C18.55 19.9665 19.3335 20.75 20.3 20.75V19.25ZM6.54999 12C6.54999 12.1381 6.43809 12.25 6.29999 12.25V13.75C7.26649 13.75 8.04999 12.9665 8.04999 12H6.54999ZM6.29999 11.75C6.43809 11.75 6.54999 11.8619 6.54999 12H8.04999C8.04999 11.0335 7.26649 10.25 6.29999 10.25V11.75ZM6.04999 12C6.04999 11.8619 6.16189 11.75 6.29999 11.75V10.25C5.33349 10.25 4.54999 11.0335 4.54999 12H6.04999ZM6.29999 12.25C6.16189 12.25 6.04999 12.1381 6.04999 12H4.54999C4.54999 12.9665 5.33349 13.75 6.29999 13.75V12.25ZM6.29999 20.75C7.26649 20.75 8.04999 19.9665 8.04999 19H6.54999C6.54999 19.1381 6.43809 19.25 6.29999 19.25V20.75ZM4.54999 19C4.54999 19.9665 5.33349 20.75 6.29999 20.75V19.25C6.16189 19.25 6.04999 19.1381 6.04999 19H4.54999ZM6.29999 17.25C5.33349 17.25 4.54999 18.0335 4.54999 19H6.04999C6.04999 18.8619 6.16189 18.75 6.29999 18.75V17.25ZM8.04999 19C8.04999 18.0335 7.26649 17.25 6.29999 17.25V18.75C6.43809 18.75 6.54999 18.8619 6.54999 19H8.04999Z" fill="white"/>
+                </g>
+                </g>
+                </g>
+                <defs>
+                <clipPath id="clip0_19_690">
+                <rect width="23.99" height="23.99" fill="white" transform="translate(0.299988)"/>
+                </clipPath>
+                <clipPath id="clip1_19_690">
+                <rect width="200" height="80" fill="white" transform="translate(-6.70001 -8)"/>
+                </clipPath>
+                </defs>
+              </svg>
+            </span>
+            {{ section.settings.all_courses_label }}
+          </button>
+          <form
+            class="search-container"
+            action="/search"
+            method="get"
+            autocomplete="off"
+            onsubmit="return submitSearch(event)"
+          >
+            <div class="search-icon">
+              <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_19_714)">
+                <g clip-path="url(#clip1_19_714)">
+                <mask id="mask0_19_714" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-48" y="-9" width="201" height="81">
+                <path d="M152.01 -8.5H-47.99V71.5H152.01V-8.5Z" fill="white"/>
+                </mask>
+                <g mask="url(#mask0_19_714)">
+                <path d="M17.01 16.5L22.01 21.5M19.51 10.25C19.51 15.0825 15.5925 19 10.76 19C5.92751 19 2.01001 15.0825 2.01001 10.25C2.01001 5.4175 5.92751 1.5 10.76 1.5C15.5925 1.5 19.51 5.4175 19.51 10.25Z" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                </g>
+                </g>
+                <defs>
+                <clipPath id="clip0_19_714">
+                <rect width="22.99" height="22.99" fill="white" transform="translate(0.0100098 0.5)"/>
+                </clipPath>
+                <clipPath id="clip1_19_714">
+                <rect width="200" height="80" fill="white" transform="translate(-47.99 -8.5)"/>
+                </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <input
+              type="search"
+              name="q"
+              class="search-input"
+              placeholder="What do you want to learn?"
+              aria-label="Search products"
+              oninput="handlePredictiveSearch(event)"
+              autocomplete="off"
+            >
+            <input type="hidden" name="type" value="product">
+          </form>
+          <!--
+            <div
+              class="search-results"
+              id="searchResults"
+              style="display:none; position:absolute; background:white; z-index:1001; width:100%; box-shadow:0 2px 8px rgba(0,0,0,0.08);"
+            ></div>
+          -->
+
+          {% if customer %}
+            <a class="login-btn" href="/account">Profile</a>
+          {% else %}
+            <a class="login-btn" href="/account/login">Login</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Mobile Controls -->
+      <div class="mobile-controls">
+        <button class="mobile-search-toggle" onclick="toggleMobileSearch()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="#3C3C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button class="mobile-login-icon" onclick="handleMobileLogin()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15" stroke="#0000A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 17L15 12L10 7" stroke="#0000A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 12H3" stroke="#0000A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+<header class="mobile-header">
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu-content" id="mobileMenuContent">
+    <div class="mobile-menu-header">
+      <h3>Menu</h3>
+      <button class="mobile-menu-close" onclick="closeMobileMenu()">&times;</button>
+    </div>
+    <div class="mobile-nav-menu">
+      {% for block in section.blocks %}
+        {% if block.type == 'nav_link' %}
+          {% if block.settings.has_dropdown %}
+            <div class="mobile-nav-item-dropdown">
+              <div class="mobile-nav-item" onclick="toggleMobileDropdown('mobile-dropdown-{{ forloop.index }}')">
+                {{ block.settings.label }}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="mobile-dropdown-icon"
+                >
+                  <path d="M6 12L10 8L6 4" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="mobile-dropdown-menu" id="mobile-dropdown-{{ forloop.index }}">
+                {% for dropdown_block in section.blocks %}
+                  {% if dropdown_block.type == 'dropdown_item'
+                    and dropdown_block.settings.parent_nav == block.settings.label
+                  %}
+                    <a href="{{ dropdown_block.settings.url }}" class="mobile-dropdown-item">
+                      {{- dropdown_block.settings.label -}}
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <a href="{{ block.settings.url }}" class="mobile-nav-item">
+              {{ block.settings.label }}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12L10 8L6 4" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      <a href="{{ section.settings.all_courses_url }}" class="mobile-nav-item">
+        {{ section.settings.all_courses_label }}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 12L10 8L6 4" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      {% if customer %}
+        <a href="/account" class="mobile-nav-item">
+          Profile
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {% else %}
+        <a href="/account/login" class="mobile-nav-item">
+          Login
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Mobile Search Overlay -->
+  <div class="mobile-search-overlay" id="mobileSearchOverlay" onclick="closeMobileSearch()"></div>
+  <div class="mobile-search-content" id="mobileSearchContent">
+    <div class="mobile-search-header">
+      <h3>Search</h3>
+      <button class="mobile-search-close" onclick="closeMobileSearch()">&times;</button>
+    </div>
+    <form
+      class="mobile-search-container"
+      action="/search"
+      method="get"
+      autocomplete="off"
+      onsubmit="return submitMobileSearch(event)"
+    >
+      <div class="search-icon">
+        <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_19_714)">
+          <g clip-path="url(#clip1_19_714)">
+          <mask id="mask0_19_714" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-48" y="-9" width="201" height="81">
+          <path d="M152.01 -8.5H-47.99V71.5H152.01V-8.5Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask0_19_714)">
+          <path d="M17.01 16.5L22.01 21.5M19.51 10.25C19.51 15.0825 15.5925 19 10.76 19C5.92751 19 2.01001 15.0825 2.01001 10.25C2.01001 5.4175 5.92751 1.5 10.76 1.5C15.5925 1.5 19.51 5.4175 19.51 10.25Z" stroke="#3C3C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_19_714">
+          <rect width="22.99" height="22.99" fill="white" transform="translate(0.0100098 0.5)"/>
+          </clipPath>
+          <clipPath id="clip1_19_714">
+          <rect width="200" height="80" fill="white" transform="translate(-47.99 -8.5)"/>
+          </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <input
+        type="search"
+        name="q"
+        class="mobile-search-input"
+        placeholder="What do you want to learn?"
+        aria-label="Search products"
+        oninput="handleMobilePredictiveSearch(event)"
+        autocomplete="off"
+        autofocus
+      >
+      <input type="hidden" name="type" value="product">
+    </form>
+    <div
+      class="mobile-search-results"
+      id="mobileSearchResults"
+      style="display:none; background:white; margin-top:10px; border-radius:4px; box-shadow:0 2px 8px rgba(0,0,0,0.08); max-height:300px; overflow-y:auto;"
+    ></div>
+  </div>
+</header>
+
+<script>
+    // Dropdown Menu Functions
+    function showDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        if (dropdown) {
+            dropdown.classList.add('show');
+        }
+    }
+
+    function hideDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        if (dropdown) {
+            dropdown.classList.remove('show');
+        }
+    }
+
+    // Close all dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        const dropdowns = document.querySelectorAll('.dropdown-menu');
+        dropdowns.forEach(dropdown => {
+            if (!dropdown.contains(e.target) && !e.target.closest('.nav-item-container')) {
+                dropdown.classList.remove('show');
+            }
+        });
+    });
+
+    // Mobile Dropdown Toggle
+    function toggleMobileDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        const icon = dropdown.previousElementSibling.querySelector('.mobile-dropdown-icon');
+        
+        if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+            icon.classList.remove('rotated');
+        } else {
+            // Close all other mobile dropdowns
+            document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                menu.classList.remove('show');
+            });
+            document.querySelectorAll('.mobile-dropdown-icon').forEach(icon => {
+                icon.classList.remove('rotated');
+            });
+            
+            dropdown.classList.add('show');
+            icon.classList.add('rotated');
+        }
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+        const overlay = document.getElementById('mobileMenuOverlay');
+        const content = document.getElementById('mobileMenuContent');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        
+        overlay.style.display = 'block';
+        content.classList.add('active');
+        toggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        const overlay = document.getElementById('mobileMenuOverlay');
+        const content = document.getElementById('mobileMenuContent');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        
+        overlay.style.display = 'none';
+        content.classList.remove('active');
+        toggle.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Mobile Search Toggle
+    function toggleMobileSearch() {
+        const overlay = document.getElementById('mobileSearchOverlay');
+        const content = document.getElementById('mobileSearchContent');
+        
+        overlay.style.display = 'block';
+        content.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Focus on search input
+        setTimeout(() => {
+            document.querySelector('.mobile-search-input').focus();
+        }, 100);
+    }
+
+    function closeMobileSearch() {
+        const overlay = document.getElementById('mobileSearchOverlay');
+        const content = document.getElementById('mobileSearchContent');
+        
+        overlay.style.display = 'none';
+        content.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Mobile Login Handler
+    function handleMobileLogin() {
+        // You can implement login functionality here
+        alert('Login functionality would be implemented here');
+    }
+
+    // Close overlays when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+            closeMobileSearch();
+        }
+    });
+
+    // Predictive Search Implementation
+    function handlePredictiveSearch(event) {
+        const query = event.target.value.trim();
+        const resultsContainer = document.getElementById('searchResults');
+        if (!query) {
+            resultsContainer.style.display = 'none';
+            resultsContainer.innerHTML = '';
+            return;
+        }
+        fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product&resources[limit]=5`)
+            .then(res => res.json())
+            .then(data => {
+                const products = data.resources.results.products;
+                if (products.length === 0) {
+                    resultsContainer.innerHTML = '<div style="padding: 16px;">No products found.</div>';
+                    resultsContainer.style.display = 'block';
+                    return;
+                }
+                resultsContainer.innerHTML = products.map(product => `
+                    <a href="${product.url}" style="display:flex;align-items:center;padding:10px 16px;text-decoration:none;color:#222;border-bottom:1px solid #f0f0f0;">
+                        <img src="${product.image}" alt="${product.title}" style="width:40px;height:40px;object-fit:cover;margin-right:12px;border-radius:4px;">
+                        <span>${product.title}</span>
+                    </a>
+                `).join('');
+                resultsContainer.style.display = 'block';
+            });
+    }
+
+    // Hide results when clicking outside
+    window.addEventListener('click', function(e) {
+        const resultsContainer = document.getElementById('searchResults');
+        const searchInput = document.querySelector('.search-input');
+        if (!resultsContainer.contains(e.target) && e.target !== searchInput) {
+            resultsContainer.style.display = 'none';
+        }
+    });
+
+    // Prevent form submit if user selects a suggestion
+    function submitSearch(event) {
+        const resultsContainer = document.getElementById('searchResults');
+        if (resultsContainer.style.display === 'block') {
+            resultsContainer.style.display = 'none';
+        }
+        return true;
+    }
+
+    // Mobile Predictive Search Implementation
+    function handleMobilePredictiveSearch(event) {
+        const query = event.target.value.trim();
+        const resultsContainer = document.getElementById('mobileSearchResults');
+        if (!query) {
+            resultsContainer.style.display = 'none';
+            resultsContainer.innerHTML = '';
+            return;
+        }
+        fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product&resources[limit]=5`)
+            .then(res => res.json())
+            .then(data => {
+                const products = data.resources.results.products;
+                if (products.length === 0) {
+                    resultsContainer.innerHTML = '<div style="padding: 16px;">No products found.</div>';
+                    resultsContainer.style.display = 'block';
+                    return;
+                }
+                resultsContainer.innerHTML = products.map(product => `
+                    <a href="${product.url}" style="display:flex;align-items:center;padding:12px 16px;text-decoration:none;color:#222;border-bottom:1px solid #f0f0f0;">
+                        <img src="${product.image}" alt="${product.title}" style="width:40px;height:40px;object-fit:cover;margin-right:12px;border-radius:4px;">
+                        <span>${product.title}</span>
+                    </a>
+                `).join('');
+                resultsContainer.style.display = 'block';
+            });
+    }
+
+    // Mobile search form submit handler
+    function submitMobileSearch(event) {
+        const resultsContainer = document.getElementById('mobileSearchResults');
+        if (resultsContainer.style.display === 'block') {
+            resultsContainer.style.display = 'none';
+        }
+        return true;
+    }
+
+    // Hide mobile search results when clicking outside
+    window.addEventListener('click', function(e) {
+        const mobileResultsContainer = document.getElementById('mobileSearchResults');
+        const mobileSearchInput = document.querySelector('.mobile-search-input');
+        if (mobileResultsContainer && !mobileResultsContainer.contains(e.target) && e.target !== mobileSearchInput) {
+            mobileResultsContainer.style.display = 'none';
+        }
+    });
+</script>
+
+{% schema %}
+{
+  "name": "SA Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "logo_link",
+      "label": "Logo link",
+      "default": "/"
+    },
+    {
+      "type": "text",
+      "id": "all_courses_label",
+      "label": "All Courses Button Label",
+      "default": "All Courses"
+    },
+    {
+      "type": "url",
+      "id": "all_courses_url",
+      "label": "All Courses Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_dropdown",
+          "label": "Has dropdown menu",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "dropdown_item",
+      "name": "Dropdown Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Dropdown item label"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Dropdown item URL"
+        },
+        {
+          "type": "text",
+          "id": "parent_nav",
+          "label": "Parent navigation label (must match exactly)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "SA Header"
+    }
+  ]
+}
+{% endschema %}

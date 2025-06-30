@@ -11,8 +11,228 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "sa_footer_wkFAiV": {
+      "type": "sa-footer",
+      "blocks": {
+        "social_media_gtL3pF": {
+          "type": "social_media",
+          "settings": {
+            "social_name": "",
+            "social_link": "#",
+            "custom_svg": "<svg width=\"10\" height=\"19\" viewbox=\"0 0 10 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M6.58746 18.2902V9.37186H9.19084L9.53584 6.29853H6.58746L6.59188 4.76031C6.59188 3.95874 6.67242 3.52924 7.88988 3.52924H9.51741V0.455566H6.91366C3.78614 0.455566 2.68533 1.94646 2.68533 4.45367V6.29888H0.73584V9.3722H2.68533V18.2902H6.58746Z\" fill=\"#0000A0\"></path>\n</svg>"
+          }
+        },
+        "social_media_YtVwQw": {
+          "type": "social_media",
+          "settings": {
+            "social_name": "",
+            "social_link": "#",
+            "custom_svg": "<svg width=\"19\" height=\"16\" viewbox=\"0 0 19 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9.38559 4.4368L9.42425 5.08413L8.77993 5.00486C6.43458 4.70101 4.38562 3.67057 2.64594 1.93996L1.79543 1.08126L1.57636 1.71538C1.11244 3.12893 1.40883 4.62175 2.37532 5.62577C2.89078 6.18062 2.7748 6.25989 1.88563 5.92962C1.57636 5.82393 1.30574 5.74467 1.27997 5.7843C1.18976 5.87677 1.49904 7.07895 1.74388 7.55454C2.07893 8.21508 2.76192 8.86241 3.50934 9.24552L4.14078 9.54937L3.39336 9.56258C2.67171 9.56258 2.64594 9.57579 2.72326 9.85322C2.98099 10.7119 3.99902 11.6235 5.13304 12.0198L5.932 12.2972L5.23613 12.72C4.20521 13.3277 2.99387 13.6711 1.78254 13.6976C1.20265 13.7108 0.725845 13.7636 0.725845 13.8032C0.725845 13.9354 2.298 14.6752 3.21295 14.9658C5.95778 15.8245 9.21807 15.4546 11.6665 13.9882C13.4062 12.9445 15.1459 10.8704 15.9577 8.86241C16.3959 7.79234 16.834 5.83714 16.834 4.89918C16.834 4.29148 16.8727 4.21221 17.5943 3.48562C18.0196 3.06288 18.4191 2.6005 18.4964 2.46839C18.6252 2.21739 18.6124 2.21739 17.9551 2.44197C16.8598 2.83829 16.7051 2.78545 17.2464 2.19096C17.6459 1.76822 18.1227 1.00199 18.1227 0.777411C18.1227 0.737778 17.9294 0.803832 17.7103 0.922729C17.4783 1.05484 16.9629 1.253 16.5763 1.3719L15.8804 1.59648L15.249 1.16052C14.901 0.922729 14.4113 0.658514 14.1536 0.579249C13.4964 0.394298 12.4912 0.42072 11.8985 0.632092C10.2877 1.22658 9.26961 2.75903 9.38559 4.4368Z\" fill=\"#0000A0\"></path>\n</svg>"
+          }
+        },
+        "social_media_UGEbY4": {
+          "type": "social_media",
+          "settings": {
+            "social_name": "",
+            "social_link": "#",
+            "custom_svg": "<svg width=\"19\" height=\"14\" viewbox=\"0 0 19 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M18.345 2.48974C18.7306 3.94256 18.7158 6.97086 18.7158 6.97086C18.7158 6.97086 18.7158 9.98373 18.3451 11.4367C18.1375 12.2319 17.5297 12.8591 16.7586 13.0731C15.35 13.4556 9.71582 13.4556 9.71582 13.4556C9.71582 13.4556 4.09633 13.4556 2.67306 13.0579C1.90196 12.8438 1.29414 12.2166 1.0865 11.4214C0.715852 9.98373 0.715851 6.95557 0.715851 6.95557C0.715851 6.95557 0.715852 3.94256 1.0865 2.48974C1.29401 1.69449 1.91679 1.05208 2.67292 0.838036C4.0815 0.455566 9.71568 0.455566 9.71568 0.455566C9.71568 0.455566 15.35 0.455565 16.7586 0.853191C17.5295 1.06737 18.1375 1.69434 18.345 2.48974ZM7.92175 9.7391L12.607 6.95557L7.92175 4.17204V9.7391Z\" fill=\"#0000A0\"></path>\n</svg>"
+          }
+        },
+        "social_media_hQHakR": {
+          "type": "social_media",
+          "settings": {
+            "social_name": "",
+            "social_link": "#",
+            "custom_svg": "<svg width=\"15\" height=\"15\" viewbox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M0.73584 4.43555V14.4355L3.68969 14.424V4.43555H0.73584Z\" fill=\"#0000A0\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M2.22128 0.435547C1.32306 0.435547 0.73584 1.04086 0.73584 1.8356C0.73584 2.61387 1.30571 3.23662 2.1872 3.23662H2.20398C3.1195 3.23662 3.68969 2.61387 3.68969 1.8356C3.67264 1.04086 3.1195 0.435547 2.22128 0.435547Z\" fill=\"#0000A0\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M11.4297 4.43555C9.83987 4.43555 9.12806 5.33276 8.73063 5.96217V4.43555H5.73584C5.77531 5.30294 5.73584 14.424 5.73584 14.424H8.73063V8.73419C8.73063 8.45792 8.75007 8.18233 8.82924 7.98453C9.04566 7.4326 9.53841 6.86117 10.3657 6.86117C11.4497 6.86117 11.883 7.70881 11.883 8.95101V14.424H14.8774V8.59633C14.8774 5.75701 13.4002 4.43555 11.4297 4.43555Z\" fill=\"#0000A0\"></path>\n</svg>"
+          }
+        },
+        "social_media_R6PPH9": {
+          "type": "social_media",
+          "settings": {
+            "social_name": "",
+            "social_link": "#",
+            "custom_svg": "<svg width=\"17\" height=\"14\" viewbox=\"0 0 17 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M6.35727 12.731C5.88949 12.731 5.96902 12.5543 5.80768 12.1089L4.43227 7.58242L15.0198 1.30127\" fill=\"#03034F\"></path>\n<path d=\"M6.35727 12.731C6.71821 12.731 6.87762 12.5659 7.07914 12.3701L9.00414 10.4983L6.60295 9.05029\" fill=\"#0000EB\"></path>\n<path d=\"M6.6027 9.05053L12.421 13.3492C13.085 13.7155 13.5641 13.5258 13.7295 12.7328L16.0979 1.57226C16.3403 0.600137 15.7273 0.159071 15.0921 0.44746L1.18515 5.80991C0.235882 6.1907 0.241537 6.72031 1.01214 6.95625L4.58097 8.07022L12.8432 2.85768C13.2332 2.62115 13.5913 2.7482 13.2975 3.00903\" fill=\"#0000A0\"></path>\n</svg>"
+          }
+        },
+        "social_media_CY3Md3": {
+          "type": "social_media",
+          "settings": {
+            "social_name": "",
+            "social_link": "#",
+            "custom_svg": "<svg width=\"18\" height=\"18\" viewbox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.5894 17.6208H5.83116C2.83488 17.6208 0.393463 15.1794 0.393463 12.1831V6.22383C0.393463 3.22755 2.83488 0.786133 5.83116 0.786133H12.5894C15.5857 0.786133 18.0271 3.22755 18.0271 6.22383V12.1831C18.0271 15.1794 15.5968 17.6208 12.5894 17.6208ZM5.83116 1.99574C3.50072 1.99574 1.60307 3.89339 1.60307 6.22383V12.1831C1.60307 14.5135 3.50072 16.4112 5.83116 16.4112H12.5894C14.9199 16.4112 16.8175 14.5135 16.8175 12.1831V6.22383C16.8175 3.89339 14.9199 1.99574 12.5894 1.99574H5.83116Z\" fill=\"#0000A0\"></path>\n<path d=\"M9.21585 14.0475C6.54139 14.0475 4.37741 11.8724 4.37741 9.20905C4.37741 6.53459 6.55249 4.37061 9.21585 4.37061C11.8903 4.37061 14.0543 6.54568 14.0543 9.20905C14.0543 11.8724 11.8792 14.0475 9.21585 14.0475ZM9.21585 5.56912C7.20723 5.56912 5.58702 7.20043 5.58702 9.19795C5.58702 11.1955 7.21833 12.8268 9.21585 12.8268C11.2245 12.8268 12.8447 11.1955 12.8447 9.19795C12.8447 7.20043 11.2134 5.56912 9.21585 5.56912Z\" fill=\"#0000A0\"></path>\n<path d=\"M13.9877 5.5246C14.5454 5.5246 14.9976 5.07247 14.9976 4.51474C14.9976 3.95701 14.5454 3.50488 13.9877 3.50488C13.43 3.50488 12.9778 3.95701 12.9778 4.51474C12.9778 5.07247 13.43 5.5246 13.9877 5.5246Z\" fill=\"#0000A0\"></path>\n</svg>"
+          }
+        },
+        "course_section_nqxgDg": {
+          "type": "course_section",
+          "settings": {
+            "course_title": "Trending Post Graduate Programs",
+            "course_text_1": "PG in Data Science",
+            "course_link_1": "#",
+            "course_text_2": "Product Management Certification Course",
+            "course_link_2": "#",
+            "course_text_3": "Blockchain Course",
+            "course_link_3": "#",
+            "course_text_4": "Machine Learning Course",
+            "course_link_4": "#",
+            "course_text_5": "Cyber Security Course in India",
+            "course_link_5": "#",
+            "course_text_6": "Cloud Computing and DevOps - IITG",
+            "course_link_6": "#",
+            "course_text_7": "Data Analytics Program",
+            "course_link_7": "#",
+            "course_text_8": "AI and ML Course",
+            "course_link_8": "#",
+            "course_text_9": "Business Analysis Certification Course",
+            "course_link_9": "#",
+            "course_text_10": "Data Engineering Certification Courses",
+            "course_link_10": "#"
+          }
+        },
+        "course_section_bVjbDM": {
+          "type": "course_section",
+          "settings": {
+            "course_title": "Trending Master Programs",
+            "course_text_1": "PG in Data Science",
+            "course_link_1": "#",
+            "course_text_2": "Product Management Certification Course",
+            "course_link_2": "#",
+            "course_text_3": "Blockchain Course",
+            "course_link_3": "#",
+            "course_text_4": "Machine Learning Course",
+            "course_link_4": "#",
+            "course_text_5": "Cyber Security Course in India",
+            "course_link_5": "#",
+            "course_text_6": "Cloud Computing and DevOps - IITG",
+            "course_link_6": "#",
+            "course_text_7": "Data Analytics Program",
+            "course_link_7": "#",
+            "course_text_8": "AI and ML Course",
+            "course_link_8": "#",
+            "course_text_9": "Business Analysis Certification Course",
+            "course_link_9": "#",
+            "course_text_10": "Data Engineering Certification Courses",
+            "course_link_10": "#"
+          }
+        },
+        "course_section_BBMA6r": {
+          "type": "course_section",
+          "settings": {
+            "course_title": "Trending Courses",
+            "course_text_1": "PG in Data Science",
+            "course_link_1": "#",
+            "course_text_2": "Product Management Certification Course",
+            "course_link_2": "#",
+            "course_text_3": "Blockchain Course",
+            "course_link_3": "#",
+            "course_text_4": "Machine Learning Course",
+            "course_link_4": "#",
+            "course_text_5": "Cyber Security Course in India",
+            "course_link_5": "#",
+            "course_text_6": "Cloud Computing and DevOps - IITG",
+            "course_link_6": "#",
+            "course_text_7": "Data Analytics Program",
+            "course_link_7": "#",
+            "course_text_8": "AI and ML Course",
+            "course_link_8": "#",
+            "course_text_9": "Business Analysis Certification Course",
+            "course_link_9": "#",
+            "course_text_10": "Data Engineering Certification Courses",
+            "course_link_10": "#"
+          }
+        },
+        "course_section_NXUpG8": {
+          "type": "course_section",
+          "settings": {
+            "course_title": "Trending Categories",
+            "course_text_1": "PG in Data Science",
+            "course_link_1": "#",
+            "course_text_2": "Product Management Certification Course",
+            "course_link_2": "#",
+            "course_text_3": "Blockchain Course",
+            "course_link_3": "#",
+            "course_text_4": "Machine Learning Course",
+            "course_link_4": "#",
+            "course_text_5": "Cyber Security Course in India",
+            "course_link_5": "#",
+            "course_text_6": "Cloud Computing and DevOps - IITG",
+            "course_link_6": "#",
+            "course_text_7": "Data Analytics Program",
+            "course_link_7": "#",
+            "course_text_8": "AI and ML Course",
+            "course_link_8": "#",
+            "course_text_9": "Business Analysis Certification Course",
+            "course_link_9": "#",
+            "course_text_10": "Data Engineering Certification Courses",
+            "course_link_10": "#"
+          }
+        },
+        "course_section_CWQ4fh": {
+          "type": "course_section",
+          "settings": {
+            "course_title": "Trending Resources",
+            "course_text_1": "PG in Data Science",
+            "course_link_1": "#",
+            "course_text_2": "Product Management Certification Course",
+            "course_link_2": "#",
+            "course_text_3": "Blockchain Course",
+            "course_link_3": "#",
+            "course_text_4": "Machine Learning Course",
+            "course_link_4": "#",
+            "course_text_5": "Cyber Security Course in India",
+            "course_link_5": "#",
+            "course_text_6": "Cloud Computing and DevOps - IITG",
+            "course_link_6": "#",
+            "course_text_7": "Data Analytics Program",
+            "course_link_7": "#",
+            "course_text_8": "AI and ML Course",
+            "course_link_8": "#",
+            "course_text_9": "Business Analysis Certification Course",
+            "course_link_9": "#",
+            "course_text_10": "Data Engineering Certification Courses",
+            "course_link_10": "#"
+          }
+        }
+      },
+      "block_order": [
+        "social_media_gtL3pF",
+        "social_media_YtVwQw",
+        "social_media_UGEbY4",
+        "social_media_hQHakR",
+        "social_media_R6PPH9",
+        "social_media_CY3Md3",
+        "course_section_nqxgDg",
+        "course_section_bVjbDM",
+        "course_section_BBMA6r",
+        "course_section_NXUpG8",
+        "course_section_CWQ4fh"
+      ],
+      "name": "SA Footer",
+      "settings": {
+        "social_title": "Follow us!",
+        "show_refer_earn": true,
+        "refer_earn_text": "Refer and Earn",
+        "refer_earn_link": "#",
+        "company_title": "Company",
+        "company_menu": "company",
+        "work_title": "Work with us",
+        "work_menu": "work-with-us",
+        "discover_title": "Discover",
+        "discover_menu": "discover",
+        "business_title": "For Businesses",
+        "business_menu": "for-businesses",
+        "app_title": "Learn On the Go!",
+        "android_app_link": "#",
+        "android_app_text": "Get the Android App",
+        "ios_app_link": "#",
+        "ios_app_text": "Get the iOS App",
+        "show_course_listings": true,
+        "footer_menu": "bottom-menu",
+        "copyright_text": "© 2009-2025 - Simplilearn Solutions. All Rights Reserved. The certification names are the trademarks of their respective owners."
+      }
+    },
     "footer": {
       "type": "footer",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
@@ -30,6 +250,7 @@
     }
   },
   "order": [
+    "sa_footer_wkFAiV",
     "footer"
   ]
 }

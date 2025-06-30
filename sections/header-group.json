@@ -11,32 +11,9 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ],
-      "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      }
-    },
     "header": {
       "type": "header",
+      "disabled": true,
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
@@ -53,10 +30,60 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "sa_header_hLgqL6": {
+      "type": "sa-header",
+      "blocks": {
+        "nav_link_URNrRp": {
+          "type": "nav_link",
+          "settings": {
+            "label": "For Business",
+            "url": "#",
+            "has_dropdown": false
+          }
+        },
+        "nav_link_LPJg3m": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Resources",
+            "url": "#",
+            "has_dropdown": false
+          }
+        },
+        "nav_link_jdEah4": {
+          "type": "nav_link",
+          "settings": {
+            "label": "More",
+            "url": "#",
+            "has_dropdown": true
+          }
+        },
+        "dropdown_item_neWzEi": {
+          "type": "dropdown_item",
+          "settings": {
+            "label": "All Courses",
+            "url": "shopify://collections/all",
+            "parent_nav": "More"
+          }
+        }
+      },
+      "block_order": [
+        "nav_link_URNrRp",
+        "nav_link_LPJg3m",
+        "nav_link_jdEah4",
+        "dropdown_item_neWzEi"
+      ],
+      "name": "SA Header",
+      "settings": {
+        "logo_image": "shopify://shop_images/Simpli_learn.png",
+        "logo_link": "/",
+        "all_courses_label": "All Courses",
+        "all_courses_url": "shopify://collections/all"
+      }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header",
+    "sa_header_hLgqL6"
   ]
 }
