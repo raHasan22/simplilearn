@@ -1,0 +1,1051 @@
+<section class="rh-statistics-section">
+  <div class="rh-container">
+    <div class="rh-statistics-wrapper">
+      {% if section.settings.show_video %}
+        <div class="rh-statistics-left">
+          <div class="rh-video-container">
+            {% if section.settings.video_thumbnail != blank %}
+              <img
+                src="{{ section.settings.video_thumbnail | image_url: width: 600 }}"
+                alt="{{ section.settings.video_thumbnail.alt | default: 'Video Thumbnail' }}"
+                class="rh-video-thumbnail"
+                loading="lazy"
+              />
+            {% elsif section.settings.video_file != blank and section.settings.video_file.preview_image %}
+              <img
+                src="{{ section.settings.video_file.preview_image | image_url: width: 600 }}"
+                alt="Video Preview"
+                class="rh-video-thumbnail"
+                loading="lazy"
+              />
+            {% endif %}
+            {% if section.settings.video_file != blank %}
+              <video
+                class="rh-video-player"
+                controls
+                style="display: none; width: 100%; height: 100%; object-fit: cover;"
+                {% if section.settings.video_thumbnail != blank %}
+                  poster="{{ section.settings.video_thumbnail | image_url: width: 600 }}"
+                {% elsif section.settings.video_file.preview_image %}
+                  poster="{{ section.settings.video_file.preview_image | image_url: width: 600 }}"
+                {% endif %}
+              >
+                {% for source in section.settings.video_file.sources %}
+                  <source src="{{ source.url }}" type="{{ source.mime_type }}" />
+                {% endfor %}
+                Your browser does not support the video tag.
+              </video>
+            {% endif %}
+            <div class="rh-play-button">
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="30" fill="white" />
+                <path d="M23 20L23 40L37 30L23 20Z" fill="{{ section.settings.play_button_color | default: '#0000A0' }}" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <div class="rh-statistics-right">
+        <div class="rh-statistics-content">
+          <div class="title-stats-cards-rh">
+            {% if section.settings.section_title != blank %}
+              <h2 class="rh-statistics-title">{{ section.settings.section_title }}</h2>
+            {% endif %}
+
+            {% if section.blocks.size > 0 %}
+              <div class="rh-stats-grid">
+                {% for block in section.blocks %}
+                  {% if block.type == 'statistic' %}
+                    <div class="rh-stat-item" {{ block.shopify_attributes }}>
+                      <div class="rh-stat-number">
+                        {{ block.settings.stat_number }}
+                        {% if block.settings.stat_suffix != blank %}
+                          <span class="rh-stat-sub">{{ block.settings.stat_suffix }}</span>
+                        {% endif %}
+                      </div>
+                      <div class="rh-stat-label">{{ block.settings.stat_label }}</div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          {% assign testimonial_block = section.blocks | where: 'type', 'testimonial' | first %}
+          {% if testimonial_block %}
+            <div class="rh-testimonial-card">
+              {% if testimonial_block.settings.customer_name != blank %}
+                <h3 class="rh-testimonial-name">{{ testimonial_block.settings.customer_name }}</h3>
+              {% endif %}
+              {% if testimonial_block.settings.testimonial_quote != blank %}
+                <p class="rh-testimonial-quote">"{{ testimonial_block.settings.testimonial_quote }}"</p>
+              {% endif %}
+              {% if testimonial_block.settings.testimonial_description != blank %}
+                <p class="rh-testimonial-description">{{ testimonial_block.settings.testimonial_description }}</p>
+              {% endif %}
+
+              {% if testimonial_block.settings.show_career_progression %}
+                <div class="rh-career-progression">
+                  <div class="rh-career-badge-new">
+                    <svg width="34" height="21" viewBox="0 0 34 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M33.3544 1.97217C33.1869 1.56911 32.8666 1.2488 32.4636 1.08142C32.2654 0.996903 32.0524 0.952069 31.8368 0.949463H23.5892C23.1518 0.949463 22.7321 1.12326 22.4228 1.43259C22.1134 1.74194 21.9397 2.1615 21.9397 2.59898C21.9397 3.03647 22.1134 3.45603 22.4228 3.76538C22.7321 4.07471 23.1518 4.2485 23.5892 4.2485H27.8615L18.6406 13.4693L13.2137 8.02591C13.0604 7.87135 12.8779 7.74862 12.6769 7.66483C12.4759 7.58103 12.2603 7.53798 12.0425 7.53798C11.8248 7.53798 11.6092 7.58103 11.4082 7.66483C11.2072 7.74862 11.0247 7.87135 10.8714 8.02591L0.974256 17.923C0.819647 18.0764 0.696939 18.2589 0.613193 18.4598C0.529446 18.6609 0.486328 18.8765 0.486328 19.0942C0.486328 19.3119 0.529446 19.5275 0.613193 19.7286C0.696939 19.9295 0.819647 20.1119 0.974256 20.2654C1.12761 20.4199 1.31005 20.5426 1.51106 20.6264C1.71205 20.7102 1.92766 20.7533 2.14542 20.7533C2.36317 20.7533 2.57878 20.7102 2.77979 20.6264C2.9808 20.5426 3.16324 20.4199 3.31658 20.2654L12.0425 11.5229L17.4695 16.9663C17.6229 17.1209 17.8053 17.2436 18.0062 17.3274C18.2073 17.4112 18.4229 17.4542 18.6406 17.4542C18.8584 17.4542 19.074 17.4112 19.275 17.3274C19.476 17.2436 19.6584 17.1209 19.8118 16.9663L30.1873 6.57433V10.8466C30.1873 11.284 30.361 11.7037 30.6704 12.013C30.9797 12.3223 31.3994 12.4961 31.8368 12.4961C32.2743 12.4961 32.6939 12.3223 33.0032 12.013C33.3125 11.7037 33.4863 11.284 33.4863 10.8466V2.59898C33.4837 2.38342 33.4388 2.17047 33.3544 1.97217Z" fill="#3C3C3C" />
+                    </svg>
+                                         <div class="rh-career-text-new">{{ testimonial_block.settings.career_badge_text | default: "New Job\n2x Salary" | newline_to_br }}</div>
+                  </div>
+                  <div class="rh-company-transition">
+                    <div class="rh-job-section">
+                      <div class="rh-job-from">{{ testimonial_block.settings.old_job_title | default: "Previous Job" }}</div>
+                      {% if testimonial_block.settings.old_company_logo != blank %}
+                        <img class="rh-company-logo-from" src="{{ testimonial_block.settings.old_company_logo | image_url: width: 100 }}" alt="{{ testimonial_block.settings.old_company_logo.alt | default: 'Previous Company Logo' }}" />
+                      {% endif %}
+                    </div>
+                    <div class="rh-transition-arrow">
+                      <svg width="23" height="5" viewBox="0 0 23 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.6503 2.80783L19.3898 0.924561V4.6911L22.6503 2.80783ZM0.479002 2.48164C0.298928 2.48164 0.152954 2.62768 0.152954 2.80783C0.152954 2.98798 0.298928 3.13402 0.479002 3.13402V2.48164ZM18.4932 2.48164H15.7218V3.13402H18.4932V2.48164ZM12.9503 2.48164H10.1789V3.13402H12.9503V2.48164ZM7.40753 2.48164H4.63612V3.13402H7.40753V2.48164ZM1.86471 2.48164H0.479002V3.13402H1.86471V2.48164Z" fill="#6B7280"/>
+                      </svg>
+                    </div>
+                    <div class="rh-job-section">
+                      <div class="rh-job-to">{{ testimonial_block.settings.new_job_title | default: "New Job" }}</div>
+                      {% if testimonial_block.settings.new_company_logo != blank %}
+                        <img class="rh-company-logo-to" src="{{ testimonial_block.settings.new_company_logo | image_url: width: 100 }}" alt="{{ testimonial_block.settings.new_company_logo.alt | default: 'New Company Logo' }}" />
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+.rh-statistics-section {
+  padding: 96px 20px;
+  background: {{ section.settings.section_bg_color | default: '#0000A0' }};
+}
+
+.rh-statistics-section .rh-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.rh-statistics-wrapper {
+  display: flex;
+  gap: clamp(40px, 8vw, 145px);
+  align-items: center;
+}
+
+.rh-statistics-left {
+  flex: 0 0 clamp(300px, 35vw, 450px);
+}
+
+.rh-statistics-right {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Video Container */
+.rh-video-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+  .rh-video-container:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    right: -8px;
+    bottom: -8px;
+    position: absolute;
+    background: #fff;
+    z-index: 0;
+}
+
+.rh-video-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.rh-play-button {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.rh-play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Statistics Content */
+.rh-statistics-content {
+  color: {{ section.settings.text_color | default: '#ffffff' }};
+}
+
+.title-stats-cards-rh {
+  padding: 0 30px;
+}
+
+.rh-statistics-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+  color: {{ section.settings.title_color | default: '#ffffff' }};
+  margin: 0 0 40px;
+}
+
+/* Stats Grid */
+.rh-stats-grid {
+  display: flex;
+  gap: clamp(30px, 5vw, 60px);
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.rh-stat-item {
+  text-align: left;
+  flex: 0 0 auto;
+  min-width: 100px;
+}
+
+.rh-stat-number {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 40px);
+  line-height: normal;
+  color: {{ section.settings.stat_number_color | default: '#ffffff' }};
+  margin-bottom: 8px;
+  border-bottom: 2px solid {{ section.settings.stat_accent_color | default: '#FFDC00' }};
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+.rh-stat-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 700;
+}
+
+.rh-stat-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: clamp(10px, 1.2vw, 11px);
+  color: {{ section.settings.stat_label_color | default: '#ffffff' }};
+}
+
+/* Testimonial Card */
+.rh-testimonial-card {
+  background: {{ section.settings.testimonial_bg_color | default: '#ffffff' }};
+  padding: 32px;
+  color: {{ section.settings.testimonial_text_color | default: '#3C3C3C' }};
+}
+
+.rh-testimonial-name {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: {{ section.settings.testimonial_name_color | default: '#0000A0' }};
+  margin-bottom: 16px;
+}
+
+.rh-testimonial-quote {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.4px;
+  color: {{ section.settings.testimonial_text_color | default: '#3C3C3C' }};
+  margin-bottom: 16px;
+}
+
+.rh-testimonial-description {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: {{ section.settings.testimonial_text_color | default: '#3C3C3C' }};
+  margin-bottom: 24px;
+}
+
+/* Career Progression */
+.rh-career-progression {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.rh-career-badge-new {
+  min-width: 180px;
+  min-height: 50px;
+  padding: 8px 16px;
+  background: {{ section.settings.career_badge_bg_color | default: '#FFDC00' }};
+  border: 1.1px solid #8D8D8D;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  flex: 0 0 auto;
+}
+
+.rh-career-text-new {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: {{ section.settings.career_badge_text_color | default: '#3C3C3C' }};
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.rh-company-transition {
+  min-width: 300px;
+  min-height: 50px;
+  background: {{ section.settings.career_transition_bg_color | default: '#F6F6FF' }};
+  border: 1.1px solid #8D8D8D;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 12px;
+  flex: 1;
+}
+
+.rh-job-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.rh-job-from {
+  text-align: center;
+  color: #1F2937;
+  font-size: clamp(8px, 1.2vw, 9px);
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.rh-company-logo-from {
+  max-width: 100px;
+  height: auto;
+  max-height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.rh-transition-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0 8px;
+}
+
+.rh-job-to {
+  text-align: center;
+  color: #1F2937;
+  font-size: clamp(8px, 1.2vw, 9px);
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.rh-company-logo-to {
+  max-width: 80px;
+  height: auto;
+  max-height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Responsive Design for Statistics Section */
+
+/* Desktop/Laptop - 1024px to 1199px */
+@media (max-width: 1199px) {
+  .rh-statistics-wrapper {
+    gap: 50px;
+  }
+  
+  .rh-statistics-left {
+    flex: 0 0 450px;
+  }
+  
+  .rh-statistics-title {
+    font-size: 44px;
+  }
+  
+  .rh-stats-grid {
+    gap: 50px;
+  }
+  
+  .rh-stat-number {
+    font-size: 44px;
+  }
+  
+  .rh-stat-sub {
+    font-size: 26px;
+  }
+  
+  .rh-career-badge-new {
+    min-width: 160px;
+    padding: 8px 14px;
+  }
+  
+  .rh-career-text-new {
+    font-size: clamp(14px, 2.2vw, 20px);
+  }
+  
+  .rh-company-transition {
+    min-width: 280px;
+    padding: 10px 14px;
+  }
+}
+
+/* Tablet Landscape - 768px to 1023px */
+@media (max-width: 1023px) {
+  .rh-statistics-section {
+    padding: 80px 20px;
+  }
+  
+  .rh-statistics-wrapper {
+    gap: 40px;
+  }
+  
+  .rh-statistics-left {
+    flex: 0 0 400px;
+  }
+  
+  .rh-statistics-title {
+    font-size: 40px;
+    margin-bottom: 35px;
+  }
+  
+  .rh-stats-grid {
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .rh-stat-number {
+    font-size: 40px;
+  }
+  
+  .rh-stat-sub {
+    font-size: 24px;
+  }
+  
+  .rh-testimonial-card {
+    padding: 28px;
+  }
+  
+  .rh-career-badge-new {
+    min-width: 140px;
+    padding: 6px 12px;
+  }
+  
+  .rh-career-text-new {
+    font-size: clamp(12px, 2vw, 18px);
+  }
+  
+  .rh-company-transition {
+    min-width: 260px;
+    padding: 8px 12px;
+  }
+}
+
+/* Tablet Portrait - 768px and below */
+@media (max-width: 768px) {
+  .rh-statistics-section {
+    padding: 60px 20px;
+  }
+  
+  .rh-statistics-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .rh-statistics-left {
+    flex: none;
+    width: 100%;
+    order: 2;
+  }
+  
+  .rh-statistics-right {
+    order: 1;
+  }
+  
+  .rh-statistics-title {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .rh-stats-grid {
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 35px;
+  }
+  
+  .rh-stat-item {
+    text-align: center;
+  }
+  
+  .rh-stat-number {
+    font-size: 36px;
+  }
+  
+  .rh-stat-sub {
+    font-size: 22px;
+  }
+  
+  .rh-career-progression {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .rh-career-badge-new {
+    min-width: auto;
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 16px;
+  }
+  
+  .rh-career-text-new {
+    font-size: clamp(16px, 3vw, 18px);
+  }
+  
+  .rh-company-transition {
+    min-width: auto;
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .rh-job-section {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .rh-transition-arrow {
+    order: 2;
+    transform: rotate(90deg);
+    padding: 8px 0;
+  }
+  
+  .rh-job-section:last-child {
+    order: 3;
+  }
+  
+  .rh-company-logo-from,
+  .rh-company-logo-to {
+    max-width: 120px;
+    max-height: 35px;
+  }
+}
+
+/* Mobile Landscape - 576px and below */
+@media (max-width: 576px) {
+  .rh-statistics-section {
+    padding: 50px 20px;
+  }
+  
+  .rh-statistics-title {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+  
+  .rh-stats-grid {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .rh-stat-number {
+    font-size: 32px;
+  }
+  
+  .rh-stat-sub {
+    font-size: 20px;
+  }
+  
+  .rh-testimonial-card {
+    padding: 24px;
+  }
+  
+  .rh-testimonial-quote {
+    font-size: 16px;
+  }
+  
+  .rh-testimonial-description {
+    font-size: 13px;
+  }
+  
+  .rh-career-badge-new {
+    padding: 10px 14px;
+  }
+  
+  .rh-career-text-new {
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+  
+  .rh-job-from,
+  .rh-job-to {
+    font-size: clamp(9px, 1.5vw, 10px);
+  }
+  
+  .rh-company-logo-from,
+  .rh-company-logo-to {
+    max-width: 100px;
+    max-height: 30px;
+  }
+}
+
+/* Mobile Portrait - 480px and below */
+@media (max-width: 480px) {
+  .rh-statistics-section {
+    padding: 40px 16px;
+  }
+  
+  .rh-statistics-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .rh-stat-number {
+    font-size: 28px;
+  }
+  
+  .rh-stat-sub {
+    font-size: 18px;
+  }
+  
+  .rh-testimonial-card {
+    padding: 20px;
+  }
+  
+  .rh-career-badge-new {
+    padding: 8px 12px;
+  }
+  
+  .rh-career-text-new {
+    font-size: clamp(12px, 4vw, 14px);
+  }
+  
+  .rh-job-from,
+  .rh-job-to {
+    font-size: clamp(8px, 1.8vw, 9px);
+  }
+  
+  .rh-company-logo-from,
+  .rh-company-logo-to {
+    max-width: 80px;
+    max-height: 25px;
+  }
+}
+
+/* Extra Small Mobile - 360px and below */
+@media (max-width: 360px) {
+  .rh-statistics-section {
+    padding: 30px 16px;
+  }
+  
+  .rh-statistics-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  
+  .rh-stat-number {
+    font-size: 24px;
+  }
+  
+  .rh-stat-sub {
+    font-size: 16px;
+  }
+  
+  .rh-testimonial-card {
+    padding: 16px;
+  }
+  
+  .rh-testimonial-name {
+    font-size: 18px;
+  }
+  
+  .rh-testimonial-quote {
+    font-size: 15px;
+  }
+  
+  .rh-testimonial-description {
+    font-size: 12px;
+  }
+  
+  .rh-career-text-new {
+    font-size: clamp(11px, 4.5vw, 12px);
+  }
+  
+  .rh-job-from,
+  .rh-job-to {
+    font-size: clamp(7px, 2vw, 8px);
+  }
+  
+  .rh-company-logo-from,
+  .rh-company-logo-to {
+    max-width: 70px;
+    max-height: 22px;
+  }
+}
+{% endstyle %}
+
+<script>
+// Statistics video height adjustment
+document.addEventListener('DOMContentLoaded', function() {
+    function adjustVideoHeight() {
+        const statisticsRight = document.querySelector('.rh-statistics-right');
+        const videoContainer = document.querySelector('.rh-video-container');
+        
+        if (statisticsRight && videoContainer) {
+            // Only apply height adjustment on desktop/tablet landscape (above 768px)
+            if (window.innerWidth > 768) {
+                // Get the height of the right container
+                const rightHeight = statisticsRight.offsetHeight;
+                
+                // Set the video container height to match
+                videoContainer.style.height = rightHeight + 'px';
+            } else {
+                // On mobile, reset to auto height
+                videoContainer.style.height = 'auto';
+            }
+        }
+    }
+    
+    // Initial adjustment
+    adjustVideoHeight();
+    
+    // Adjust on window resize
+    window.addEventListener('resize', function() {
+        // Use setTimeout to debounce the resize event
+        clearTimeout(window.resizeTimeout);
+        window.resizeTimeout = setTimeout(adjustVideoHeight, 100);
+    });
+    
+    // Adjust after images load (in case they affect container height)
+    window.addEventListener('load', adjustVideoHeight);
+});
+
+// Video play functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const playButton = document.querySelector('.rh-play-button');
+    const videoThumbnail = document.querySelector('.rh-video-thumbnail');
+    const videoPlayer = document.querySelector('.rh-video-player');
+    
+    if (playButton && videoThumbnail && videoPlayer) {
+        playButton.addEventListener('click', function() {
+            // Hide thumbnail and play button
+            videoThumbnail.style.display = 'none';
+            playButton.style.display = 'none';
+            
+            // Show and play video
+            videoPlayer.style.display = 'block';
+            videoPlayer.style.position = 'relative';
+            videoPlayer.style.zIndex = '1';
+            videoPlayer.play();
+        });
+        
+        // Optional: Show thumbnail again when video ends
+        videoPlayer.addEventListener('ended', function() {
+            videoThumbnail.style.display = 'block';
+            playButton.style.display = 'block';
+            videoPlayer.style.display = 'none';
+        });
+        
+        // Optional: Handle video pause (you can customize this behavior)
+        videoPlayer.addEventListener('pause', function() {
+            // You can add custom behavior when video is paused
+            console.log('Video paused');
+        });
+    }
+}); 
+</script>
+
+{% schema %}
+{
+  "name": "SA Statistics Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Real Stories,<br />Incredible Journeys"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_video",
+      "label": "Show Video Section",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "video_thumbnail",
+      "label": "Video Thumbnail"
+    },
+    {
+      "type": "video",
+      "id": "video_file",
+      "label": "Upload Video File"
+    },
+    {
+      "type": "color",
+      "id": "play_button_color",
+      "label": "Play Button Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "header",
+      "content": "Statistics Settings"
+    },
+    {
+      "type": "color",
+      "id": "stat_number_color",
+      "label": "Statistic Number Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "stat_label_color",
+      "label": "Statistic Label Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "stat_accent_color",
+      "label": "Statistic Accent Color",
+      "default": "#FFDC00"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial Settings"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_bg_color",
+      "label": "Testimonial Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_text_color",
+      "label": "Testimonial Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_name_color",
+      "label": "Testimonial Name Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "header",
+      "content": "Career Progression Settings"
+    },
+    {
+      "type": "color",
+      "id": "career_badge_bg_color",
+      "label": "Career Badge Background Color",
+      "default": "#FFDC00"
+    },
+    {
+      "type": "color",
+      "id": "career_badge_text_color",
+      "label": "Career Badge Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "career_transition_bg_color",
+      "label": "Career Transition Background Color",
+      "default": "#F6F6FF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "statistic",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat_number",
+          "label": "Statistic Number",
+          "default": "80%"
+        },
+        {
+          "type": "text",
+          "id": "stat_suffix",
+          "label": "Statistic Suffix (optional)",
+          "placeholder": "/5"
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Statistic Label",
+          "default": "Graduation rate"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer Name",
+          "default": "Jorge Barboza"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_quote",
+          "label": "Testimonial Quote",
+          "default": "Three weeks after finishing the course, I was hired as a Cloud Engineer, doubling my salary and successfully switching domains!"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_description",
+          "label": "Testimonial Description",
+          "default": "The AWS and Azure courses were clear, insightful, and well-taught. With great live sessions and year-long access, I kept learning—and landed a Cloud Engineer job just 3 weeks later, doubling my salary!"
+        },
+        {
+          "type": "header",
+          "content": "Career Progression"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_career_progression",
+          "label": "Show Career Progression",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "career_badge_text",
+          "label": "Career Badge Text",
+          "default": "New Job\n2x Salary",
+          "info": "Use line breaks to display text on multiple lines"
+        },
+        {
+          "type": "text",
+          "id": "old_job_title",
+          "label": "Previous Job Title",
+          "default": "IT Manager"
+        },
+        {
+          "type": "image_picker",
+          "id": "old_company_logo",
+          "label": "Previous Company Logo"
+        },
+        {
+          "type": "text",
+          "id": "new_job_title",
+          "label": "New Job Title",
+          "default": "Cloud & Software Engineer"
+        },
+        {
+          "type": "image_picker",
+          "id": "new_company_logo",
+          "label": "New Company Logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SA Statistics Section",
+      "blocks": [
+        {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "80%",
+            "stat_label": "Graduation rate"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "4.8",
+            "stat_suffix": "/5",
+            "stat_label": "Rated by learners"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "50%+",
+            "stat_label": "Average salary hike"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Jorge Barboza",
+            "testimonial_quote": "Three weeks after finishing the course, I was hired as a Cloud Engineer, doubling my salary and successfully switching domains!",
+            "testimonial_description": "The AWS and Azure courses were clear, insightful, and well-taught. With great live sessions and year-long access, I kept learning—and landed a Cloud Engineer job just 3 weeks later, doubling my salary!",
+            "show_career_progression": true,
+            "career_badge_text": "New Job\n2x Salary",
+            "old_job_title": "IT Manager",
+            "new_job_title": "Cloud & Software Engineer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

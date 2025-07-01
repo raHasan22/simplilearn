@@ -107,7 +107,12 @@
 {{ 'hero-slider.css' | asset_url | stylesheet_tag }}
 {% style %}
   .nxt-hero__slider .swiper-slide {
-    min-height: {{ section.settings.height }}px;
+    min-height: {{ section.settings.height | times: 0.7 }}px ;
+  }
+  @media (min-width: 768px) {
+    .nxt-hero__slider .swiper-slide {
+      min-height: {{ section.settings.height }}px;
+    }
   }
 {% endstyle %}
 <div class="swiper nxt-hero__slider">

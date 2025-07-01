@@ -1,0 +1,272 @@
+<style>
+  .srs-cta-section{
+      padding: {{ section.settings.section_padding }}px 0;
+  }
+  .srs-cta-section .srs-container{
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  .srs-cta-section .cta-wrapper {
+      position: relative;
+      background: {{ section.settings.background_color }};
+      border-radius: {{ section.settings.border_radius }}px;
+      overflow: hidden;
+      min-height: {{ section.settings.min_height }}px;
+      display: flex;
+      align-items: center;
+      {% if section.settings.image_position == 'left' %}
+          flex-direction: row-reverse;
+      {% endif %}
+  }
+  .srs-cta-section .cta-content {
+      flex: 1;
+      padding: {{ section.settings.content_padding }}px 80px;
+      color: white;
+      z-index: 2;
+      position: relative;
+  }
+  .srs-cta-section .cta-title {
+      font-size: 32px;
+      font-family: Inter, sans-serif;
+      font-weight: 500;
+      line-height: 56px;
+      margin-bottom: 20px;
+    color: #fff;
+    max-width: 489px;
+    letter-spacing: normal;
+  }
+  .srs-cta-section .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: {{ section.settings.button_bg_color }};
+      color: {{ section.settings.button_text_color }};
+      text-decoration: none;
+      padding: 6px 32px;
+      font-size: 16px;
+      font-family: Inter, sans-serif;
+      font-weight: 500;
+      height: 50px;
+      transition: all 0.3s ease;
+  }
+  .srs-cta-section .cta-button:hover {
+      background: {{ section.settings.button_hover_bg_color }};
+      transform: translateY(-2px);
+  }
+  .srs-cta-section .cta-image-container {
+      position: relative;
+      flex-shrink: 0;
+  }
+  .srs-cta-section .cta-image {
+      width: {{ section.settings.image_width }}px;
+      height: {{ section.settings.image_height }}px;
+      object-fit: cover;
+      border-radius: {{ section.settings.border_radius }}px;
+      position: relative;
+      z-index: 3;
+  }
+  @media (max-width: 1200px) {
+      .srs-cta-section .cta-wrapper {
+          flex-direction: column;
+          text-align: center;
+      }
+      .srs-cta-section .cta-content {
+          padding: 40px 20px;
+      }
+      .srs-cta-section .cta-image-container {
+          margin-right: 0;
+          margin-top: 20px;
+      }
+      .srs-cta-section .cta-image {
+          width: 100%;
+          max-width: 446px;
+          height: auto;
+      }
+  }
+</style>
+
+<div class="srs-cta-section">
+  <div class="srs-container">
+    <div class="cta-wrapper">
+      <div class="cta-content">
+        <h2 class="cta-title">{{ section.settings.title }}</h2>
+        <a href="{{ section.settings.button_link }}" class="cta-button">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+
+      {% if section.settings.show_image and section.settings.image != blank %}
+        <div class="cta-image-container">
+          <img
+            src="{{ section.settings.image | img_url: '800x' }}"
+            alt="{{ section.settings.title | escape }}"
+            class="cta-image"
+            loading="lazy"
+            width="{{ section.settings.image_width }}"
+            height="{{ section.settings.image_height }}"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "CTA Section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Ready to take your skills to the next level?"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Explore Courses"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Background Settings"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#0000A0"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_image",
+        "label": "Show Image",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Recommended size: 431x300px"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image Position",
+        "options": [
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type": "color",
+        "id": "button_bg_color",
+        "label": "Button Background Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#3C3C3C"
+      },
+      {
+        "type": "color",
+        "id": "button_hover_bg_color",
+        "label": "Button Hover Background Color",
+        "default": "#F0F0F0"
+      },
+      {
+        "type": "header",
+        "content": "Layout Settings"
+      },
+      {
+        "type": "range",
+        "id": "section_padding",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Section Padding",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "content_padding",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Content Padding",
+        "default": 85
+      },
+      {
+        "type": "range",
+        "id": "min_height",
+        "min": 200,
+        "max": 600,
+        "step": 50,
+        "unit": "px",
+        "label": "Minimum Height",
+        "default": 350
+      },
+      {
+        "type": "range",
+        "id": "image_width",
+        "min": 200,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Image Width (Desktop)",
+        "default": 430
+      },
+      {
+        "type": "range",
+        "id": "image_height",
+        "min": 200,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Image Height (Desktop)",
+        "default": 300
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Border Radius",
+        "default": 8
+      }
+    ],
+    "presets": [
+      {
+        "name": "SA CTA Section",
+        "category": "Custom Sections"
+      }
+    ]
+  }
+{% endschema %}

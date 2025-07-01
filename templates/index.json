@@ -53,9 +53,505 @@
       "settings": {
         "height": 680
       }
+    },
+    "sa_courses_section_98XzbH": {
+      "type": "sa-courses-section",
+      "blocks": {
+        "course_tab_jwarHF": {
+          "type": "course_tab",
+          "settings": {
+            "tab_label": "Most Popular",
+            "collection": "most-popular",
+            "products_count": 6,
+            "course_tag": "Courses",
+            "button_text": "View Program",
+            "default_duration": "6 Months"
+          }
+        },
+        "course_tab_LctaKK": {
+          "type": "course_tab",
+          "settings": {
+            "tab_label": "Programming",
+            "collection": "programming",
+            "products_count": 6,
+            "course_tag": "Courses",
+            "button_text": "View Program",
+            "default_duration": ""
+          }
+        }
+      },
+      "block_order": [
+        "course_tab_jwarHF",
+        "course_tab_LctaKK"
+      ],
+      "name": "SA Courses Section",
+      "settings": {
+        "section_title": "Explore our top programs",
+        "section_bg_color": "#ffffff",
+        "title_color": "#0000A0",
+        "sidebar_bg_color": "#ffffff",
+        "tab_text_color": "#3C3C3C",
+        "tab_hover_color": "#0000A0",
+        "tab_active_bg_color": "#0000a0",
+        "tab_active_text_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "card_title_color": "#3C3C3C",
+        "card_text_color": "#3C3C3C",
+        "tag_bg_color": "#0000A0",
+        "tag_text_color": "#ffffff",
+        "button_text_color": "#3C3C3C",
+        "button_border_color": "#3C3C3C",
+        "button_hover_color": "#0000A0"
+      }
+    },
+    "sa_partnership_section_XCwUr6": {
+      "type": "sa-partnership-section",
+      "blocks": {
+        "partner_logo_mREKye": {
+          "type": "partner_logo",
+          "settings": {
+            "partner_logo": "shopify://shop_images/Vodafone_Germany_-_png.png",
+            "partner_name": "",
+            "logo_width": 150,
+            "logo_height": 40
+          }
+        },
+        "partner_logo_7bgEDK": {
+          "type": "partner_logo",
+          "settings": {
+            "partner_logo": "shopify://shop_images/Page-1.png",
+            "partner_name": "",
+            "logo_width": 140,
+            "logo_height": 30
+          }
+        },
+        "partner_logo_TJdBWX": {
+          "type": "partner_logo",
+          "settings": {
+            "partner_logo": "shopify://shop_images/NHSX_-_png.png",
+            "partner_name": "",
+            "logo_width": 90,
+            "logo_height": 30
+          }
+        },
+        "partner_logo_9jLDzy": {
+          "type": "partner_logo",
+          "settings": {
+            "partner_logo": "shopify://shop_images/Disney_Interactive_svg_1.png",
+            "partner_name": "",
+            "logo_width": 90,
+            "logo_height": 40
+          }
+        },
+        "partner_logo_z7xNTB": {
+          "type": "partner_logo",
+          "settings": {
+            "partner_logo": "shopify://shop_images/Fujitsu_svg.png",
+            "partner_name": "",
+            "logo_width": 80,
+            "logo_height": 40
+          }
+        },
+        "partner_logo_NUMTT6": {
+          "type": "partner_logo",
+          "settings": {
+            "partner_logo": "shopify://shop_images/DHL_svg.png",
+            "partner_name": "",
+            "logo_width": 160,
+            "logo_height": 30
+          }
+        }
+      },
+      "block_order": [
+        "partner_logo_mREKye",
+        "partner_logo_7bgEDK",
+        "partner_logo_TJdBWX",
+        "partner_logo_9jLDzy",
+        "partner_logo_z7xNTB",
+        "partner_logo_NUMTT6"
+      ],
+      "name": "SA Partnership Section",
+      "settings": {
+        "title": "Partnership with top universities",
+        "description": "For generations, you and your carrier — including the four-legged members — have loved our brands, products and services. Our Associates are working to ensure that everything you know and love consistently evolves to deliver the best for your carrier.",
+        "button_text": "Explore Our Service",
+        "button_link": "#",
+        "show_content": true,
+        "container_max_width": 1300,
+        "section_padding": 100,
+        "section_padding_horizontal": 20,
+        "content_gap": 25,
+        "content_margin_top": 50,
+        "header_gap": 20,
+        "title_font_size": 40,
+        "title_font_family": "Inter",
+        "title_font_weight": "700",
+        "title_text_transform": "none",
+        "title_color": "#0000a0",
+        "description_font_size": 16,
+        "description_font_family": "Inter",
+        "description_font_weight": "400",
+        "description_line_height": 28,
+        "description_max_width": 1250,
+        "description_color": "#3c3c3c",
+        "button_font_size": 16,
+        "button_font_family": "Inter",
+        "button_font_weight": "500",
+        "button_line_height": 20,
+        "button_padding_vertical": 16,
+        "button_padding_horizontal": 30,
+        "button_border_radius": 0,
+        "button_border_width": 0,
+        "button_background_color": "#0000a0",
+        "button_hover_background_color": "#000080",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#0000a0",
+        "swiper_max_width": 1050,
+        "swiper_container_gap": 20,
+        "slides_per_view_desktop": 6,
+        "space_between_desktop": 70,
+        "enable_loop": true,
+        "enable_autoplay": false,
+        "enable_autoplay_module": false,
+        "autoplay_delay": 3000,
+        "disable_autoplay_on_interaction": true,
+        "navigation_button_color": "#0000a0",
+        "navigation_arrow_color": "#ffffff",
+        "background_color": "#ffffff",
+        "section_padding_tablet": 30,
+        "section_padding_horizontal_tablet": 15,
+        "title_font_size_tablet": 32,
+        "description_font_size_tablet": 15,
+        "description_line_height_tablet": 26,
+        "swiper_max_width_tablet": 800,
+        "slides_per_view_tablet": 6,
+        "space_between_tablet": 50,
+        "section_padding_mobile": 25,
+        "section_padding_horizontal_mobile": 10,
+        "content_gap_mobile": 20,
+        "content_margin_top_mobile": 30,
+        "title_font_size_mobile": 28,
+        "description_font_size_mobile": 14,
+        "description_line_height_mobile": 24,
+        "description_padding_mobile": 10,
+        "button_padding_vertical_mobile": 12,
+        "button_padding_horizontal_mobile": 25,
+        "button_font_size_mobile": 14,
+        "swiper_container_gap_mobile": 15,
+        "slides_per_view_mobile": 3,
+        "space_between_mobile": 30,
+        "slides_per_view_small_mobile": 2,
+        "space_between_small_mobile": 20,
+        "navigation_button_size_mobile": 35
+      }
+    },
+    "sa_trust_section_ANdfP7": {
+      "type": "sa-trust-section",
+      "blocks": {
+        "trust_card_i8hWka": {
+          "type": "trust_card",
+          "settings": {
+            "rating": "4.6",
+            "image": "shopify://shop_images/switchup.png",
+            "image_width": 130,
+            "image_height": 50,
+            "border_color": "#ffdc00"
+          }
+        },
+        "trust_card_d7eLEb": {
+          "type": "trust_card",
+          "settings": {
+            "rating": "4.5",
+            "image": "shopify://shop_images/Course_Report.png",
+            "image_width": 90,
+            "image_height": 50,
+            "border_color": "#61a020"
+          }
+        },
+        "trust_card_NpXcyh": {
+          "type": "trust_card",
+          "settings": {
+            "rating": "4.4",
+            "image": "shopify://shop_images/Career_Karma.png",
+            "image_width": 120,
+            "image_height": 45,
+            "border_color": "#ff8200"
+          }
+        }
+      },
+      "block_order": [
+        "trust_card_i8hWka",
+        "trust_card_d7eLEb",
+        "trust_card_NpXcyh"
+      ],
+      "name": "SA Trust Section",
+      "settings": {
+        "title": "Join 8 million learners who trust us",
+        "title_font_size": 40,
+        "title_font_size_mobile": 28,
+        "title_font_weight": 700,
+        "title_color": "#0000a0",
+        "section_padding": 100,
+        "container_width": 985,
+        "cards_gap": 20,
+        "card_max_width": 235,
+        "card_padding": 18,
+        "card_background_color": "#ffffff",
+        "rating_font_size": 32,
+        "rating_color": "#111827",
+        "rating_margin_bottom": 20,
+        "background_color": "#ffffff"
+      }
+    },
+    "sa_statistics_section_fEREr8": {
+      "type": "sa-statistics-section",
+      "blocks": {
+        "statistic_UthHMm": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "80%",
+            "stat_suffix": "",
+            "stat_label": "Graduation rate"
+          }
+        },
+        "statistic_DzkFkG": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "4.8",
+            "stat_suffix": "/5",
+            "stat_label": "Rated by learners"
+          }
+        },
+        "statistic_MqJVLG": {
+          "type": "statistic",
+          "settings": {
+            "stat_number": "50%+",
+            "stat_suffix": "",
+            "stat_label": "Average salary hike"
+          }
+        },
+        "testimonial_Q8K8Xx": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Jorge Barboza",
+            "testimonial_quote": "Three weeks after finishing the course, I was hired as a Cloud Engineer, doubling my salary and successfully switching domains!",
+            "testimonial_description": "The AWS and Azure courses were clear, insightful, and well-taught. With great live sessions and year-long access, I kept learning—and landed a Cloud Engineer job just 3 weeks later, doubling my salary!",
+            "show_career_progression": true,
+            "career_badge_text": "New Job\n2x Salary",
+            "old_job_title": "IT Manager",
+            "old_company_logo": "shopify://shop_images/Nikki_Beach_Worldwide.png",
+            "new_job_title": "Cloud & Software Engineer",
+            "new_company_logo": "shopify://shop_images/Limitless_Minds.png"
+          }
+        }
+      },
+      "block_order": [
+        "statistic_UthHMm",
+        "statistic_DzkFkG",
+        "statistic_MqJVLG",
+        "testimonial_Q8K8Xx"
+      ],
+      "name": "SA Statistics Section",
+      "settings": {
+        "section_title": "Real Stories,Incredible Journeys",
+        "section_bg_color": "#0000a0",
+        "title_color": "#ffffff",
+        "text_color": "#ffffff",
+        "show_video": true,
+        "video_thumbnail": "shopify://shop_images/Mask_group.png",
+        "video_file": "shopify://files/videos/Module Demo Design.mp4",
+        "play_button_color": "#0075eb",
+        "stat_number_color": "#ffffff",
+        "stat_label_color": "#ffffff",
+        "stat_accent_color": "#ffdc00",
+        "testimonial_bg_color": "#ffffff",
+        "testimonial_text_color": "#3c3c3c",
+        "testimonial_name_color": "#0000a0",
+        "career_badge_bg_color": "#ffdc00",
+        "career_badge_text_color": "#3c3c3c",
+        "career_transition_bg_color": "#f6f6ff"
+      }
+    },
+    "sa_about_product_section_wPmaV4": {
+      "type": "sa-about-product-section",
+      "blocks": {
+        "about_card_XaLypN": {
+          "type": "about_card",
+          "settings": {
+            "card_image": "shopify://shop_images/Cutting_Edge_Curriculum.png",
+            "card_title": "Cutting Edge Curriculum",
+            "card_description": "Co-created with the world's top universities and companies",
+            "border_color": "#ff1414"
+          }
+        },
+        "about_card_7fYhwV": {
+          "type": "about_card",
+          "settings": {
+            "card_image": "shopify://shop_images/Taught_Live_by_Industry_Experts.png",
+            "card_title": "Taught Live by Industry Experts",
+            "card_description": "Learn live from practitioners with real world experience",
+            "border_color": "#ff8200"
+          }
+        },
+        "about_card_bXUhnY": {
+          "type": "about_card",
+          "settings": {
+            "card_image": "shopify://shop_images/Hands-On_Projects_to_Get_Job_Ready.png",
+            "card_title": "Hands-On Projects to Get Job Ready",
+            "card_description": "Work on real-world problems and case studies",
+            "border_color": "#00d7b9"
+          }
+        },
+        "about_card_LAmdMt": {
+          "type": "about_card",
+          "settings": {
+            "card_image": "shopify://shop_images/Round_the_Clock_Support.png",
+            "card_title": "Round the Clock Support",
+            "card_description": "Your cohort manager is always available to help you at any time throughout your learning journey.",
+            "border_color": "#ffdc00"
+          }
+        }
+      },
+      "block_order": [
+        "about_card_XaLypN",
+        "about_card_7fYhwV",
+        "about_card_bXUhnY",
+        "about_card_LAmdMt"
+      ],
+      "name": "SA About Products Section",
+      "settings": {
+        "section_title": "Why Our Programs Stand Out",
+        "section_bg_color": "#ffffff",
+        "title_color": "#0000a0",
+        "card_bg_color": "#ffffff",
+        "card_title_color": "#3c3c3c",
+        "card_description_color": "#3c3c3c"
+      }
+    },
+    "sa_business_section_G3rLNK": {
+      "type": "sa-business-section",
+      "blocks": {
+        "trusted_logo_fzQHti": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/BCG.png"
+          }
+        },
+        "trusted_logo_akh4mp": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Dell.png"
+          }
+        },
+        "trusted_logo_wUYVTY": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Amazon.png"
+          }
+        },
+        "trusted_logo_BhN8AC": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Vodafone.png"
+          }
+        },
+        "trusted_logo_Rxn6DX": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/HP.png"
+          }
+        },
+        "trusted_logo_wfwQYA": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Bosch.png"
+          }
+        },
+        "trusted_logo_7cAi7q": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Mphasis.png"
+          }
+        },
+        "trusted_logo_xmdwN3": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/AIRBUS.png"
+          }
+        },
+        "trusted_logo_xMTJkG": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/The_World_Bank.png"
+          }
+        },
+        "trusted_logo_38tnEH": {
+          "type": "trusted_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Cisco.png"
+          }
+        }
+      },
+      "block_order": [
+        "trusted_logo_fzQHti",
+        "trusted_logo_akh4mp",
+        "trusted_logo_wUYVTY",
+        "trusted_logo_BhN8AC",
+        "trusted_logo_Rxn6DX",
+        "trusted_logo_wfwQYA",
+        "trusted_logo_7cAi7q",
+        "trusted_logo_xmdwN3",
+        "trusted_logo_xMTJkG",
+        "trusted_logo_38tnEH"
+      ],
+      "name": "NXT Business Section",
+      "settings": {
+        "subheading": "For Business",
+        "heading": "Simplilearn Learning Hub+",
+        "description": "Get a learning library with unlimited live and interactive classes for your organisation, offering 700+ monthly classes across AI, technology, data, cloud, and other digital skills.",
+        "button_text": "Explore Our Solutions",
+        "button_link": "shopify://collections/all",
+        "trusted_label": "<p>Trusted by Digital Leaders and Practitioners from 100+ Fortune 500 Companies</p>",
+        "banner_image": "shopify://shop_images/business-banner.webp",
+        "stats_number": "30%+",
+        "stats_text": "revenue growth driving performance",
+        "padding_top": 76,
+        "padding_bottom": 124,
+        "background_color": "#00d7b9",
+        "color_scheme": ""
+      }
+    },
+    "sa_cta_section_WKqcfz": {
+      "type": "sa-cta-section",
+      "name": "SA CTA Section",
+      "settings": {
+        "title": "Level Up Your Skillset with Free,Industry-Focused Courses.",
+        "button_text": "Explore 400+ Free Courses",
+        "button_link": "shopify://collections/all",
+        "background_color": "#0000a0",
+        "show_image": true,
+        "image": "shopify://shop_images/Group_35.png",
+        "image_position": "right",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#3c3c3c",
+        "button_hover_bg_color": "#f0f0f0",
+        "section_padding": 100,
+        "content_padding": 85,
+        "min_height": 350,
+        "image_width": 430,
+        "image_height": 300,
+        "border_radius": 0
+      }
     }
   },
   "order": [
-    "hero_slider_BnbDQN"
+    "hero_slider_BnbDQN",
+    "sa_courses_section_98XzbH",
+    "sa_partnership_section_XCwUr6",
+    "sa_trust_section_ANdfP7",
+    "sa_statistics_section_fEREr8",
+    "sa_about_product_section_wPmaV4",
+    "sa_business_section_G3rLNK",
+    "sa_cta_section_WKqcfz"
   ]
 }

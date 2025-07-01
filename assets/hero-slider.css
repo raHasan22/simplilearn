@@ -101,3 +101,30 @@
 .nxt-hero__slider .nxt-slider-btn::before {
   display: none;
 }
+@media (max-width: 767px) {
+  .nxt-hero__slider-subheading {
+    font-size: 24px;
+  }
+  .nxt-hero__slider-heading {
+    font-size: 40px;
+  }
+  .nxt-hero__slider-description {
+    font-size: 16px;
+  }
+  .nxt-hero__slider-button {
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0px 40px;
+  }
+  .nxt-hero__slider .nxt-slider-btn {
+    width: 35px;
+    height: 35px;
+    bottom: 20px;
+  }
+  .nxt-hero__slider .nxt-prev-arrow {
+    right: 65px;
+  }
+  .nxt-hero__slider .nxt-next-arrow {
+    right: 15px;
+  }
+}

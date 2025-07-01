@@ -1,0 +1,333 @@
+<section class="rh-about-products-section">
+  <div class="rh-container">
+    {% if section.settings.section_title != blank %}
+      <h2 class="sec-title">{{ section.settings.section_title }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="rh-about-cards">
+        {% for block in section.blocks %}
+          <div class="rh-about-card" {{ block.shopify_attributes }}>
+            {% if block.settings.card_image != blank %}
+              <div class="rh-about-card-image">
+                <img
+                  src="{{ block.settings.card_image | image_url: width: 600 }}"
+                  alt="{{ block.settings.card_image.alt | default: block.settings.card_title }}"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                >
+              </div>
+            {% endif %}
+            <div class="rh-about-card-content">
+              <div class="rh-about-card-text">
+                {% if block.settings.card_title != blank %}
+                  <h3 class="rh-about-card-title">{{ block.settings.card_title }}</h3>
+                {% endif %}
+                {% if block.settings.card_description != blank %}
+                  <p class="rh-about-card-description">{{ block.settings.card_description }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% style %}
+  .rh-about-products-section{
+      padding: clamp(60px, 10vw, 120px) clamp(16px, 4vw, 24px);
+      background: {{ section.settings.section_bg_color | default: '#ffffff' }};
+  }
+  .rh-about-products-section .rh-container{
+      max-width: 1302px;
+      margin: 0 auto;
+      width: 100%;
+  }
+  .rh-about-products-section .sec-title{
+      text-align: center;
+      color: {{ section.settings.title_color | default: '#0000A0' }};
+      font-size: clamp(24px, 5vw, 48px);
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 clamp(30px, 6vw, 60px);
+  }
+
+  /* About Cards Grid */
+  .rh-about-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+      gap: clamp(20px, 3vw, 40px);
+      align-items: start;
+  }
+
+  /* Individual About Card */
+  .rh-about-card {
+      display: flex;
+      flex-direction: column;
+      background: {{ section.settings.card_bg_color | default: '#ffffff' }};
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 100%;
+  }
+
+  .rh-about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Card Image */
+  .rh-about-card-image {
+      width: 100%;
+      height: clamp(200px, 25vw, 320px);
+      overflow: hidden;
+      position: relative;
+  }
+
+  .rh-about-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+  }
+
+  /* Card Content */
+  .rh-about-card-content {
+      background: {{ section.settings.card_bg_color | default: '#ffffff' }};
+      padding: clamp(20px, 4vw, 40px);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: clamp(120px, 15vw, 180px);
+  }
+
+  /* Dynamic border colors for each card */
+  {% for block in section.blocks %}
+      .rh-about-card:nth-child({{ forloop.index }}) .rh-about-card-content {
+          border-bottom: clamp(4px, 0.6vw, 8px) solid {{ block.settings.border_color | default: '#FF1414' }};
+      }
+  {% endfor %}
+
+  .rh-about-card-text {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(12px, 2vw, 20px);
+      height: 100%;
+  }
+
+  .rh-about-card-title {
+      color: {{ section.settings.card_title_color | default: '#3C3C3C' }};
+      font-size: clamp(18px, 3.5vw, 32px);
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0;
+  }
+
+  .rh-about-card-description {
+      color: {{ section.settings.card_description_color | default: '#3C3C3C' }};
+      font-size: clamp(14px, 2.2vw, 22px);
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 1;
+  }
+
+  /* Responsive Design for About Cards */
+
+  /* Tablet and Small Desktop - Ensure proper grid behavior */
+  @media (max-width: 1024px) and (min-width: 769px) {
+      .rh-about-cards {
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+      }
+  }
+
+  /* Tablet Portrait and Mobile - Single column layout */
+  @media (max-width: 768px) {
+      .rh-about-products-section {
+          padding: clamp(50px, 8vw, 80px) 20px;
+      }
+
+      .rh-about-products-section .sec-title {
+          font-size: clamp(28px, 6vw, 36px);
+          margin-bottom: clamp(30px, 5vw, 40px);
+      }
+
+      .rh-about-cards {
+          grid-template-columns: 1fr;
+          max-width: 600px;
+          margin: 0 auto;
+      }
+  }
+
+  /* Small Mobile Adjustments */
+  @media (max-width: 480px) {
+      .rh-about-products-section {
+          padding: clamp(40px, 8vw, 60px) clamp(15px, 4vw, 20px);
+      }
+
+      .rh-about-cards {
+          max-width: 100%;
+      }
+
+      .rh-about-card-image {
+          height: clamp(180px, 35vw, 250px);
+      }
+
+      .rh-about-card-content {
+          min-height: clamp(100px, 20vw, 140px);
+      }
+  }
+
+  /* Extra Small Mobile - Minimum constraints */
+  @media (max-width: 360px) {
+      .rh-about-products-section {
+          padding: clamp(30px, 8vw, 50px) clamp(12px, 4vw, 16px);
+      }
+
+      .rh-about-card-image {
+          height: clamp(160px, 40vw, 200px);
+      }
+
+      .rh-about-card-title {
+          font-size: clamp(16px, 4.5vw, 20px);
+      }
+
+      .rh-about-card-description {
+          font-size: clamp(13px, 3.5vw, 16px);
+          line-height: 1.4;
+      }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+    "name": "About Products Section",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Settings"
+        },
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Section Title",
+            "default": "Why Our Programs Stand Out"
+        },
+        {
+            "type": "color",
+            "id": "section_bg_color",
+            "label": "Section Background Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title Color",
+            "default": "#0000A0"
+        },
+        {
+            "type": "header",
+            "content": "Card Settings"
+        },
+        {
+            "type": "color",
+            "id": "card_bg_color",
+            "label": "Card Background Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "card_title_color",
+            "label": "Card Title Color",
+            "default": "#3C3C3C"
+        },
+        {
+            "type": "color",
+            "id": "card_description_color",
+            "label": "Card Description Color",
+            "default": "#3C3C3C"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "about_card",
+            "name": "About Card",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "card_image",
+                    "label": "Card Image"
+                },
+                {
+                    "type": "text",
+                    "id": "card_title",
+                    "label": "Card Title",
+                    "default": "Card Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "card_description",
+                    "label": "Card Description",
+                    "default": "Card description text goes here"
+                },
+                {
+                    "type": "color",
+                    "id": "border_color",
+                    "label": "Bottom Border Color",
+                    "default": "#FF1414"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "SA About Products Section",
+            "blocks": [
+                {
+                    "type": "about_card",
+                    "settings": {
+                        "card_title": "Cutting Edge Curriculum",
+                        "card_description": "Co-created with the world's top universities and companies",
+                        "border_color": "#FF1414"
+                    }
+                },
+                {
+                    "type": "about_card",
+                    "settings": {
+                        "card_title": "Taught Live by Industry Experts",
+                        "card_description": "Learn live from practitioners with real world experience",
+                        "border_color": "#FF8200"
+                    }
+                },
+                {
+                    "type": "about_card",
+                    "settings": {
+                        "card_title": "Hands-On Projects to Get Job Ready",
+                        "card_description": "Work on real-world problems and case studies",
+                        "border_color": "#00D7B9"
+                    }
+                },
+                {
+                    "type": "about_card",
+                    "settings": {
+                        "card_title": "Round the Clock Support",
+                        "card_description": "Your cohort manager is always available to help you at any time throughout your learning journey.",
+                        "border_color": "#FFDC00"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

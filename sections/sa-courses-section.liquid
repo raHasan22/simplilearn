@@ -1,0 +1,929 @@
+<section class="rh-courses-section">
+  <div class="rh-container">
+    {% if section.settings.section_title != blank %}
+      <h2 class="sec-title">{{ section.settings.section_title }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="rh-courses-wrapper">
+        <div class="rh-courses-tabs">
+          <div class="rh-tab-sidebar">
+            <ul class="rh-tab-list">
+              {% for block in section.blocks %}
+                <li class="rh-tab-item {% if forloop.first %}active{% endif %}" {{ block.shopify_attributes }}>
+                  <a href="#" class="rh-tab-link" data-tab="tab-{{ forloop.index }}">
+                    {{ block.settings.tab_label | default: block.settings.collection.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="rh-tab-content-wrapper">
+            {% for block in section.blocks %}
+              <div class="rh-tab-content {% if forloop.first %}active{% endif %}" id="tab-{{ forloop.index }}">
+                {% if block.settings.collection != blank and block.settings.collection.products.size > 0 %}
+                  <div class="rh-courses-grid">
+                    {% assign products_limit = block.settings.products_count | default: 6 %}
+                    {% for product in block.settings.collection.products limit: products_limit %}
+                      <div class="rh-course-card">
+                        <div class="rh-course-image">
+                          {% if product.featured_image %}
+                            <img
+                              src="{{ product.featured_image | image_url: width: 1000 }}"
+                              alt="{{ product.featured_image.alt | default: product.title }}"
+                              loading="lazy"
+                              height="auto"
+                              width="auto"
+                            >
+                          {% else %}
+                            <div class="rh-placeholder-image">
+                              <span>{{ product.title | truncate: 20 }}</span>
+                            </div>
+                          {% endif %}
+                        </div>
+                        <div class="rh-course-info">
+                          <span class="rh-course-tag">{{ block.settings.course_tag | default: 'Courses' }}</span>
+                          <h3 class="rh-course-title">{{ product.title }}</h3>
+
+                          {% comment %} Extract custom fields from product metafields {% endcomment %}
+                          {% if product.metafields.custom.duration %}
+                            <p class="rh-course-duration">
+                              Duration: <span>{{ product.metafields.custom.duration }}</span>
+                            </p>
+                          {% elsif block.settings.default_duration %}
+                            <p class="rh-course-duration">
+                              Duration: <span>{{ block.settings.default_duration }}</span>
+                            </p>
+                          {% endif %}
+
+                          {% if product.metafields.custom.course_start %}
+                            <p class="rh-course-cohort">
+                              Course Starts: <span>{{ product.metafields.custom.course_start }}</span>
+                            </p>
+                          {% else %}
+                            <p class="rh-course-cohort">
+                              Course Starts: <span>{{ product.created_at | date: "%d %b'%y" }}</span>
+                            </p>
+                          {% endif %}
+
+                          <a href="{{ product.url }}" class="rh-course-btn">
+                            {{ block.settings.button_text | default: 'View Program' }}
+                          </a>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div class="rh-empty-state">
+                    <p>No products found in this collection. Please select a collection with products.</p>
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+      // Tab switching functionality
+  document.addEventListener('DOMContentLoaded', function() {
+      const tabLinks = document.querySelectorAll('.rh-tab-link');
+      const tabItems = document.querySelectorAll('.rh-tab-item');
+      const tabContents = document.querySelectorAll('.rh-tab-content');
+
+      // Function to switch tabs
+      function switchTab(targetTabId, clickedTabItem) {
+          // Remove active class from all tab items
+          tabItems.forEach(item => {
+              item.classList.remove('active');
+          });
+
+          // Hide all tab contents first
+          tabContents.forEach(content => {
+              content.classList.remove('active');
+              content.style.display = 'none';
+              content.style.opacity = '0';
+              content.style.visibility = 'hidden';
+          });
+
+          // Add active class to clicked tab item
+          clickedTabItem.classList.add('active');
+
+          // Show the target tab content with smooth transition
+          const targetContent = document.getElementById(targetTabId);
+          if (targetContent) {
+              targetContent.classList.add('active');
+              targetContent.style.display = 'block';
+              targetContent.style.visibility = 'visible';
+
+              // Trigger opacity transition after display is set
+              setTimeout(() => {
+                  targetContent.style.opacity = '1';
+              }, 10);
+          }
+      }
+
+      // Add click event listeners to all tab links
+      tabLinks.forEach((link) => {
+          link.addEventListener('click', function(e) {
+              e.preventDefault();
+
+              const targetTabId = this.getAttribute('data-tab');
+              const clickedTabItem = this.parentElement;
+
+              switchTab(targetTabId, clickedTabItem);
+          });
+      });
+
+      // Initialize: Make sure the first tab is active on page load
+      const firstTabItem = document.querySelector('.rh-tab-item');
+      const firstTabLink = firstTabItem ? firstTabItem.querySelector('.rh-tab-link') : null;
+
+      if (firstTabLink) {
+          // Ensure first tab item is active
+          firstTabItem.classList.add('active');
+
+          // Get the target tab content and make it active
+          const firstTabId = firstTabLink.getAttribute('data-tab');
+          const firstContent = document.getElementById(firstTabId);
+          if (firstContent) {
+              firstContent.classList.add('active');
+          }
+      }
+
+      // Force a reflow to ensure styles are applied
+      setTimeout(() => {
+          const activeContent = document.querySelector('.rh-tab-content.active');
+          if (activeContent) {
+              activeContent.style.display = 'block';
+              activeContent.style.opacity = '1';
+              activeContent.style.visibility = 'visible';
+          }
+      }, 50);
+  });
+</script>
+
+{% style %}
+  .rh-courses-section {
+    padding: 50px 20px;
+    background: {{ section.settings.section_bg_color | default: '#ffffff' }};
+  }
+
+  .rh-courses-section .rh-container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .rh-courses-section .rh-container .sec-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+    color: {{ section.settings.title_color | default: '#0000A0' }};
+    margin: 0 0 50px;
+  }
+
+  /* Tab Section Styles */
+  .rh-courses-tabs {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  /* Left Sidebar */
+  .rh-tab-sidebar {
+    flex: 0 0 310px;
+    background: {{ section.settings.sidebar_bg_color | default: '#ffffff' }};
+    box-shadow: 0px 0px 10px 0px #0000001A;
+    padding: 32px;
+  }
+
+  .rh-tab-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .rh-tab-item {
+    margin-bottom: 8px;
+  }
+
+  .rh-tab-link {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    color: {{ section.settings.tab_text_color | default: '#3C3C3C' }};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    border: 0.75px solid #3C3C3C12;
+    transition: all 0.3s ease;
+  }
+
+  .rh-tab-item:hover .rh-tab-link {
+    background: #f5f5f5;
+    color: {{ section.settings.tab_hover_color | default: '#0000A0' }};
+  }
+
+  .rh-tab-item.active .rh-tab-link {
+    background: {{ section.settings.tab_active_bg_color | default: '#0000a0' }};
+    border: 0.75px solid {{ section.settings.tab_active_bg_color | default: '#0000A0' }};
+    color: {{ section.settings.tab_active_text_color | default: '#ffffff' }};
+    font-weight: 400;
+  }
+
+  /* Main Content Area */
+  .rh-tab-content-wrapper {
+    flex: 1;
+  }
+
+  .rh-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  /* Tab Content Sections */
+  .rh-tab-content {
+    display: none !important;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+  }
+
+  .rh-tab-content.active {
+    display: block !important;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Empty State */
+  .rh-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    font-family: "Inter", sans-serif;
+  }
+
+  /* Placeholder Image */
+  .rh-placeholder-image {
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+  }
+
+  /* Course Card Styles */
+  .rh-course-card {
+    background: {{ section.settings.card_bg_color | default: '#ffffff' }};
+    overflow: hidden;
+    border: 1px solid #3C3C3C0D;
+    box-shadow: 2px 4px 8px 0px #3C3C3C0D;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .rh-course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .rh-course-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .rh-course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .rh-course-info {
+    padding: 20px;
+  }
+
+  .rh-course-tag {
+    display: inline-block;
+    background: {{ section.settings.tag_bg_color | default: '#0000A0' }};
+    color: {{ section.settings.tag_text_color | default: '#ffffff' }};
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 12px;
+    font-family: "Inter", sans-serif;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+  }
+
+  .rh-course-title {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: {{ section.settings.card_title_color | default: '#3C3C3C' }};
+    margin: 0 0 12px;
+    line-height: 24px;
+    height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .rh-course-duration,
+  .rh-course-cohort {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: {{ section.settings.card_text_color | default: '#3C3C3C' }};
+    margin: 0 0 13px;
+    font-weight: 400;
+  }
+  .rh-course-duration span,
+  .rh-course-cohort span{
+    font-weight: 600;
+  }
+
+  .rh-course-btn {
+    background: transparent;
+    border: 1px solid {{ section.settings.button_border_color | default: '#3C3C3C' }};
+    color: {{ section.settings.button_text_color | default: '#3C3C3C' }};
+    padding: 10px 20px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 7px;
+    width: 100%;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .rh-course-btn:hover {
+    border-color: {{ section.settings.button_hover_color | default: '#0000A0' }};
+    color: {{ section.settings.button_hover_color | default: '#0000A0' }};
+    text-decoration: none;
+  }
+
+  /* Responsive Design */
+
+  /* Desktop/Laptop - 1024px to 1199px */
+  @media (max-width: 1199px) {
+    .rh-tab-sidebar {
+      flex: 0 0 280px;
+      padding: 30px;
+      box-shadow: 0px 0px 9px 0px #0000001A;
+    }
+
+    .rh-courses-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .rh-courses-tabs {
+      gap: 25px;
+    }
+
+    .rh-tab-link {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 18px;
+      border: 0.75px solid #3C3C3C12;
+    }
+
+    .rh-course-title {
+      font-family: "Inter", sans-serif;
+      font-size: 19px;
+      line-height: 23px;
+      height: 46px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  /* Tablet Landscape - 768px to 1023px */
+  @media (max-width: 1023px) {
+    .rh-tab-sidebar {
+      flex: 0 0 260px;
+      padding: 28px;
+      box-shadow: 0px 0px 8px 0px #0000001A;
+    }
+
+    .rh-courses-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .rh-courses-tabs {
+      gap: 20px;
+    }
+
+    .rh-tab-link {
+      padding: 10px 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 17px;
+      border: 0.75px solid #3C3C3C12;
+    }
+
+    .rh-course-title {
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      line-height: 22px;
+      height: 44px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  /* Tablet Portrait - 768px and below */
+  @media (max-width: 768px) {
+    .rh-courses-tabs {
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .rh-tab-sidebar {
+      flex: none;
+      width: 100%;
+      order: 1;
+      padding: 24px;
+      box-shadow: 0px 0px 8px 0px #0000001A;
+    }
+
+    .rh-tab-content-wrapper {
+      order: 2;
+      margin: 0 auto;
+    }
+
+    .rh-tab-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #cccccc transparent;
+    }
+
+    .rh-tab-list::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .rh-tab-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+
+    .rh-tab-list::-webkit-scrollbar-thumb {
+      background: #cccccc;
+      border-radius: 3px;
+    }
+
+    .rh-tab-list::-webkit-scrollbar-thumb:hover {
+      background: {{ section.settings.tab_active_bg_color | default: '#0000A0' }};
+    }
+
+    .rh-tab-item {
+      margin-bottom: 0;
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .rh-tab-link {
+      padding: 10px 20px;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      white-space: nowrap;
+      border: 0.75px solid #3C3C3C12;
+      min-width: max-content;
+    }
+
+    .rh-courses-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .rh-course-image {
+      height: 160px;
+    }
+
+    .rh-course-title {
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      line-height: 22px;
+      height: 44px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  /* Mobile Landscape - 576px to 767px */
+  @media (max-width: 576px) {
+    .rh-courses-section {
+      padding: 40px 20px;
+    }
+
+    .rh-courses-section .rh-container .sec-title {
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
+
+    .rh-tab-sidebar {
+      padding: 20px;
+      box-shadow: 0px 0px 6px 0px #0000001A;
+    }
+
+    .rh-courses-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .rh-course-image {
+      height: 180px;
+    }
+
+    .rh-course-info {
+      padding: 18px;
+    }
+
+    .rh-course-title {
+      font-family: "Inter", sans-serif;
+      font-size: 17px;
+      line-height: 21px;
+      height: 42px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .rh-tab-link {
+      padding: 8px 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      border: 0.75px solid #3C3C3C12;
+    }
+  }
+
+  /* Mobile Portrait - 480px and below */
+  @media (max-width: 480px) {
+    .rh-courses-section {
+      padding: 30px 15px;
+    }
+
+    .rh-courses-section .rh-container .sec-title {
+      font-size: 28px;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .rh-courses-tabs {
+      gap: 20px;
+    }
+
+    .rh-tab-sidebar {
+      padding: 18px;
+      box-shadow: 0px 0px 5px 0px #0000001A;
+    }
+
+    .rh-tab-list {
+      gap: 6px;
+    }
+
+    .rh-tab-link {
+      padding: 8px 14px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      border: 0.75px solid #3C3C3C12;
+    }
+
+    .rh-courses-grid {
+      gap: 16px;
+    }
+
+    .rh-course-image {
+      height: 160px;
+    }
+
+    .rh-course-info {
+      padding: 15px;
+    }
+
+    .rh-course-title {
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      margin-bottom: 8px;
+      line-height: 20px;
+      height: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .rh-course-duration,
+    .rh-course-cohort {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .rh-course-tag {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      padding: 3px 10px;
+      margin-bottom: 16px;
+      text-transform: capitalize;
+    }
+
+    .rh-course-btn {
+      padding: 8px 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+  }
+
+  /* Extra Small Mobile - 360px and below */
+  @media (max-width: 360px) {
+    .rh-courses-section {
+      padding: 25px 12px;
+    }
+
+    .rh-courses-section .rh-container .sec-title {
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+
+    .rh-tab-sidebar {
+      padding: 16px;
+      box-shadow: 0px 0px 4px 0px #0000001A;
+    }
+
+    .rh-tab-link {
+      padding: 6px 12px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      border: 0.75px solid #3C3C3C12;
+    }
+
+    .rh-course-info {
+      padding: 12px;
+    }
+
+    .rh-course-title {
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      line-height: 19px;
+      height: 38px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .rh-course-btn {
+      padding: 6px 14px;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "SA Courses Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Explore our top programs"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "header",
+      "content": "Tab Settings"
+    },
+    {
+      "type": "color",
+      "id": "sidebar_bg_color",
+      "label": "Sidebar Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_text_color",
+      "label": "Tab Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "tab_hover_color",
+      "label": "Tab Hover Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_bg_color",
+      "label": "Active Tab Background Color",
+      "default": "#0000a0"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_text_color",
+      "label": "Active Tab Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Tag Background Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button Hover Color",
+      "default": "#0000A0"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "course_tab",
+      "name": "Course Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab Label",
+          "info": "Leave empty to use collection title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "range",
+          "id": "products_count",
+          "label": "Number of Products to Show",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "default": 6
+        },
+        {
+          "type": "text",
+          "id": "course_tag",
+          "label": "Course Tag",
+          "default": "Courses"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "View Program"
+        },
+        {
+          "type": "header",
+          "content": "Default Duration (when product metafield is empty)"
+        },
+        {
+          "type": "text",
+          "id": "default_duration",
+          "label": "Default Duration",
+          "placeholder": "6 Months"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SA Courses Section",
+      "blocks": [
+        {
+          "type": "course_tab",
+          "settings": {
+            "tab_label": "Most Popular",
+            "course_tag": "Courses",
+            "button_text": "View Program",
+            "products_count": 6,
+            "default_duration": "6 Months"
+          }
+        },
+        {
+          "type": "course_tab",
+          "settings": {
+            "tab_label": "AI & Machine Learning",
+            "course_tag": "Courses",
+            "button_text": "View Program",
+            "products_count": 6,
+            "default_duration": "8 Months"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

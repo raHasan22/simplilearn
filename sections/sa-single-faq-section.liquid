@@ -1,0 +1,326 @@
+<style>
+  .srs-single-page {
+      padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px 20px;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #151515;
+  }
+
+  .srs-single-page-container {
+      max-width: 1220px;
+      margin: 0 auto;
+  }
+
+  .faq-title {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #151515;
+      text-align: left;
+      color: {{ section.settings.title_color }};
+      font-size: {{ section.settings.title_size }}rem;
+      font-weight: 800;
+      margin-bottom: 50px;
+      line-height: 1.2;
+  }
+
+  .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-right: 123px;
+  }
+
+  .faq-item {
+      border-bottom: 1px solid rgba(194, 194, 194, 0.2);
+  }
+
+  .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      gap: 20px;
+  }
+
+  .question-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+  }
+
+  .question-number {
+      color: #151515;
+      font-size: 1.2rem;
+      font-weight: 400;
+      min-width: 40px;
+  }
+
+  .question-text {
+      color: {{ section.settings.question_color }};
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      flex: 1;
+  }
+
+  .toggle-button {
+      width: 40px;
+      height: 40px;
+      background: {{ section.settings.button_color }};
+      border: none;
+      /* border-radius: 8px; */
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+  }
+
+  .toggle-button:hover {
+      transform: scale(1.05);
+  }
+
+  .toggle-button.active {
+      transform: rotate(45deg);
+  }
+
+  .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .faq-answer.active {
+      max-height: 300px;
+      padding: 20px 0 25px 20px;
+  }
+
+  .answer-text {
+      color: {{ section.settings.answer_color }};
+      font-size: 1rem;
+      line-height: 1.6;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+      .srs-single-page {
+          padding: 20px 10px;
+      }
+
+      .srs-single-page-container {
+          padding: 30px 15px;
+      }
+
+      .faq-title {
+          font-size: 1.5rem;
+          margin-bottom: 30px;
+      }
+
+      .faq-question {
+          padding: 20px 0;
+      }
+
+      .question-content {
+          gap: 15px;
+      }
+
+      .question-number {
+          font-size: 1rem;
+          min-width: 30px;
+      }
+
+      .question-text {
+          font-size: 1rem;
+      }
+
+      .toggle-button {
+          width: 35px;
+          height: 35px;
+          font-size: 1rem;
+      }
+
+      .faq-answer.active {
+          padding: 15px 0 20px 45px;
+      }
+  }
+
+  @media (max-width: 480px) {
+      .srs-single-page-container {
+          padding: 20px 10px;
+      }
+
+      .faq-title {
+          font-size: 1.3rem;
+      }
+
+      .question-content {
+          gap: 10px;
+      }
+
+      .question-text {
+          font-size: 0.95rem;
+      }
+
+      .faq-answer.active {
+          padding: 15px 0 20px 40px;
+      }
+  }
+</style>
+
+{%- comment -%} Get FAQ data from product metafields {%- endcomment -%}
+{%- assign faq_questions = product.metafields.custom.faq_question.value -%}
+{%- assign faq_answers = product.metafields.custom.faq_answer.value -%}
+
+{%- if faq_questions and faq_answers and faq_questions.size > 0 -%}
+  <section class="srs-single-page">
+    <div class="srs-single-page-container">
+      <h1 class="faq-title">{{ section.settings.title }}</h1>
+
+      <div class="faq-list">
+        {%- for question in faq_questions -%}
+          {%- assign question_index = forloop.index -%}
+          {%- assign answer = faq_answers[forloop.index0] -%}
+
+          {%- if question and answer -%}
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleAccordion(this)">
+                <div class="question-content">
+                  <div class="question-number">{{ question_index | prepend: '0' | slice: -2, 2 }}</div>
+                  <div class="question-text">{{ question }}</div>
+                </div>
+                <button class="toggle-button">+</button>
+              </div>
+              <div class="faq-answer">
+                <div class="answer-text">
+                  {{ answer }}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleAccordion(element) {
+        const answer = element.nextElementSibling;
+        const button = element.querySelector('.srs-single-page .toggle-button');
+        const isActive = element.classList.contains('active');
+
+        // Close all other accordion items
+        const allQuestions = document.querySelectorAll('.srs-single-page .faq-question');
+        allQuestions.forEach(question => {
+            question.classList.remove('active');
+            question.nextElementSibling.classList.remove('active');
+            question.querySelector('.srs-single-page .toggle-button').classList.remove('active');
+        });
+
+        // Toggle current item
+        if (!isActive) {
+            element.classList.add('active');
+            answer.classList.add('active');
+            button.classList.add('active');
+        }
+    }
+
+    // Add keyboard accessibility
+    document.addEventListener('DOMContentLoaded', function() {
+        const questions = document.querySelectorAll('.srs-single-page .faq-question');
+
+        questions.forEach(question => {
+            question.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleAccordion(this);
+                }
+            });
+
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('role', 'button');
+            question.setAttribute('aria-expanded', 'false');
+        });
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Single Product FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "FAQ Title",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 1.2,
+      "max": 3,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Title Font Size",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Toggle Button Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question Text Color",
+      "default": "#151515"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Text Color",
+      "default": "#666"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "Single Product FAQ",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

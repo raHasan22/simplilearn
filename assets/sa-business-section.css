@@ -20,7 +20,7 @@
 
 .nxt-busines__content {
   flex: 1;
-  max-width: 584px;
+  max-width: 605px;
   z-index: 2;
 }
 
@@ -38,6 +38,7 @@
   line-height: 1.43;
   margin: 0 0 25px;
   font-family: "Inter", sans-serif;
+  text-wrap: balance;
 }
 
 .nxt-busines__description {
