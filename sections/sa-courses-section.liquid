@@ -46,9 +46,9 @@
                           <h3 class="rh-course-title">{{ product.title }}</h3>
 
                           {% comment %} Extract custom fields from product metafields {% endcomment %}
-                          {% if product.metafields.custom.duration %}
+                          {% if product.metafields.custom.course_duration %}
                             <p class="rh-course-duration">
-                              Duration: <span>{{ product.metafields.custom.duration }}</span>
+                              Duration: <span>{{ product.metafields.custom.course_duration }}</span>
                             </p>
                           {% elsif block.settings.default_duration %}
                             <p class="rh-course-duration">

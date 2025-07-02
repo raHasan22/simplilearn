@@ -1,0 +1,660 @@
+<style>
+      .srs-single-hero{
+          background: #0000A0;
+          font-family: 'Inter', Arial, sans-serif;
+      }
+    .srs-single-hero p{
+      margin: 0
+  }
+      .srs-single-hero .container {
+        max-width: 1242px;
+        margin: 0 auto;
+        padding: 32px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: space-between;
+        align-items: center;
+
+      }
+      .srs-single-hero .main-content {
+        flex: 1 1 400px;
+        min-width: 0;
+      }
+      .srs-single-hero .breadcrumbs {
+        font-size: 14px;
+        color: rgba(255,255,255,0.7);
+        margin-bottom: 24px;
+      }
+      .srs-single-hero .breadcrumbs a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .srs-single-hero .hero-title {
+        font-size: 35px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        margin-bottom: 16px;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        color: #fff;
+      }
+      .srs-single-hero .hero-subtitle {
+        font-size: 19px;
+        margin-bottom: 24px;
+        color: #fff;
+      }
+      .srs-single-hero .rating-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 33px;
+        color: #EDF2F5;
+        font-size: 16px;
+      }
+      .srs-single-hero .stars {
+        display: flex;
+        gap: 2px;
+      }
+      .srs-single-hero .star {
+        color: #F4C150;
+        font-size: 1.1em;
+      }
+      .srs-single-hero .level {
+        font-size: 16px;
+        color: #EDF2F5;
+      }
+      .srs-single-hero .hero-desc {
+        color: #E4E7EC;
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 19px;
+      }
+      .srs-single-hero .partner-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: #fff;
+      }
+      .srs-single-hero .partner-logo {
+        /* height: 40px;
+        width: 178px; */
+        /* background: #fff;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #222;
+        font-weight: bold;
+        font-size: 19px;
+        padding: 0 16px; */
+      }
+      /* Sidebar Card */
+      .srs-single-hero .sidebar {
+        flex: 0 1 350px;
+        min-width: 300px;
+        max-width: 100%;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(17,121,239,0.15);
+        color: #222;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        /* gap: 1.5rem; */
+        border: 1px solid #D2D6DE;
+        margin-bottom: -241px;
+      }
+      .srs-single-hero  .sidebar .video-thumb {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #222 center/cover no-repeat;
+        border-radius: 6px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 11px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      .srs-single-hero  .sidebar .video-thumb:hover {
+        transform: scale(1.02);
+      }
+      .srs-single-hero  .sidebar .play-btn {
+        width: 56px;
+        height: 56px;
+        background: #FFFFFF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      }
+      /* .sidebar .play-btn svg {
+        width: 32px;
+        height: 32px;
+        fill: #fff;
+      } */
+      .srs-single-hero  .sidebar .video-label {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      }
+      .srs-single-hero  .sidebar .price {
+        color: #0000A0;
+        font-weight: 500;
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: 0 25px 16px;
+      }
+      .srs-single-hero  .sidebar .cta-btn {
+        max-width: 300px;
+         width: 100%;
+        background: #0000A0;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 16px 0;
+        cursor: pointer;
+        margin:  0 23px 40px;
+        transition: background 0.2s;
+        font-family: "Inter", sans-serif;
+      }
+      .srs-single-hero  .sidebar .cta-btn:hover {
+        background: #000080;
+      }
+      .srs-single-hero  .sidebar .includes {
+        color: #51565E;
+        font-size: 16px;
+        margin: 0 25px 19px;
+      }
+      .srs-single-hero  .sidebar .features {
+        display: flex;
+        flex-direction: column;
+        gap: 19px;
+        margin: 0 25px ;
+        padding-bottom: 31px;
+      }
+      .srs-single-hero  .sidebar .feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        color: #3C3C3C;
+      }
+      .srs-single-hero  .sidebar .feature-icon {
+        font-size: 24px;
+        color: #1179EF;
+        margin-top: 2px;
+      }
+      .srs-single-hero  .sidebar .feature-title {
+        font-weight: 700;
+        font-size: 17px;
+      }
+      .srs-single-hero  .sidebar .feature-desc {
+        color: #51565E;
+        font-size: 14px;
+        margin-top: 8px;
+      }
+      @media (max-width: 900px) {
+        .srs-single-hero .container {
+          flex-direction: column;
+          gap: 40px;
+        }
+        .srs-single-hero .sidebar {
+          max-width: 800px;
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+      /* Video Modal Styles */
+      .video-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .video-modal.active {
+        display: flex;
+        opacity: 1;
+      }
+      .video-modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        aspect-ratio: 16/9;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .video-modal-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 10000;
+      }
+      .video-modal-close:hover {
+        color: #ccc;
+      }
+      .video-modal iframe,
+      .video-modal video {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      @media (max-width: 600px) {
+        .srs-single-hero .container {
+          padding: 16px 3px;
+        }
+        .srs-single-hero .main-content {
+          font-size: 14px;
+        }
+        .srs-single-hero .sidebar {
+          padding: 19px 11px;
+        }
+        .srs-single-hero .hero-title {
+          font-size: 21px;
+        }
+        .video-modal-content {
+          width: 95%;
+        }
+      }
+      .stars > svg {
+      width: 90px;
+    }
+    .stars .rating__background {
+      fill: #bfc3ca;
+      stroke: red;
+      stroke-width: 1;
+      height: 100%;
+      width: 100%;
+    }
+    .stars .rating__value {
+      fill: #F4C150;
+      height: 100%;
+    }
+</style>
+
+<div class="srs-single-hero">
+  <div class="container">
+    <main class="main-content">
+      <nav class="breadcrumbs">
+        <a href="/">Home</a> &gt;
+        {% if collection %}
+          <a href="{{ collection.url }}" style="color:rgba(255,255,255,0.7)">{{ collection.title }}</a> &gt;
+        {% endif %}
+        <span style="color:rgba(255,255,255,0.7)">{{ product.title }}</span>
+      </nav>
+      <h1 class="hero-title">
+        {% if section.settings.show_prefix != false %}Get Started with {% endif -%}
+        {{- product.title }}
+      </h1>
+      <div class="hero-subtitle">
+        {{ product.metafields.custom.hero_sub_title | default: 'Free Databricks for Generative AI Course' }}
+      </div>
+      <div class="rating-row">
+        {{ product.metafields.custom.course_rating.value | default: '4.5' }}
+        <span class="stars">
+          {% assign rating = product.metafields.custom.course_rating.value %}
+          {% assign rating_percentage = rating | times: 20 %}
+          <svg viewBox="0 0 1000 200" class="rating">
+            <defs>
+              <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66"></polygon>
+              <clipPath id="stars">
+                <use xlink:href="#star"></use>
+                <use xlink:href="#star" x="20%"></use>
+                <use xlink:href="#star" x="40%"></use>
+                <use xlink:href="#star" x="60%"></use>
+                <use xlink:href="#star" x="80%"></use>
+              </clipPath>
+            </defs>
+            <rect class="rating__background" clip-path="url(#stars)"></rect>
+            <rect width="{{ rating_percentage }}%" class="rating__value" clip-path="url(#stars)"></rect>
+          </svg>
+        </span>
+        <span style="font-size:1.2em; color:#DDE6ED;">•</span>
+        <span class="level">{{ product.metafields.custom.course_level | default: 'Advanced' }} Level</span>
+      </div>
+      <div class="hero-desc">
+        {{
+          product.description
+          | default: 'The Databricks for Generative AI course teaches you how to leverage Databricks to build, train, and deploy Generative AI models. Learn to process large datasets, optimize performance, and integrate AI-driven solutions into business workflows using Apache Spark and Delta Lake. This course equips you with essential skills to implement AI in real-world applications.'
+        }}
+      </div>
+      <div class="partner-row">
+        Content partner
+        <img
+          src="{{ product.metafields.custom.content_partner_logo | image_url: width: 178  }}"
+          alt="databricks"
+          class="partner-logo"
+          width="auto"
+          height="auto"
+        >
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div
+        class="video-thumb"
+        style="background-image: url('{{ product.metafields.custom.course_video_thumbnail | image_url: width: 352  }}')"
+        onclick="openVideoModal()"
+      >
+        <span class="play-btn">
+          <svg
+            width="12"
+            height="20"
+            viewBox="0 0 12 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M11.3209 10.1174L0.483887 19.6804V0.555435L11.3209 10.1174Z"
+                fill="#1179EF" />
+          </svg>
+        </span>
+        <span class="video-label">Watch Intro Video</span>
+      </div>
+      <div class="price">
+        {% if product.price == 0 %}
+          FREE
+        {% else %}
+          {{ product.price | money }}
+        {% endif %}
+      </div>
+      <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form" id="addToCartForm">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="cta-btn" id="addToCartBtn">Start Learning</button>
+      </form>
+      <div class="includes">This Course Includes</div>
+      <div class="features">
+        <div class="feature">
+          <span class="feature-icon">
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_40_12975)">
+                  <path fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M20.888 8.27846C19.278 5.11746 16.01 3.11145 12.392 3.11145C6.96803 3.11145 2.56104 7.59445 2.56104 13.1115C2.56104 18.6285 6.96803 23.1115 12.392 23.1115C17.817 23.1115 22.223 18.6285 22.223 13.1115C22.223 12.8274 21.997 12.5974 21.717 12.5974H20.655L20.548 12.6075C20.409 12.6365 20.285 12.7244 20.212 12.8524C20.12 13.0124 20.12 13.2105 20.212 13.3705C20.304 13.5305 20.474 13.6275 20.656 13.6255H21.231L21.19 14.0285C20.957 15.9035 20.177 17.6964 18.923 19.1194L18.584 18.6794L18.513 18.6185C18.413 18.5465 18.289 18.5124 18.165 18.5264C17.971 18.5484 17.807 18.6825 17.743 18.8685C17.679 19.0555 17.726 19.2624 17.864 19.4014L18.301 19.8465L18.016 20.0845C16.566 21.2475 14.76 21.9804 12.833 22.0764L12.898 21.4964L12.89 21.3945C12.871 21.2935 12.823 21.2004 12.75 21.1264C12.653 21.0274 12.521 20.9734 12.384 20.9754C12.25 20.9774 12.122 21.0344 12.028 21.1324C11.935 21.2304 11.884 21.3615 11.886 21.4975V22.1384L11.514 22.1004C9.66004 21.8694 7.88403 21.0634 6.47403 19.7645L6.92104 19.4014L6.98804 19.3174C7.08404 19.1694 7.09803 18.9775 7.01903 18.8125C6.92503 18.6145 6.71604 18.4994 6.50104 18.5264C6.38604 18.5414 6.28004 18.5954 6.20004 18.6794L5.75703 19.1304L5.52504 18.8405C4.39504 17.3655 3.68204 15.5245 3.58704 13.5605L4.14304 13.6255L4.25003 13.6154C4.38903 13.5864 4.51303 13.4985 4.58603 13.3705C4.67803 13.2105 4.67803 13.0124 4.58603 12.8524C4.49403 12.6924 4.32403 12.5954 4.14203 12.5974H3.52504L3.56604 12.1935C3.79804 10.3105 4.58603 8.51445 5.85403 7.08945L6.20103 7.53645L6.28304 7.60745C6.40104 7.68845 6.55003 7.71644 6.69203 7.67944C6.87003 7.63344 7.00903 7.49345 7.05603 7.31445C7.10303 7.13445 7.05103 6.94345 6.92003 6.81345L6.48303 6.36945L6.77003 6.13345C8.22403 4.97745 10.029 4.24946 11.951 4.15346L11.886 4.71945L11.896 4.82745C11.924 4.96945 12.011 5.09445 12.137 5.16945C12.294 5.26345 12.49 5.26345 12.648 5.16945C12.805 5.07545 12.901 4.90344 12.898 4.71844V4.09145L13.232 4.12144C16.223 4.44944 18.896 6.31145 20.267 9.06645L18.088 8.46346L17.986 8.45045C17.75 8.44645 17.536 8.61045 17.483 8.85245C17.422 9.12945 17.593 9.40445 17.866 9.46645L21.19 10.2285L21.29 10.2415C21.39 10.2445 21.49 10.2165 21.576 10.1615C21.69 10.0875 21.77 9.96945 21.799 9.83545L22.548 6.44745L22.561 6.34744C22.564 6.24744 22.538 6.14645 22.485 6.05945C22.413 5.94345 22.3 5.86144 22.168 5.83044C22.036 5.79944 21.897 5.82345 21.782 5.89745C21.668 5.97145 21.587 6.08946 21.559 6.22446L21.039 8.58745L20.888 8.27846ZM12.734 7.06245C12.627 6.96245 12.482 6.91445 12.337 6.93045L12.242 6.95045C12.03 7.01645 11.881 7.21945 11.886 7.45245V11.6154L11.744 11.6575C11.19 11.8605 10.79 12.4495 10.79 13.1115C10.79 14.0055 11.513 14.7404 12.392 14.7404C12.656 14.7404 12.917 14.6705 13.151 14.5424L15.165 16.6624L15.248 16.7314C15.368 16.8104 15.516 16.8354 15.657 16.7964C15.832 16.7494 15.969 16.6095 16.016 16.4315C16.063 16.2535 16.013 16.0635 15.885 15.9335L13.789 13.8094L13.863 13.6994C13.951 13.5394 13.995 13.3285 13.995 13.1115C13.995 12.3934 13.524 11.7625 12.854 11.5555L12.898 7.45045L12.889 7.34245C12.869 7.23645 12.815 7.13745 12.734 7.06245Z"
+                      fill="#81868A" />
+              </g>
+              <defs>
+                  <clippath id="clip0_40_12975">
+                      <rect width="23.99" height="23.99"
+                          fill="white"
+                          transform="translate(0.561035 0.11145)" />
+                  </clippath>
+              </defs>
+            </svg>
+          </span>
+          <div>
+            <p class="feature-title">{{ product.metafields.custom.course_duration | default: '2 Hours' }}</p>
+            <p class="feature-desc">Of self-paced video lessons</p>
+          </div>
+        </div>
+        {% if section.settings.show_certificate != false %}
+          <div class="feature">
+            <span class="feature-icon">
+              <svg
+                width="27"
+                height="25"
+                viewBox="0 0 27 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_40_13070)">
+                    <path
+                        d="M25.161 2.25146H1.96103C1.74003 2.25146 1.56104 2.43046 1.56104 2.65146V18.6515C1.56104 18.8725 1.74003 19.0515 1.96103 19.0515H9.18404C9.19604 19.1845 9.21503 19.3155 9.23903 19.4455L7.04503 22.0605C6.90303 22.2295 6.92504 22.4825 7.09404 22.6245C7.14204 22.6645 7.19803 22.6925 7.25903 22.7075L9.67404 23.2835L10.661 25.5635C10.749 25.7665 10.985 25.8595 11.187 25.7725C11.245 25.7475 11.295 25.7095 11.335 25.6615L13.525 23.0515C13.537 23.0515 13.549 23.0515 13.561 23.0515C13.573 23.0515 13.585 23.0515 13.597 23.0515L15.787 25.6615C15.929 25.8315 16.181 25.8535 16.351 25.7115C16.398 25.6715 16.436 25.6215 16.461 25.5635L17.448 23.2835L19.863 22.7075C20.078 22.6555 20.211 22.4405 20.16 22.2255C20.145 22.1645 20.117 22.1085 20.077 22.0605L17.883 19.4455C17.907 19.3155 17.926 19.1845 17.938 19.0515H25.161C25.382 19.0515 25.561 18.8725 25.561 18.6515V2.65146C25.561 2.43046 25.382 2.25146 25.161 2.25146ZM11.138 24.6515L10.328 22.7835C10.278 22.6685 10.177 22.5825 10.054 22.5535L8.07404 22.0805L9.51004 20.3685C9.51804 20.3865 9.52803 20.4025 9.53503 20.4195C9.58703 20.5395 9.64404 20.6535 9.70604 20.7675C9.73204 20.8145 9.75904 20.8605 9.78604 20.9065C9.84104 20.9985 9.89903 21.0875 9.96103 21.1755C10.003 21.2365 10.048 21.2955 10.094 21.3555C10.148 21.4235 10.203 21.4895 10.261 21.5555C10.319 21.6215 10.387 21.6935 10.453 21.7595C10.503 21.8095 10.553 21.8565 10.605 21.9035C10.649 21.9435 10.687 21.9855 10.733 22.0235C10.778 22.0615 10.82 22.0875 10.863 22.1205C10.883 22.1355 10.9 22.1535 10.92 22.1685C10.956 22.1955 10.994 22.2195 11.031 22.2455C11.088 22.2855 11.145 22.3285 11.205 22.3655C11.318 22.4375 11.435 22.5045 11.554 22.5655C11.6 22.5885 11.646 22.6095 11.693 22.6315C11.799 22.6815 11.907 22.7265 12.015 22.7675C12.046 22.7795 12.077 22.7925 12.108 22.8035C12.259 22.8565 12.414 22.9015 12.57 22.9375L12.575 22.9385L11.138 24.6515ZM14.312 22.1665C14.129 22.2055 13.943 22.2295 13.755 22.2395H13.75C13.687 22.2435 13.624 22.2475 13.56 22.2475C13.497 22.2475 13.433 22.2435 13.37 22.2395H13.365C13.178 22.2295 12.992 22.2055 12.809 22.1675L12.776 22.1605C12.705 22.1445 12.634 22.1255 12.565 22.1055C12.535 22.0975 12.506 22.0895 12.477 22.0805C12.427 22.0645 12.378 22.0465 12.329 22.0285C12.279 22.0115 12.233 21.9935 12.185 21.9745C12.156 21.9615 12.127 21.9485 12.099 21.9345C12.033 21.9045 11.968 21.8745 11.904 21.8415L11.872 21.8235C11.707 21.7355 11.549 21.6345 11.4 21.5225C11.317 21.4605 11.24 21.3915 11.165 21.3245C11.075 21.2445 10.99 21.1605 10.909 21.0715C10.877 21.0375 10.843 21.0045 10.812 20.9695C10.701 20.8375 10.599 20.6985 10.507 20.5515C10.494 20.5305 10.482 20.5075 10.467 20.4855C10.382 20.3435 10.307 20.1955 10.243 20.0425C10.238 20.0285 10.231 20.0155 10.226 20.0025C10.155 19.8275 10.098 19.6475 10.056 19.4635C10.056 19.4555 10.05 19.4505 10.048 19.4435C9.99004 19.1835 9.96103 18.9175 9.96103 18.6515C9.96003 16.6635 11.571 15.0505 13.559 15.0495C15.547 15.0485 17.16 16.6585 17.161 18.6475C17.161 18.9165 17.131 19.1845 17.071 19.4475C17.069 19.4545 17.065 19.4605 17.064 19.4675C17.021 19.6505 16.964 19.8305 16.894 20.0055C16.888 20.0195 16.882 20.0335 16.876 20.0455C16.812 20.1975 16.737 20.3445 16.653 20.4855C16.639 20.5085 16.627 20.5315 16.613 20.5545C16.521 20.7005 16.42 20.8395 16.308 20.9715C16.278 21.0065 16.244 21.0385 16.213 21.0725C16.131 21.1615 16.044 21.2465 15.954 21.3275C15.878 21.3955 15.802 21.4635 15.719 21.5255C15.637 21.5865 15.563 21.6385 15.482 21.6905L15.477 21.6935C15.405 21.7395 15.331 21.7815 15.255 21.8215C15.241 21.8295 15.226 21.8375 15.211 21.8455C15.151 21.8775 15.091 21.9055 15.028 21.9335C14.996 21.9475 14.964 21.9625 14.932 21.9755C14.887 21.9945 14.841 22.0105 14.796 22.0275C14.75 22.0435 14.694 22.0645 14.642 22.0805C14.614 22.0895 14.586 22.0975 14.558 22.1055C14.487 22.1255 14.416 22.1455 14.344 22.1605L14.312 22.1665ZM19.048 22.0795L17.068 22.5525C16.945 22.5815 16.844 22.6665 16.794 22.7825L15.984 24.6515L14.547 22.9395H14.551C14.708 22.9045 14.863 22.8595 15.015 22.8055C15.045 22.7955 15.074 22.7825 15.104 22.7715C15.215 22.7295 15.325 22.6835 15.433 22.6315C15.477 22.6115 15.521 22.5915 15.565 22.5695C15.685 22.5065 15.805 22.4395 15.92 22.3655C15.975 22.3295 16.029 22.2905 16.083 22.2525C16.123 22.2245 16.163 22.1995 16.203 22.1705C16.224 22.1545 16.243 22.1355 16.263 22.1195C16.303 22.0865 16.35 22.0585 16.391 22.0245C16.431 21.9895 16.473 21.9445 16.515 21.9065C16.568 21.8585 16.62 21.8105 16.671 21.7605C16.736 21.6945 16.8 21.6265 16.862 21.5575C16.92 21.4915 16.975 21.4255 17.029 21.3575C17.075 21.2985 17.12 21.2375 17.163 21.1775C17.224 21.0895 17.283 21.0005 17.337 20.9095C17.365 20.8625 17.392 20.8155 17.417 20.7685C17.479 20.6555 17.535 20.5405 17.587 20.4225C17.594 20.4015 17.604 20.3855 17.612 20.3675L19.048 22.0795ZM24.761 18.2515H17.941C17.724 15.8325 15.587 14.0475 13.168 14.2645C11.049 14.4545 9.37103 16.1335 9.18103 18.2515H2.36104V3.05147H24.761V18.2515Z"
+                        fill="#81868A" />
+                    <path
+                        d="M3.56113 3.85144C3.34013 3.85144 3.16113 4.03043 3.16113 4.25143V5.85144H3.96112V4.65143H5.16113V3.85144H3.56113Z"
+                        fill="#81868A" />
+                    <path
+                        d="M23.5609 3.85144H21.9609V4.65143H23.1609V5.85144H23.9609V4.25143C23.9609 4.03043 23.7819 3.85144 23.5609 3.85144Z"
+                        fill="#81868A" />
+                    <path
+                        d="M23.1609 15.4515V16.6515H21.9609V17.4515H23.5609C23.7819 17.4515 23.9609 17.2725 23.9609 17.0515V15.4515H23.1609Z"
+                        fill="#81868A" />
+                    <path
+                        d="M3.96112 16.6515V15.4515H3.16113V17.0515C3.16113 17.2725 3.34013 17.4515 3.56113 17.4515H5.16113V16.6515H3.96112Z"
+                        fill="#81868A" />
+                    <path
+                        d="M18.36 6.65149H8.76001V7.45149H18.36V6.65149Z"
+                        fill="#81868A" />
+                    <path
+                        d="M20.7621 9.05145H6.36206V9.85146H20.7621V9.05145Z"
+                        fill="#81868A" />
+                    <path
+                        d="M13.56 15.8514C12.014 15.8514 10.76 17.1054 10.76 18.6514C10.762 20.1974 12.015 21.4494 13.56 21.4514C15.107 21.4514 16.36 20.1974 16.36 18.6514C16.36 17.1054 15.107 15.8514 13.56 15.8514ZM13.56 20.6514C12.456 20.6514 11.56 19.7564 11.56 18.6514C11.562 17.5474 12.456 16.6524 13.56 16.6514C14.665 16.6514 15.56 17.5474 15.56 18.6514C15.56 19.7564 14.665 20.6514 13.56 20.6514Z"
+                        fill="#81868A" />
+                </g>
+                <defs>
+                    <clippath id="clip0_40_13070">
+                        <rect width="26" height="23.99"
+                            fill="white"
+                            transform="translate(0.561035 0.251465)" />
+                    </clippath>
+                </defs>
+              </svg>
+            </span>
+            <div>
+              <p class="feature-title">Completion Certificate</p>
+              <p class="feature-desc">awarded on course completion</p>
+            </div>
+          </div>
+        {% endif %}
+        <div class="feature">
+          <span class="feature-icon">
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_40_13165)">
+                  <path fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7.3221 2.85747C7.3221 2.59447 7.5351 2.38147 7.7981 2.38147C8.0611 2.38147 8.27409 2.59447 8.27409 2.85747V5.07446C8.95809 5.28246 9.4651 5.91847 9.4651 6.66747C9.4651 7.58247 8.7131 8.33347 7.7981 8.33347C6.8831 8.33347 6.1311 7.58247 6.1311 6.66747C6.1311 5.91847 6.6381 5.28246 7.3221 5.07446V2.85747ZM8.5121 6.66747C8.5121 6.26747 8.1981 5.95247 7.7981 5.95247C7.3981 5.95247 7.08409 6.26747 7.08409 6.66747C7.08409 7.06747 7.3981 7.38147 7.7981 7.38147C8.1981 7.38147 8.5121 7.06747 8.5121 6.66747Z"
+                      fill="#81868A" />
+                  <path fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M16.847 2.85747C16.847 2.59447 17.06 2.38147 17.323 2.38147C17.586 2.38147 17.8 2.59447 17.8 2.85747V5.07446C18.484 5.28246 18.99 5.91847 18.99 6.66747C18.99 7.58247 18.238 8.33347 17.323 8.33347C16.409 8.33347 15.657 7.58247 15.657 6.66747C15.657 5.91847 16.163 5.28246 16.847 5.07446V2.85747ZM18.038 6.66747C18.038 6.26747 17.724 5.95247 17.323 5.95247C16.923 5.95247 16.609 6.26747 16.609 6.66747C16.609 7.06747 16.923 7.38147 17.323 7.38147C17.724 7.38147 18.038 7.06747 18.038 6.66747Z"
+                      fill="#81868A" />
+                  <path fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M2.56104 20.0055V5.09747C2.56104 3.78247 3.63504 3.33346 4.94904 3.33346H6.37103C6.62203 3.33046 6.85403 3.55846 6.85403 3.80946C6.85403 4.06146 6.62203 4.28947 6.37103 4.28647H4.94904C4.14704 4.28647 3.51303 4.91947 3.51303 5.72247V9.04848H21.609V5.72247C21.609 4.91947 20.975 4.28647 20.173 4.28647H18.752C18.5 4.28947 18.268 4.06146 18.268 3.80946C18.268 3.55846 18.5 3.33046 18.752 3.33346H20.173C21.487 3.33346 22.561 4.40747 22.561 5.72247V20.0055C22.561 21.3195 21.487 22.3935 20.173 22.3935H18.424H4.94904C3.63504 22.3935 2.56104 21.3195 2.56104 20.0055ZM21.609 19.9815V10.0005H3.51303V19.9815C3.51303 20.7835 4.14704 21.4175 4.94904 21.4175H20.173C20.975 21.4175 21.609 20.7835 21.609 19.9815Z"
+                      fill="#81868A" />
+                  <path
+                      d="M9.18291 3.33346C8.93391 3.34546 8.71792 3.58247 8.72892 3.83247C8.74092 4.08147 8.97893 4.29747 9.22793 4.28647H15.8949C16.1459 4.28947 16.3779 4.06146 16.3779 3.80946C16.3779 3.55846 16.1459 3.33046 15.8949 3.33346H9.18291Z"
+                      fill="#81868A" />
+                  <path
+                      d="M14.5689 13.6205C14.7799 13.4065 15.1329 13.3955 15.3579 13.5965C15.5629 13.7775 15.5909 14.0715 15.4359 14.2845L15.3839 14.3455L12.0379 18.1495C11.8489 18.3645 11.5179 18.3775 11.3129 18.1775L9.68592 16.5875C9.45592 16.3925 9.43691 16.0565 9.64391 15.8395C9.83091 15.6415 10.1399 15.6085 10.3669 15.7515L10.4319 15.7995L11.6229 17.0635L14.5689 13.6205Z"
+                      fill="#81868A" />
+              </g>
+              <defs>
+                  <clippath id="clip0_40_13165">
+                      <rect width="23.99" height="23.99"
+                          fill="white"
+                          transform="translate(0.561035 0.38147)" />
+                  </clippath>
+              </defs>
+            </svg>
+          </span>
+          <div>
+            <p class="feature-title">
+              {{ product.metafields.custom.course_access_time | default: '90 Days' }} of Access
+            </p>
+            <p class="feature-desc">To your Free Course</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+      <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+      <div id="videoContainer">
+        {% if product.metafields.custom.course_video %}
+          {{
+            product.metafields.custom.course_video
+            | media_tag: image_size: '2048x', autoplay: true, loop: false, controls: true, preload: 'none'
+          }}
+        {% else %}
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #fff; font-size: 18px;">
+            No video available
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.querySelector('#videoContainer video');
+
+      // Stop video playback if it exists
+      if (video) {
+          video.pause();
+          video.currentTime = 0;
+      }
+
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+  }
+
+
+
+  // Close modal when clicking outside
+  document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('videoModal');
+      if (modal) {
+          modal.addEventListener('click', function(e) {
+              if (e.target === modal) {
+                  closeVideoModal();
+              }
+          });
+
+          // Close modal with Escape key
+          document.addEventListener('keydown', function(e) {
+              if (e.key === 'Escape' && modal.classList.contains('active')) {
+                  closeVideoModal();
+              }
+          });
+      }
+
+      // Handle form submission
+      const addToCartForm = document.getElementById('addToCartForm');
+      const addToCartBtn = document.getElementById('addToCartBtn');
+
+      if (addToCartForm && addToCartBtn) {
+          addToCartBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+
+              // Show loading state
+              const originalText = addToCartBtn.textContent;
+              addToCartBtn.textContent = 'Adding...';
+              addToCartBtn.disabled = true;
+
+              // Submit form using fetch
+              const formData = new FormData(addToCartForm);
+
+              fetch('/cart/add', {
+                  method: 'POST',
+                  body: formData,
+                  headers: {
+                      'X-Requested-With': 'XMLHttpRequest'
+                  }
+              })
+              .then(response => {
+                  if (response.ok) {
+                      // Success - redirect to cart immediately
+                      window.location.href = '/cart';
+                  } else {
+                      // Try to parse error response
+                      return response.json().then(data => {
+                          throw new Error(data.message || 'Failed to add to cart');
+                      });
+                  }
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+                  alert('There was an error adding the item to cart. Please try again.');
+              })
+              .finally(() => {
+                  // Reset button state
+                  addToCartBtn.textContent = originalText;
+                  addToCartBtn.disabled = false;
+              });
+          });
+      }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Single Hero Section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_prefix",
+      "label": "Show 'Get Started with' prefix",
+      "default": true,
+      "info": "When enabled, shows 'Get Started with' before the product title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_certificate",
+      "label": "Show Completion Certificate",
+      "default": true,
+      "info": "When enabled, shows the completion certificate feature in the sidebar"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Single Hero Section"
+    }
+  ]
+}
+{% endschema %}

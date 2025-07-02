@@ -54,56 +54,6 @@
         "height": 680
       }
     },
-    "sa_courses_section_98XzbH": {
-      "type": "sa-courses-section",
-      "blocks": {
-        "course_tab_jwarHF": {
-          "type": "course_tab",
-          "settings": {
-            "tab_label": "Most Popular",
-            "collection": "most-popular",
-            "products_count": 6,
-            "course_tag": "Courses",
-            "button_text": "View Program",
-            "default_duration": "6 Months"
-          }
-        },
-        "course_tab_LctaKK": {
-          "type": "course_tab",
-          "settings": {
-            "tab_label": "Programming",
-            "collection": "programming",
-            "products_count": 6,
-            "course_tag": "Courses",
-            "button_text": "View Program",
-            "default_duration": ""
-          }
-        }
-      },
-      "block_order": [
-        "course_tab_jwarHF",
-        "course_tab_LctaKK"
-      ],
-      "name": "SA Courses Section",
-      "settings": {
-        "section_title": "Explore our top programs",
-        "section_bg_color": "#ffffff",
-        "title_color": "#0000A0",
-        "sidebar_bg_color": "#ffffff",
-        "tab_text_color": "#3C3C3C",
-        "tab_hover_color": "#0000A0",
-        "tab_active_bg_color": "#0000a0",
-        "tab_active_text_color": "#ffffff",
-        "card_bg_color": "#ffffff",
-        "card_title_color": "#3C3C3C",
-        "card_text_color": "#3C3C3C",
-        "tag_bg_color": "#0000A0",
-        "tag_text_color": "#ffffff",
-        "button_text_color": "#3C3C3C",
-        "button_border_color": "#3C3C3C",
-        "button_hover_color": "#0000A0"
-      }
-    },
     "sa_partnership_section_XCwUr6": {
       "type": "sa-partnership-section",
       "blocks": {
@@ -243,6 +193,56 @@
         "slides_per_view_small_mobile": 2,
         "space_between_small_mobile": 20,
         "navigation_button_size_mobile": 35
+      }
+    },
+    "sa_courses_section_98XzbH": {
+      "type": "sa-courses-section",
+      "blocks": {
+        "course_tab_jwarHF": {
+          "type": "course_tab",
+          "settings": {
+            "tab_label": "Most Popular",
+            "collection": "most-popular",
+            "products_count": 6,
+            "course_tag": "Courses",
+            "button_text": "View Program",
+            "default_duration": "6 Months"
+          }
+        },
+        "course_tab_LctaKK": {
+          "type": "course_tab",
+          "settings": {
+            "tab_label": "Programming",
+            "collection": "programming",
+            "products_count": 6,
+            "course_tag": "Courses",
+            "button_text": "View Program",
+            "default_duration": "8"
+          }
+        }
+      },
+      "block_order": [
+        "course_tab_jwarHF",
+        "course_tab_LctaKK"
+      ],
+      "name": "SA Courses Section",
+      "settings": {
+        "section_title": "Explore our top programs",
+        "section_bg_color": "#ffffff",
+        "title_color": "#0000a0",
+        "sidebar_bg_color": "#ffffff",
+        "tab_text_color": "#3c3c3c",
+        "tab_hover_color": "#0000a0",
+        "tab_active_bg_color": "#0000a0",
+        "tab_active_text_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "card_title_color": "#3c3c3c",
+        "card_text_color": "#3c3c3c",
+        "tag_bg_color": "#0000a0",
+        "tag_text_color": "#ffffff",
+        "button_text_color": "#3c3c3c",
+        "button_border_color": "#3c3c3c",
+        "button_hover_color": "#0000a0"
       }
     },
     "sa_trust_section_ANdfP7": {
@@ -546,8 +546,8 @@
   },
   "order": [
     "hero_slider_BnbDQN",
-    "sa_courses_section_98XzbH",
     "sa_partnership_section_XCwUr6",
+    "sa_courses_section_98XzbH",
     "sa_trust_section_ANdfP7",
     "sa_statistics_section_fEREr8",
     "sa_about_product_section_wPmaV4",

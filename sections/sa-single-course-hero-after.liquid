@@ -1,0 +1,705 @@
+<section class="rh-skills-tags-curriculum-section">
+  <div class="rh-container">
+    <div class="rh-skills-tags-curriculum-wrapper">
+      {% comment %} Skills Section - Dynamic from product metafields {% endcomment %}
+      {% if section.settings.show_skills and product.metafields.custom.course_skills.value.size > 0 %}
+        <div class="rh-skills-section">
+          <h2 class="rh-skills-title">
+            {{ product.title }}
+            {% if section.settings.skills_suffix %}
+              {{ section.settings.skills_suffix }}
+            {% else %}
+              Skills you will learn
+            {% endif %}
+          </h2>
+
+          <div class="rh-skills-grid">
+            {% for skill in product.metafields.custom.course_skills.value limit: section.settings.skills_limit %}
+              <div class="rh-skill-item">
+                <div class="rh-skill-icon">
+                  <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.2002 4.34204L4.4002 7.54205L10.8002 1.14203" stroke="{{ section.settings.skills_icon_color | default: '#0000A0' }}" stroke-width="1.5"/>
+                  </svg>
+                </div>
+                <div class="rh-skill-text">{{ skill }}</div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% comment %} Tags Section - Dynamic from product tags {% endcomment %}
+      {% if section.settings.show_tags and product.tags.size > 0 %}
+        <div class="rh-tags-section">
+          <h2 class="rh-tags-title">
+            {% if section.settings.tags_title_prefix %}
+              {{ section.settings.tags_title_prefix }}
+            {% else %}
+              Who should learn this free
+            {% endif %}
+            {{ product.title }}
+            {% if section.settings.tags_title_suffix %}
+              {{ section.settings.tags_title_suffix }}
+            {% else %}
+              course
+            {% endif %}
+          </h2>
+
+          <div class="rh-tags-grid">
+            {% for tag in product.tags limit: section.settings.tags_limit %}
+              <div class="rh-tag-item">{{ tag }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% comment %} Curriculum Section - Dynamic from courses_plus_content metafield {% endcomment %}
+      {% if section.settings.show_curriculum %}
+        {% assign course_outline = product.metafields.courses_plus_content.course_outline.value %}
+        {% if course_outline and course_outline.size > 0 %}
+          <div class="rh-curriculum-section">
+            <h2 class="rh-curriculum-title">
+              {% if section.settings.curriculum_title_prefix %}
+                {{ section.settings.curriculum_title_prefix }}
+              {% else %}
+                What you will learn in this
+              {% endif %}
+              {{ product.title }}
+              {% if section.settings.curriculum_title_suffix %}
+                {{ section.settings.curriculum_title_suffix }}
+              {% else %}
+                course?
+              {% endif %}
+            </h2>
+
+            <div class="rh-accordion">
+              {% for section in course_outline.sections %}
+                <div class="rh-accordion-item {% if forloop.first %}rh-expanded{% endif %}">
+                  <div class="rh-accordion-header" onclick="toggleAccordion(this)">
+                    <div class="rh-accordion-toggle">
+                      <span class="rh-accordion-icon">
+                        {%- if forloop.first %}−{% else %}+{% endif -%}
+                      </span>
+                      <span class="rh-accordion-title">{{ section.title }}</span>
+                    </div>
+                    {% comment %} No duration shown as per user requirement {% endcomment %}
+                  </div>
+                  {% if section.lessons and section.lessons.size > 0 %}
+                    <div class="rh-accordion-content">
+                      {% for lesson in section.lessons %}
+                        {% unless lesson[1].removed == 1 %}
+                          <div class="rh-accordion-lesson">
+                            <span class="rh-lesson-title">{{ lesson[1].title }}</span>
+                            {% comment %} No duration shown as per user requirement {% endcomment %}
+                          </div>
+                        {% endunless %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="rh-empty-container">
+      <span>empty</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Get all accordion headers
+      const accordionHeaders = document.querySelectorAll('.rh-accordion-header');
+
+      // Add click event listener to each header
+      accordionHeaders.forEach(header => {
+          header.addEventListener('click', function() {
+              // Get the parent accordion item
+              const accordionItem = this.closest('.rh-accordion-item');
+              const accordionContent = accordionItem.querySelector('.rh-accordion-content');
+              const accordionIcon = accordionItem.querySelector('.rh-accordion-icon');
+
+              // Check if this item is currently expanded
+              const isExpanded = accordionItem.classList.contains('rh-expanded');
+
+              // Close all accordion items first (optional: remove this if you want multiple items open)
+              const allAccordionItems = document.querySelectorAll('.rh-accordion-item');
+              allAccordionItems.forEach(item => {
+                  if (item !== accordionItem) {
+                      item.classList.remove('rh-expanded');
+                      const icon = item.querySelector('.rh-accordion-icon');
+                      if (icon) {
+                          icon.textContent = '+';
+                      }
+                  }
+              });
+
+              // Toggle the current item
+              if (isExpanded) {
+                  // Collapse the item
+                  accordionItem.classList.remove('rh-expanded');
+                  accordionIcon.textContent = '+';
+              } else {
+                  // Expand the item
+                  accordionItem.classList.add('rh-expanded');
+                  accordionIcon.textContent = '−';
+              }
+          });
+
+          // Add hover effects
+          header.addEventListener('mouseenter', function() {
+              this.style.backgroundColor = '#f8f9fa';
+          });
+
+          header.addEventListener('mouseleave', function() {
+              this.style.backgroundColor = 'transparent';
+          });
+      });
+
+      // Initialize - make sure the first item is expanded and has correct icon
+      const firstAccordionItem = document.querySelector('.rh-accordion-item.rh-expanded');
+      if (firstAccordionItem) {
+          const firstIcon = firstAccordionItem.querySelector('.rh-accordion-icon');
+          if (firstIcon) {
+              firstIcon.textContent = '−';
+          }
+      }
+
+      // Initialize all other items to have + icon
+      const allAccordionItems = document.querySelectorAll('.rh-accordion-item:not(.rh-expanded)');
+      allAccordionItems.forEach(item => {
+          const icon = item.querySelector('.rh-accordion-icon');
+          if (icon) {
+              icon.textContent = '+';
+          }
+      });
+  });
+</script>
+
+{% style %}
+  .rh-skills-tags-curriculum-section{
+      padding: clamp(32px, 5vw, 60px) clamp(16px, 3vw, 20px) clamp(24px, 2vw, 48px);
+      background: {{ section.settings.section_bg_color | default: '#ffffff' }};
+  }
+
+  .rh-container{
+      max-width: 1210px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      gap: clamp(32px, 8vw, 115px);
+  }
+
+  .rh-skills-tags-curriculum-wrapper{
+      flex: 1;
+      min-width: 0;
+  }
+
+  .rh-empty-container span{
+      color: transparent !important;
+  }
+
+  .rh-empty-container {
+      width: 354px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .rh-empty-container span {
+      color: #666;
+      font-family: Inter, sans-serif;
+  }
+
+  .rh-skills-section {
+      width: 100%;
+      margin-bottom: clamp(32px, 4vw, 48px);
+  }
+
+  .rh-skills-title {
+      color: {{ section.settings.skills_title_color | default: '#0000A0' }};
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: clamp(24px, 3vw, 32px);
+      line-height: 1.3;
+  }
+
+  .rh-skills-grid {
+      display: grid;
+      grid-template-columns: repeat({{ section.settings.skills_columns | default: 2 }}, 1fr);
+      grid-gap: clamp(24px, 3vw, 32px) clamp(48px, 6vw, 64px);
+      max-width: 632px;
+  }
+
+  .rh-skill-item {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(12px, 1.5vw, 14px);
+  }
+
+  .rh-skill-icon {
+      min-width: 12px;
+      height: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+  }
+
+  .rh-skill-icon svg {
+      width: 12px;
+      height: 9px;
+      flex-shrink: 0;
+  }
+
+  .rh-skill-text {
+      color: {{ section.settings.skills_text_color | default: '#3C3C3C' }};
+      font-size: clamp(14px, 1.8vw, 16px);
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 1.29;
+      flex: 1;
+  }
+
+  /* Tags Section */
+  .rh-tags-section {
+      width: 100%;
+      margin-bottom: clamp(32px, 4vw, 48px);
+  }
+
+  .rh-tags-title {
+      color: {{ section.settings.tags_title_color | default: '#0000A0' }};
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: clamp(16px, 2vw, 24px);
+      line-height: 1.3;
+  }
+
+  .rh-tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(12px, 1.5vw, 16px);
+      max-width: 740px;
+  }
+
+  .rh-tag-item {
+      background: {{ section.settings.tag_bg_color | default: '#F3F3F3' }};
+      border: 1px solid {{ section.settings.tag_border_color | default: '#D2D6DE' }};
+      color: {{ section.settings.tag_text_color | default: '#3C3C3C' }};
+      font-size: 14px;
+      font-family: Inter, sans-serif;
+      font-weight: 500;
+      padding: 0 clamp(16px, 2vw, 21px);
+      height: 42px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      border-radius: 0;
+  }
+
+  /* Curriculum Section */
+  .rh-curriculum-section {
+      width: 100%;
+  }
+
+  .rh-curriculum-title {
+      color: {{ section.settings.curriculum_title_color | default: '#0000A0' }};
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: clamp(16px, 2vw, 24px);
+      line-height: 1.3;
+  }
+
+  /* Accordion Styles */
+  .rh-accordion {
+      width: 100%;
+      padding: 0 16px;
+      background: {{ section.settings.accordion_bg_color | default: '#f6f6ff' }};
+  }
+
+  .rh-accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(16px, 2vw, 20px) 0;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+      transition: background-color 0.2s ease;
+  }
+
+  .rh-accordion-toggle {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.5vw, 16px);
+      flex: 1;
+  }
+
+  .rh-accordion-icon {
+      color: {{ section.settings.accordion_icon_color | default: '#666' }};
+      font-size: 18px;
+      font-weight: 300;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+  }
+
+  .rh-accordion-title {
+      color: {{ section.settings.accordion_text_color | default: '#3C3C3C' }};
+      font-size: clamp(12px, 1.8vw, 14px);
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 1.4;
+  }
+
+  .rh-accordion-item.rh-expanded .rh-accordion-header .rh-accordion-title{
+      font-weight: 600;
+  }
+
+  .rh-accordion-duration {
+      color: {{ section.settings.accordion_accent_color | default: '#0000A0' }};
+      font-size: clamp(12px, 1.6vw, 14px);
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      flex-shrink: 0;
+  }
+
+  .rh-accordion-content {
+      padding-left: clamp(28px, 3.5vw, 34px);
+      padding-bottom: clamp(12px, 1.5vw, 16px);
+      display: block;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+  }
+
+  .rh-accordion-item:not(.rh-expanded) .rh-accordion-content {
+      display: none;
+  }
+
+  .rh-accordion-header:hover {
+      background-color: {{ section.settings.accordion_hover_color | default: '#f6f6ff' }};
+  }
+
+  .rh-accordion-lesson {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(8px, 1vw, 12px) 0;
+  }
+
+  .rh-lesson-title {
+      color: {{ section.settings.lesson_text_color | default: '#3C3C3C' }};
+      font-size: clamp(12px, 1.6vw, 14px);
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 1.4;
+  }
+
+  .rh-lesson-duration {
+      color: {{ section.settings.accordion_accent_color | default: '#0000A0' }};
+      font-size: clamp(12px, 1.4vw, 14px);
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      flex-shrink: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 900px) {
+      .rh-container {
+          gap: 32px;
+      }
+  }
+
+  @media (max-width: 800px) {
+      .rh-container {
+          flex-direction: column;
+          gap: 32px;
+      }
+
+      .rh-empty-container {
+          display: none;
+      }
+
+      .rh-skills-section, .rh-tags-section, .rh-curriculum-section {
+          margin-bottom: 32px;
+      }
+
+      .rh-skills-grid {
+          grid-template-columns: 1fr;
+          grid-gap: 24px;
+          max-width: none;
+      }
+
+      .rh-skills-title, .rh-tags-title, .rh-curriculum-title {
+          font-size: clamp(16px, 2vw, 20px);
+          margin-bottom: 24px;
+      }
+
+      .rh-tags-grid, .rh-accordion {
+          max-width: none;
+      }
+
+      .rh-skills-tags-curriculum-section {
+          padding: 32px 16px 16px;
+      }
+  }
+
+  @media (max-width: 480px) {
+      .rh-skill-item {
+          gap: 12px;
+      }
+
+      .rh-skill-text {
+          font-size: clamp(13px, 1.6vw, 14px);
+          line-height: 1.25;
+      }
+
+      .rh-skills-title, .rh-tags-title, .rh-curriculum-title {
+          font-size: clamp(15px, 1.8vw, 18px);
+      }
+
+      .rh-tag-item {
+          font-size: 13px;
+          padding: 0 14px;
+          height: 38px;
+      }
+
+      .rh-accordion-header {
+          padding: 16px 0;
+      }
+
+      .rh-accordion-toggle {
+          gap: 12px;
+      }
+
+      .rh-accordion-title {
+          font-size: clamp(13px, 1.6vw, 14px);
+      }
+
+      .rh-accordion-duration {
+          font-size: 12px;
+      }
+
+      .rh-accordion-content {
+          padding-left: 28px;
+          padding-bottom: 12px;
+      }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Skills Tags Curriculum",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Skills Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_skills",
+      "label": "Show Skills Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "skills_suffix",
+      "label": "Skills Title Suffix",
+      "default": "Skills you will learn",
+      "info": "Text that appears after the product title"
+    },
+    {
+      "type": "range",
+      "id": "skills_limit",
+      "label": "Maximum Skills to Show",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "skills_columns",
+      "label": "Skills Grid Columns (Desktop)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "skills_title_color",
+      "label": "Skills Title Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "skills_text_color",
+      "label": "Skills Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "skills_icon_color",
+      "label": "Skills Icon Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "header",
+      "content": "Tags Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show Tags Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tags_title_prefix",
+      "label": "Tags Title Prefix",
+      "default": "Who should learn this free",
+      "info": "Text that appears before the product title"
+    },
+    {
+      "type": "text",
+      "id": "tags_title_suffix",
+      "label": "Tags Title Suffix",
+      "default": "course",
+      "info": "Text that appears after the product title"
+    },
+    {
+      "type": "range",
+      "id": "tags_limit",
+      "label": "Maximum Tags to Show",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "color",
+      "id": "tags_title_color",
+      "label": "Tags Title Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Tag Background Color",
+      "default": "#F3F3F3"
+    },
+    {
+      "type": "color",
+      "id": "tag_border_color",
+      "label": "Tag Border Color",
+      "default": "#D2D6DE"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "header",
+      "content": "Curriculum Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_curriculum",
+      "label": "Show Curriculum Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "curriculum_title_prefix",
+      "label": "Curriculum Title Prefix",
+      "default": "What you will learn in this",
+      "info": "Text that appears before the product title"
+    },
+    {
+      "type": "text",
+      "id": "curriculum_title_suffix",
+      "label": "Curriculum Title Suffix",
+      "default": "course?",
+      "info": "Text that appears after the product title"
+    },
+    {
+      "type": "color",
+      "id": "curriculum_title_color",
+      "label": "Curriculum Title Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "accordion_bg_color",
+      "label": "Accordion Background Color",
+      "default": "#f6f6ff"
+    },
+    {
+      "type": "color",
+      "id": "accordion_hover_color",
+      "label": "Accordion Hover Color",
+      "default": "#f6f6ff"
+    },
+    {
+      "type": "color",
+      "id": "accordion_text_color",
+      "label": "Accordion Text Color",
+      "default": "#3C3C3C"
+    },
+    {
+      "type": "color",
+      "id": "accordion_icon_color",
+      "label": "Accordion Icon Color",
+      "default": "#666"
+    },
+    {
+      "type": "color",
+      "id": "accordion_accent_color",
+      "label": "Accordion Accent Color",
+      "default": "#0000A0"
+    },
+    {
+      "type": "color",
+      "id": "lesson_text_color",
+      "label": "Lesson Text Color",
+      "default": "#3C3C3C"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SA Product Skills, Tags & Curriculum"
+    }
+  ]
+}
+{% endschema %}

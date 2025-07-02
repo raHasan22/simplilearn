@@ -7,7 +7,7 @@
   }
 
   .srs-single-page-container {
-      max-width: 1220px;
+      max-width: 1300px;
       margin: 0 auto;
   }
 
@@ -17,7 +17,7 @@
       color: #151515;
       text-align: left;
       color: {{ section.settings.title_color }};
-      font-size: {{ section.settings.title_size }}rem;
+      font-size: 24px;
       font-weight: 800;
       margin-bottom: 50px;
       line-height: 1.2;
@@ -53,14 +53,14 @@
 
   .question-number {
       color: #151515;
-      font-size: 1.2rem;
+      font-size: 22px;
       font-weight: 400;
       min-width: 40px;
   }
 
   .question-text {
       color: {{ section.settings.question_color }};
-      font-size: 1.1rem;
+      font-size: 22px;
       font-weight: 400;
       line-height: 1.5;
       flex: 1;
@@ -73,7 +73,7 @@
       border: none;
       /* border-radius: 8px; */
       color: white;
-      font-size: 1.2rem;
+      font-size: 22px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -98,18 +98,24 @@
   }
 
   .faq-answer.active {
-      max-height: 300px;
+      max-height: unset;
       padding: 20px 0 25px 20px;
   }
 
   .answer-text {
       color: {{ section.settings.answer_color }};
-      font-size: 1rem;
+      font-size: 18px;
       line-height: 1.6;
   }
 
   /* Responsive Design */
   @media (max-width: 768px) {
+    .faq-answer.active {
+      padding: 10px 0 15px 10px;
+  }
+    .faq-list{
+      margin-right: 0;
+    }
       .srs-single-page {
           padding: 20px 10px;
       }
@@ -119,7 +125,7 @@
       }
 
       .faq-title {
-          font-size: 1.5rem;
+          font-size: 20px;
           margin-bottom: 30px;
       }
 
@@ -132,18 +138,18 @@
       }
 
       .question-number {
-          font-size: 1rem;
+          font-size: 18px;
           min-width: 30px;
       }
 
       .question-text {
-          font-size: 1rem;
+          font-size: 18px;
       }
 
       .toggle-button {
           width: 35px;
           height: 35px;
-          font-size: 1rem;
+          font-size: 18px;
       }
 
       .faq-answer.active {
@@ -157,7 +163,7 @@
       }
 
       .faq-title {
-          font-size: 1.3rem;
+          font-size: 18;
       }
 
       .question-content {
@@ -165,7 +171,7 @@
       }
 
       .question-text {
-          font-size: 0.95rem;
+          font-size: 16px;
       }
 
       .faq-answer.active {

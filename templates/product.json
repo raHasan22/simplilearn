@@ -66,6 +66,7 @@
         "description",
         "share"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
@@ -80,6 +81,60 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "sa_single_hero_product_qWcxky": {
+      "type": "sa-single-hero-product",
+      "name": "Single Hero Section",
+      "settings": {
+        "show_prefix": true,
+        "show_certificate": true
+      }
+    },
+    "sa_single_course_hero_after_wpz9Dc": {
+      "type": "sa-single-course-hero-after",
+      "name": "SA Product Skills, Tags & Curriculum",
+      "settings": {
+        "section_bg_color": "#ffffff",
+        "show_skills": true,
+        "skills_suffix": "Skills you will learn",
+        "skills_limit": 6,
+        "skills_columns": 2,
+        "skills_title_color": "#0000a0",
+        "skills_text_color": "#3c3c3c",
+        "skills_icon_color": "#0000a0",
+        "show_tags": true,
+        "tags_title_prefix": "Who should learn this free",
+        "tags_title_suffix": "course",
+        "tags_limit": 6,
+        "tags_title_color": "#0000a0",
+        "tag_bg_color": "#f3f3f3",
+        "tag_border_color": "#d2d6de",
+        "tag_text_color": "#3c3c3c",
+        "show_curriculum": true,
+        "curriculum_title_prefix": "What you will learn in this",
+        "curriculum_title_suffix": "course?",
+        "curriculum_title_color": "#0000a0",
+        "accordion_bg_color": "#f6f6ff",
+        "accordion_hover_color": "#f6f6ff",
+        "accordion_text_color": "#3c3c3c",
+        "accordion_icon_color": "#666666",
+        "accordion_accent_color": "#0000a0",
+        "lesson_text_color": "#3c3c3c"
+      }
+    },
+    "nxt_single_course_bottom_QUFEQJ": {
+      "type": "nxt-single-course-bottom",
+      "name": "Single Course Bottom ",
+      "settings": {
+        "certificate_title": "Get a Completion Certificate",
+        "certificate_description": "Share your certificate with prospective employers and your professional network on LinkedIn.",
+        "certificate_image": "shopify://shop_images/image_266.png",
+        "why_learn_title": "Why you should learn",
+        "about_course_title": "About the Course",
+        "read_more_text": "Read More",
+        "read_less_text": "Read Less",
+        "char_limit": 300
       }
     },
     "related-products": {
@@ -106,18 +161,21 @@
       "name": "Single Product FAQ",
       "settings": {
         "title": "Frequently asked questions",
-        "title_color": "#0000A0",
+        "title_color": "#0000a0",
         "title_size": 2,
-        "button_color": "#0000A0",
+        "button_color": "#0000a0",
         "question_color": "#151515",
-        "answer_color": "#666",
-        "padding_top": 50,
-        "padding_bottom": 50
+        "answer_color": "#666666",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     }
   },
   "order": [
     "main",
+    "sa_single_hero_product_qWcxky",
+    "sa_single_course_hero_after_wpz9Dc",
+    "nxt_single_course_bottom_QUFEQJ",
     "related-products",
     "sa_single_faq_section_M77rbY"
   ]

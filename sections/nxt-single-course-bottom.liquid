@@ -1,0 +1,128 @@
+{% schema %}
+{
+  "name": "Single Course Bottom",
+  "tag": "section",
+  "class": "nxt-single-course-bottom",
+  "settings": [
+    {
+      "type": "text",
+      "id": "certificate_title",
+      "label": "Certificate Section Title",
+      "default": "Get a Completion Certificate"
+    },
+    {
+      "type": "textarea",
+      "id": "certificate_description",
+      "label": "Certificate Section Description",
+      "default": "Share your certificate with prospective employers and your professional network on LinkedIn."
+    },
+    {
+      "type": "image_picker",
+      "id": "certificate_image",
+      "label": "Certificate Image"
+    },
+    {
+      "type": "text",
+      "id": "why_learn_title",
+      "label": "Why Learn Section Title",
+      "default": "Why you should learn"
+    },
+    {
+      "type": "text",
+      "id": "about_course_title",
+      "label": "About Course Section Title",
+      "default": "About the Course"
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Read More Button Text",
+      "default": "Read More"
+    },
+    {
+      "type": "text",
+      "id": "read_less_text",
+      "label": "Read Less Button Text",
+      "default": "Read Less"
+    },
+    {
+      "type": "range",
+      "id": "char_limit",
+      "label": "Character Limit for Read More",
+      "min": 100,
+      "max": 1000,
+      "step": 50,
+      "default": 300
+    }
+  ],
+  "presets": [
+    {
+      "name": "Single Course Bottom ",
+      "category": "Single Course"
+    }
+  ]
+}
+{% endschema %}
+{{ 'single-course-bottom.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'read-more-toggle.js' | asset_url }}" defer></script>
+{% style %}
+{% endstyle %}
+
+<div class="nxt-singleCourse__content nxt-certificate__container">
+  <h2>{{ section.settings.certificate_title }}</h2>
+  <p>{{ section.settings.certificate_description }}</p>
+  <div class="nxt-certificate__wrapper" style="background-image: url('{{ 'certificate-bg.png' | asset_url }}');">
+    {% if product.metafields.custom.certificate != blank %}
+      <img
+        src="{{ product.metafields.custom.certificate | image_url: width: 482 }}"
+        alt="Course Certificate"
+        class="nxt-certificate__image"
+        width="482"
+        height="342"
+      >
+    {% else %}
+      <img
+        src="{{ section.settings.certificate_image | image_url: width: 482 }}"
+        alt="Course Certificate"
+        class="nxt-certificate__image"
+        width="482"
+        height="342"
+      >
+    {% endif %}
+  </div>
+</div>
+{% if product.metafields.custom.why_you_should_learn_titles.value.size > 0 %}
+  {% assign why_you_should_learn_titles = product.metafields.custom.why_you_should_learn_titles.value %}
+  {% assign why_you_should_learn_descriptions = product.metafields.custom.why_you_should_learn_descriptions.value %}
+  <div class="nxt-singleCourse__content nxt-why-you-should-learn__container">
+    <h2>
+      {{ section.settings.why_learn_title }}
+      {{ product.title }}?
+    </h2>
+    <div class="nxt-contentBox__wrapper">
+      {% for title in why_you_should_learn_titles %}
+        <div class="nxt-contentBox__item">
+          <h3>{{ title }}</h3>
+          <p>{{ why_you_should_learn_descriptions[forloop.index0] }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+{% assign about_the_course = product.metafields.custom.about_the_course %}
+{% if about_the_course %}
+  <div class="nxt-singleCourse__content nxt-about-the-course__container">
+    <h2>{{ section.settings.about_course_title }}</h2>
+    <div
+      class="nxt-course__description"
+      data-char-limit="{{ section.settings.char_limit }}"
+      data-read-more-text="{{ section.settings.read_more_text }}"
+      data-read-less-text="{{ section.settings.read_less_text }}"
+    >
+      <div class="nxt-course__description-content">
+        {{ about_the_course | metafield_tag }}
+      </div>
+      <a class="nxt-course__readMore" href="#">{{ section.settings.read_more_text }}</a>
+    </div>
+  </div>
+{% endif %}
